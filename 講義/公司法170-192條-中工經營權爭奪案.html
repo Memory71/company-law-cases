@@ -26,7 +26,7 @@
     background:var(--parchment);
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
-    line-height:1.75;
+    line-height:1.8;
   }
   .wrap{
     max-width:760px;
@@ -92,6 +92,27 @@
     padding-bottom:.5rem;
     border-bottom:1px solid var(--line);
   }
+  p{
+    font-size:.95rem;
+    color:var(--ink-70);
+    margin:0 0 1rem;
+  }
+  p:last-child{ margin-bottom:0; }
+  a.src{
+    color:var(--indigo);
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:3px;
+    font-weight:500;
+  }
+  a.src:hover{ color:var(--seal); text-decoration-color:var(--seal); }
+  a.law{
+    color:var(--brass);
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:1px dashed var(--brass);
+  }
+  a.law:hover{ color:var(--seal); border-bottom-color:var(--seal); }
   .timeline{
     list-style:none;
     margin:0;
@@ -113,6 +134,7 @@
   .timeline .desc{
     font-size:.92rem;
     color:var(--ink-70);
+    margin:0;
   }
   .qa{
     margin-bottom:1.1rem;
@@ -120,34 +142,25 @@
   .qa .q{
     font-weight:700;
     margin-bottom:.3rem;
+    font-size:.95rem;
   }
   .qa .a{
     font-size:.92rem;
     color:var(--ink-70);
-  }
-  .law-ref{
-    display:inline-block;
-    background:rgba(169,131,47,0.14);
-    color:var(--brass);
-    padding:.1rem .5rem;
-    border-radius:5px;
-    font-weight:700;
-    font-size:.85rem;
+    margin:0;
   }
   .discussion ol{
     padding-left:1.3rem;
     font-size:.92rem;
     color:var(--ink-70);
+    margin:0;
   }
   .discussion li{
     margin-bottom:.7rem;
   }
-  .sources{
-    font-size:.82rem;
+  .note{
+    font-size:.8rem;
     color:var(--ink-45);
-  }
-  .sources li{
-    margin-bottom:.4rem;
   }
   .disclaimer{
     font-size:.78rem;
@@ -174,66 +187,47 @@
 
   <section>
     <h2>案例來源</h2>
-    <p style="font-size:.92rem;">中華工程股份有限公司（股票代號 2515，下稱「中工」）2026年董監事改選經營權爭奪案。時間軸涵蓋2026年4月至5月，事件仍屬近期新聞，媒體報導完整，可作為觀察「市場派」與「公司派」經營權爭奪實務操作的即時案例。</p>
+    <p><a class="src" href="https://www.ctee.com.tw/news/20260521700838-430606" target="_blank" rel="noopener">中華工程股份有限公司（股票代號 2515，下稱「中工」）</a>2026年董監事改選經營權爭奪案，由市場派寶佳機構與公司派威京集團對決。時間橫跨2026年4月至5月，屬近期事件，媒體報導完整，適合作為觀察經營權爭奪實務操作的即時案例。</p>
   </section>
 
   <section>
     <h2>事件時間軸</h2>
     <ul class="timeline">
-      <li><span class="date">2025年起</span><span class="desc">寶佳機構（市場派）陣營開始於公開市場大量收購中工股票，鎖定當年度董監事改選。</span></li>
-      <li><span class="date">2026/04/15</span><span class="desc">中工（公司派，威京集團主導）於董事會公告的候選人名單中，刪除寶佳陣營提名的董事候選人。寶佳陣營旗下堡新投資、大華建設、佳峻投資向智慧財產及商業法院聲請假處分，法院裁准提供擔保金後，中工須將遭刪除的候選人重新列入股東會候選名單。</span></li>
-      <li><span class="date">2026/04/17</span><span class="desc">雙方陣營召開記者會宣布達成「和平共識」，公司派同意由寶佳陣營主導未來董事會運作。</span></li>
-      <li><span class="date">2026/05/19</span><span class="desc">原任董事長周志明請辭。</span></li>
-      <li><span class="date">2026/05/21</span><span class="desc">中工召開股東常會，進行第28屆董事全面改選。改選結果：寶佳陣營取得4席（含2席獨立董事），威京陣營保有3席，中工經營權正式易主。</span></li>
+      <li><span class="date">2025年起</span><p class="desc">寶佳機構陣營開始於公開市場大量收購中工股票，鎖定當年度董監事改選。</p></li>
+      <li><span class="date">2026/04/15</span><p class="desc">中工董事會將寶佳陣營提名的董事候選人自公告名單中刪除，寶佳陣營旗下三家投資公司向<a class="src" href="https://news.nextapple.com/local/20260415/6EB7F8F900E9725D0AAB959301369B4B" target="_blank" rel="noopener">智慧財產及商業法院聲請假處分</a>，法院裁准提供擔保金後恢復候選人資格。</p></li>
+      <li><span class="date">2026/04/17</span><p class="desc">雙方陣營<a class="src" href="https://www.ctwant.com/article/477632/" target="_blank" rel="noopener">召開記者會宣布達成和平共識</a>，公司派同意由寶佳陣營主導未來董事會。</p></li>
+      <li><span class="date">2026/05/19</span><p class="desc">原任董事長周志明請辭。</p></li>
+      <li><span class="date">2026/05/21</span><p class="desc"><a class="src" href="https://www.ctee.com.tw/news/20260521700838-430606" target="_blank" rel="noopener">股東常會完成第28屆董事全面改選</a>，寶佳陣營取得4席（含2席獨立董事），威京陣營保有3席，經營權正式易主。</p></li>
     </ul>
   </section>
 
   <section>
     <h2>爭點</h2>
     <div class="qa">
-      <div class="q">1. 公司（董事會）是否有權將股東合法提名的董事候選人從名單中刪除？</div>
-      <div class="a">依 <span class="law-ref">公司法§172-1</span>，持股一定比例以上的股東有權提出董事候選人名單，董事會僅得以形式要件不符為由刪除，不得任意實質審查或排除。本案中工刪除寶佳提名候選人的正當性，即為假處分程序中的核心爭點。</div>
+      <div class="q">1. 董事會是否有權將股東合法提名的董事候選人從名單中刪除？</div>
+      <p class="a">依<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=172-1" target="_blank" rel="noopener">公司法§172-1</a>，持股一定比例以上的股東有權提出董事候選人名單，董事會僅得以形式要件不符為由刪除，不得任意實質審查或排除。本案中工刪除寶佳提名候選人的正當性，即為假處分程序中的核心爭點。</p>
     </div>
     <div class="qa">
       <div class="q">2. 股東可否透過假處分程序，要求法院命公司回復候選人名單？</div>
-      <div class="a">股東認為自身提名權遭侵害，得向法院聲請假處分作為保全程序，避免股東會在爭議未解前逕行召開、造成既成事實而難以回復。本案法院裁准假處分，命中工提供擔保後回復候選人資格，展現假處分在公司治理爭議中的實務功能。</div>
+      <p class="a">股東認為自身提名權遭侵害，得聲請假處分作為保全程序，避免股東會在爭議未解前逕行召開、造成既成事實而難以回復。本案法院裁准假處分，展現這項程序在公司治理爭議中的實務功能。</p>
     </div>
     <div class="qa">
-      <div class="q">3. 經營權和平轉移（雙方協商而非訴訟終局判決）在公司法上如何評價？</div>
-      <div class="a">本案最終並未走到法院實體判決，而是雙方在假處分程序後自行協商、於股東會上以表決方式解決。這反映出公司法上多數決原則（<span class="law-ref">§174</span>）與股東自治的實務操作：法律程序（假處分）常是談判籌碼，而非終局解方。</div>
+      <div class="q">3. 經營權和平轉移在公司法上如何評價？</div>
+      <p class="a">本案並未走到法院實體判決，而是雙方協商後於股東會上以表決方式解決，反映<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=174" target="_blank" rel="noopener">公司法§174</a>多數決原則與股東自治的實務操作：法律程序（假處分）常是談判籌碼，而非終局解方。</p>
     </div>
-  </section>
-
-  <section>
-    <h2>對應條文</h2>
-    <ul style="font-size:.92rem; color:var(--ink-70); padding-left:1.2rem;">
-      <li><span class="law-ref">公司法§170</span>：股東常會、臨時會之召開</li>
-      <li><span class="law-ref">公司法§172、172-1</span>：股東會召集通知、股東提案暨董事候選人提名權</li>
-      <li><span class="law-ref">公司法§174</span>：股東會決議之一般表決權數</li>
-      <li><span class="law-ref">公司法§192</span>：董事之選任</li>
-      <li><span class="law-ref">公司法§199</span>：董事之解任</li>
-    </ul>
   </section>
 
   <section class="discussion">
     <h2>課堂討論方向（示範）</h2>
     <ol>
-      <li>如果你是中工的小股東，在假處分裁准前，你的股東提名權事實上是被誰、以什麼理由侵害的？公司法設計董事候選人提名權的立法目的是什麼？</li>
+      <li>如果你是中工的小股東，在假處分裁准前，你的股東提名權事實上是被誰、以什麼理由侵害的？<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=172-1" target="_blank" rel="noopener">公司法§172-1</a>設計董事候選人提名權的立法目的是什麼？</li>
       <li>「市場派收購股權以取得經營權」是否違法？公司法與證券交易法（如公開收購規定）分別如何規範這種行為？</li>
       <li>假處分作為保全程序，為什麼在公司經營權爭奪案中經常被使用？如果沒有假處分制度，股東的提名權要如何救濟？</li>
-      <li>比較本案與過去經典的「大同案」（2020年大同公司經營權之爭），兩案在董事提名爭議上的操作手法有何異同？</li>
+      <li>比較本案與2020年<a class="src" href="https://money.udn.com/money/story/5612/9558855" target="_blank" rel="noopener">大同公司經營權之爭</a>，兩案在董事提名爭議上的操作手法有何異同？</li>
     </ol>
   </section>
 
-  <section>
-    <h2>延伸閱讀 / 新聞來源</h2>
-    <ul class="sources">
-      <li>工商時報，〈中工確定變天！寶佳拿2董2獨董、威京保3席 鄭斯聰可望接董座〉，2026/05/21</li>
-      <li>聯合新聞網，〈中工股東會／變天！市場派寶佳集團拿下四席董事〉，2026/05/21</li>
-      <li>壹蘋新聞網，〈中工經營權戰火延燒 商業法院裁准寶佳陣營董事提名！律師火速提存330萬〉，2026/04/15</li>
-      <li>CTWANT，〈寶佳吃中工／中工經營權爭奪休戰 寶佳將主導董事會〉，2026/04/17</li>
-    </ul>
-  </section>
+  <p class="note">相關報導亦可參考：<a class="src" href="https://udn.com/news/story/7241/9516489" target="_blank" rel="noopener">聯合新聞網</a>、<a class="src" href="https://udn.com/news/story/7241/9516409" target="_blank" rel="noopener">經濟日報</a>、<a class="src" href="https://today.line.me/tw/v3/article/7N1DnZP" target="_blank" rel="noopener">MoneyDJ理財網</a>。</p>
 
   <p class="disclaimer">本教材為教學目的整理，內容依公開新聞報導彙整而成，不代表本課程對任一方之立場評價。案例分析僅供課堂討論使用，實際法律爭議應以正式裁判文書及專業法律諮詢為準。</p>
 
