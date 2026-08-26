@@ -176,6 +176,26 @@
   .discussion li{
     margin-bottom:.7rem;
   }
+  .plain-box{
+    background:rgba(169,131,47,0.07);
+    border:1px solid rgba(169,131,47,0.25);
+    border-radius:8px;
+    padding:1rem 1.2rem;
+    margin-top:1rem;
+  }
+  .plain-title{
+    font-weight:700;
+    color:var(--brass);
+    font-size:.92rem;
+    margin:0 0 .6rem;
+  }
+  .plain-text{
+    font-size:.9rem;
+    color:var(--ink-70);
+    margin:0 0 .7rem;
+    line-height:1.8;
+  }
+  .plain-text:last-child{ margin-bottom:0; }
   .note{
     font-size:.8rem;
     color:var(--ink-45);
@@ -256,6 +276,14 @@
       <li>中工在2026年2月對10人提告內線交易與操縱股價，指控部分股東會顧問業者及律師利用職務之便知悉內幕消息並私下佈局買股。如果這項指控屬實，違反的是證券交易法哪些規定？這與前面討論的「收購行為本身合法、違法與否在於程序」的原則，是否矛盾？（提示：內線交易規範的是「利用未公開資訊」，與「收購行為是否公開透明」是不同層次的問題）</li>
       <li>中工的告發理由裡有一個特別的技術性論點：比對股東名冊後，發現「新增股東群」的股東戶號呈現高度密集的連續連號現象。為什麼「不同法人與自然人在同一期間開戶，卻取得相近或連續的股東戶號」會被視為異常訊號？這跟股票戶號在正常情況下是怎麼分配的有關（提示：券商／集保帳戶開戶時間與帳號分配邏輯）。如果你是檢調人員，除了戶號連號之外，還有哪些交易面的證據可以佐證「多帳戶協同操縱股價」的懷疑（提示：新聞中提到的股價漲幅55.16%、單日成交量暴增13.31倍、交易所列注意及處置股票，這些各自對應什麼樣的操縱股價手法）？</li>
     </ol>
+
+    <div class="plain-box">
+      <p class="plain-title">💡 白話補充：什麼是「股東戶號連號」？</p>
+      <p class="plain-text">去證券商開戶買股票，就像去銀行辦帳戶一樣，系統會依「開戶時間先後」自動排發一組帳戶編號，很像排隊拿號碼牌。全台灣每天有成千上萬人在不同證券商、不同時間開戶，正常情況下，兩個互不相識的人幾乎不可能拿到相鄰或連續的號碼。</p>
+      <p class="plain-text">中工比對股東名冊後，發現一批「新股東」（包含委託書通路商高層、寶佳集團關係人）的帳戶編號竟然高度密集地連在一起。這暗示這些帳戶很可能是<strong>在同一段極短時間內、由同一個人集中安排開設的</strong>，不是各自獨立發生的投資行為。</p>
+      <p class="plain-text">如果背後真的是同一個操盤者用一堆人頭帳戶分散操作，就可以：（1）避開單一帳戶大額買進會被交易所系統自動盯上、列為「注意股」或「處置股」的監控機制；（2）讓多個帳戶之間互相買賣（自己人賣給自己人），製造這檔股票交易熱絡的假象，吸引真正的散戶跟著追價。這正是§155操縱股價要規範的核心行為：<strong>用人為方式製造交易活絡或價格異常的假象，誤導其他投資人的判斷</strong>。</p>
+      <p class="plain-text">戶號連號本身不是直接的犯罪證據，而是一個很強的「異常訊號」，通常會搭配股價漲幅、成交量異常這些客觀數據一起佐證，檢調才會進一步追查金流與通聯紀錄，確認背後是否真有人在操盤。</p>
+    </div>
   </section>
 
   <p class="note">相關報導亦可參考：<a class="src" href="https://udn.com/news/story/7241/9516489" target="_blank" rel="noopener">聯合新聞網</a>、<a class="src" href="https://udn.com/news/story/7241/9516409" target="_blank" rel="noopener">經濟日報</a>、<a class="src" href="https://today.line.me/tw/v3/article/7N1DnZP" target="_blank" rel="noopener">MoneyDJ理財網</a>。</p>
