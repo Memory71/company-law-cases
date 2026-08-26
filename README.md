@@ -1,5 +1,9 @@
 # 公司法實務案例集（company-law-cases）
 
+![Profile views](https://komarev.com/ghpvc/?username=mjib007&label=Profile%20views&color=4c8eda&style=flat)
+[![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey)](LICENSE)
+![Status](https://img.shields.io/badge/status-active-success)
+
 中央大學商事法課程用教學專案。以《圖解公司法》章節架構為骨幹，結合公司法、證券交易法相關實務案例，供課堂學習、案例討論與同學提交作業使用，同時作為本書未來改版的素材庫。
 
 **總覽頁（GitHub Pages）**：https://mjib007.github.io/company-law-cases/
