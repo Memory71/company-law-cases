@@ -58,6 +58,17 @@ description: 協助中央大學商事法課程的公司法/證券交易法教學
 
 參考 `講義/公司法170-192條-中工經營權爭奪案.html` 的完整原始碼作為模板，包含 CSS 與 JS 部分都可以直接沿用。
 
+## 本機 Skill 掛載路徑（重要，避免誤判「無法更新」）
+
+這份 `SKILL.md` 除了存在 GitHub repo 根目錄，在有電腦使用工具（bash/view/str_replace/create_file）的對話環境裡，通常也會掛載在本機路徑 `/mnt/skills/user/company-law-caselaw/SKILL.md`。
+
+- **不要預設這個路徑是唯讀的**。之前曾誤判此路徑無法寫入，導致沒有嘗試就下結論「只能透過下載/上傳到 Claude.ai 更新」。正確做法：每次需要判斷能不能更新本機版本時，先用 `view` 工具實際查看該路徑是否存在，或直接用 `str_replace` 小範圍測試修改，不要單憑印象或系統描述判斷。
+- 如果確認可寫入，**修改 SKILL.md 內容時，本機路徑與 GitHub repo 兩邊都要更新**，避免兩邊版本脫節：
+  1. 先依「GitHub 操作流程」推送更新到 GitHub repo 的 `SKILL.md`
+  2. 再用 `view`／`str_replace`／或直接覆蓋的方式，同步更新本機 `/mnt/skills/user/company-law-caselaw/SKILL.md`
+  3. 若不確定兩邊是否一致，可重新抓取 GitHub 上的最新內容，直接覆蓋本機檔案，確保兩邊完全同步
+- 若某次對話環境**確實**沒有電腦使用工具（純文字對話模式），才需要退回「先在對話裡改好完整內容，使用者自行複製貼上到 Claude.ai 的 Skills 上傳介面」這個備用流程。
+
 ## GitHub 操作流程
 
 - Repo：`mjib007/company-law-cases`
