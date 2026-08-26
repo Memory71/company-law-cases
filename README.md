@@ -1,4 +1,4 @@
-# 中央大學商事法課程_實務案例集（company-law-cases）
+# 中央大學商事法課程_案例分析（company-law-cases）
 
 ![Profile views](https://komarev.com/ghpvc/?username=mjib007-company-law-cases&label=Profile%20views&color=4c8eda&style=flat)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey)](LICENSE)
