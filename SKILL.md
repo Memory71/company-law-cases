@@ -50,6 +50,7 @@ description: 協助中央大學商事法課程的公司法/證券交易法教學
 
 **版次與計數器**（每篇講義獨立設置，與總覽頁分開）：
 - 頁面上方 meta-bar 之後加一個 page-meta 區塊，含：
+  - **作者身分徽章**（`author-badge`，教師範例／學生案例）：放在 `page-meta` 這一行，不要放進 `meta-bar`。`meta-bar` 只放分類標籤（`tag`），這些標籤文字通常較長（例如「證券交易法（§43-1至§43-5、§157-1、§155）」），容易把 `author-badge` 擠到自己獨占一行；`page-meta` 這一行文字較短（版次、日期），還有空間容納作者徽章
   - 版次徽章：透過 GitHub API `commits?path={檔案路徑}` 查詢**該檔案自己**的 commit 次數，顯示 `v{次數}`
   - 最後更新日期：該檔案最後一次 commit 的實際時間
   - 訪客計數器：`https://visitor-badge.laobi.icu/badge?page_id=mjib007.company-law-cases.{檔案識別字串}`，page_id 要跟其他頁面區分，不可共用
