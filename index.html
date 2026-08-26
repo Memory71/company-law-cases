@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公司法實務案例集 | company-law-cases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --indigo-soft: #3f5f8f;
+    --parchment: #f3ede0;
+    --paper: #fbf8f1;
+    --paper-panel: #fffdf8;
+    --seal: #9c2b3a;
+    --seal-soft: #c7566450;
+    --brass: #a9832f;
+    --line: #ddd3bf;
+    --ink-70: rgba(22,35,59,0.7);
+    --ink-45: rgba(22,35,59,0.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Noto Sans TC",sans-serif;
+    background:var(--parchment);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .cover{
+    position:relative;
+    max-width:1000px;
+    margin:0 auto;
+    padding:56px 1.5rem 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .cover .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.74rem;
+    letter-spacing:.24em;
+    color:var(--brass);
+    font-weight:700;
+    margin-bottom:16px;
+  }
+  .cover .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--brass);
+  }
+  .cover h1{
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:2.1rem;
+    line-height:1.35;
+    margin:0 0 10px;
+    color:var(--ink);
+    letter-spacing:.01em;
+  }
+  .cover .sub{
+    font-size:1rem;
+    color:var(--indigo);
+    font-weight:500;
+    margin:0;
+  }
+  .cover-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .ver-badge{
+    font-family:"Noto Serif TC",serif;
+    font-weight:700;
+    font-size:.78rem;
+    color:var(--seal);
+    border:1px solid var(--seal);
+    border-radius:20px;
+    padding:3px 12px;
+    letter-spacing:.03em;
+  }
+  .meta-date{
+    font-size:.8rem;
+    color:var(--ink-45);
+  }
+  .license-note{
+    font-size:.78rem;
+    color:var(--ink-45);
+    margin:10px 0 0;
+  }
+  .license-note a{
+    color:var(--indigo);
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .license-note a:hover{
+    color:var(--seal);
+  }
+  .cover .seal-mark{
+    position:absolute;
+    top:48px;
+    right:1.5rem;
+    width:76px;
+    height:76px;
+    border:2.5px solid var(--seal);
+    border-radius:6px;
+    color:var(--seal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:1.15rem;
+    letter-spacing:.1em;
+    writing-mode:vertical-rl;
+    opacity:.82;
+    transform:rotate(3deg);
+    background:rgba(156,43,58,0.03);
+  }
+
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:1.5rem 1.5rem 4rem;
+  }
+  .controls{
+    display:flex;
+    gap:.75rem;
+    flex-wrap:wrap;
+    margin-bottom:1.5rem;
+    position:sticky;
+    top:0;
+    background:var(--parchment);
+    padding:1rem 0;
+    z-index:5;
+  }
+  .controls input[type="text"],
+  .controls select{
+    font-family:inherit;
+    font-size:.95rem;
+    padding:.6rem .9rem;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--paper-panel);
+    color:var(--ink);
+    outline:none;
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .controls input[type="text"]:focus,
+  .controls select:focus{
+    border-color:var(--indigo);
+    box-shadow:0 0 0 3px rgba(44,74,118,.14);
+  }
+  .controls select{
+    color:var(--ink-45);
+  }
+  .controls select.filtered{
+    color:var(--seal);
+    font-weight:700;
+    border-color:var(--seal);
+  }
+  .controls input[type="text"]{
+    flex:1;
+    min-width:180px;
+  }
+  .controls select{
+    min-width:220px;
+  }
+  .count{
+    font-size:.85rem;
+    color:var(--ink-45);
+    margin-bottom:1rem;
+  }
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:1rem;
+  }
+  .card{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    background:var(--paper-panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1.2rem 1.3rem;
+    transition:box-shadow .15s ease, transform .15s ease, border-color .15s ease;
+  }
+  .card:hover{
+    box-shadow:0 6px 18px rgba(22,35,59,.10);
+    transform:translateY(-2px);
+    border-color:var(--brass);
+  }
+  .card .articles{
+    font-family:"Noto Serif TC",serif;
+    font-weight:700;
+    color:var(--ink);
+    font-size:1.05rem;
+    margin-bottom:.4rem;
+  }
+  .card .title{
+    font-size:.95rem;
+    color:var(--ink-70);
+    margin-bottom:.8rem;
+    line-height:1.4;
+  }
+  .card .meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:.78rem;
+    color:var(--ink-45);
+  }
+  .card .tag{
+    background:var(--parchment);
+    color:var(--brass);
+    padding:.15rem .55rem;
+    border-radius:999px;
+    font-size:.72rem;
+    border:1px solid var(--line);
+  }
+  .card .date{
+    color:var(--seal);
+    font-weight:500;
+  }
+  .card .author-badge{
+    font-size:.7rem;
+    padding:.1rem .5rem;
+    border-radius:999px;
+    font-weight:700;
+  }
+  .card .author-badge.teacher{
+    background:rgba(44,74,118,0.12);
+    color:var(--indigo);
+  }
+  .card .author-badge.student{
+    background:rgba(169,131,47,0.16);
+    color:var(--brass);
+  }
+  .empty{
+    text-align:center;
+    color:var(--ink-45);
+    padding:3rem 0;
+    font-size:.95rem;
+    font-style:italic;
+  }
+
+  .coverage{
+    background:var(--paper-panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1.1rem 1.3rem 1.3rem;
+    margin-bottom:1.5rem;
+  }
+  .coverage-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:.7rem;
+  }
+  .coverage-header h2{
+    font-family:"Noto Serif TC",serif;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--ink);
+    margin:0;
+  }
+  .coverage-header .progress{
+    font-size:.8rem;
+    color:var(--ink-45);
+  }
+  .coverage-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1rem;
+  }
+  .chapter-block{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:.9rem 1rem 1rem;
+    background:var(--paper);
+  }
+  .chapter-block > .chapter-title{
+    font-family:"Noto Serif TC",serif;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--brass);
+    letter-spacing:.02em;
+    margin-bottom:.5rem;
+    padding-bottom:.4rem;
+    border-bottom:1px solid var(--line);
+  }
+  .leaf-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .leaf-list li{
+    margin:.15rem 0;
+  }
+  .leaf-btn{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    background:none;
+    border:none;
+    font-family:inherit;
+    font-size:.82rem;
+    padding:.3rem .5rem;
+    border-radius:5px;
+    cursor:pointer;
+    color:var(--ink-70);
+    text-align:left;
+  }
+  .leaf-btn .indent{
+    padding-left:0.6em;
+  }
+  .leaf-btn:hover:not(.zero){
+    background:rgba(44,74,118,0.07);
+  }
+  .leaf-btn .badge{
+    min-width:1.6em;
+    text-align:center;
+    font-size:.75rem;
+    font-weight:700;
+    padding:.1rem .5rem;
+    border-radius:999px;
+  }
+
+  .leaf-btn.has-count{
+    font-weight:700;
+    color:var(--ink);
+  }
+  .leaf-btn.has-count .badge{
+    background:rgba(169,131,47,0.16);
+    color:var(--brass);
+  }
+
+  .leaf-btn.zero{
+    color:var(--ink-45);
+    cursor:not-allowed;
+    opacity:.6;
+  }
+  .leaf-btn.zero .badge{
+    background:none;
+    color:var(--ink-45);
+    font-weight:400;
+  }
+
+  .leaf-btn.active{
+    box-shadow: inset 0 0 0 2px var(--seal);
+  }
+  .leaf-btn.active.has-count{
+    background:rgba(156,43,58,0.05);
+  }
+
+  .leaf-btn.merged-title{
+    font-size:.86rem;
+  }
+  .leaf-btn.chapter-merged{
+    font-family:"Noto Serif TC",serif;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--brass);
+    border-bottom:1px solid var(--line);
+    padding:.3rem .2rem .5rem;
+    margin-bottom:.6rem;
+    border-radius:0;
+  }
+  .leaf-btn.chapter-merged .badge{
+    background:rgba(169,131,47,0.16);
+    color:var(--brass);
+  }
+  .leaf-btn.chapter-merged.zero{
+    opacity:.7;
+  }
+  .leaf-btn.chapter-merged.active{
+    box-shadow:none;
+    border-bottom:2px solid var(--seal);
+  }
+
+  footer{
+    text-align:center;
+    font-size:.78rem;
+    color:var(--ink-45);
+    padding:1.5rem 0 3rem;
+    max-width:1000px;
+    margin:0 auto;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="eyebrow">company-law-cases · 中央大學商事法課程</div>
+  <h1>公司法實務案例集</h1>
+  <p class="sub">依《圖解公司法》章節架構．公司法／證券交易法交叉案例</p>
+  <div class="cover-meta">
+    <span class="ver-badge">v0.1</span>
+    <span class="meta-date">建置中</span>
+  </div>
+  <p class="license-note">
+    <a href="https://github.com/mjib007/company-law-cases/blob/main/LICENSE" target="_blank" rel="noopener">授權條款 CC BY-NC 4.0</a>
+    （非商用．使用請於明顯處標明出處）
+  </p>
+  <div class="seal-mark">總覽</div>
+</div>
+
+<main>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="搜尋條號或主題關鍵字…">
+    <select id="categorySelect"></select>
+  </div>
+
+  <div class="coverage">
+    <div class="coverage-header">
+      <h2>分類覆蓋地圖（公司法 §1–447）</h2>
+      <span class="progress" id="coverageProgress"></span>
+    </div>
+    <div class="coverage-grid" id="coverageGrid"></div>
+  </div>
+
+  <div class="count" id="countLabel"></div>
+  <div class="cards" id="cardGrid"></div>
+  <div class="empty" id="emptyState" style="display:none;">沒有符合條件的內容</div>
+</main>
+
+<footer>company-law-cases · 公司法教學案例集 · CC BY-NC 4.0</footer>
+
+<script>
+/* ============================================================
+   分類架構：公司法（§1–447）
+   key 對應章／節／目，作為每份內容的單一主分類
+   ============================================================ */
+const CHAPTERS = [
+  { key: "1",      label: "第一章 總則（§1）" },
+  { key: "2-1",    label: "第二章 無限公司／第一節 設立（§40）" },
+  { key: "2-2",    label: "第二章 無限公司／第二節 公司之內部關係（§42）" },
+  { key: "2-3",    label: "第二章 無限公司／第三節 公司之對外關係（§56）" },
+  { key: "2-4",    label: "第二章 無限公司／第四節 退股（§65）" },
+  { key: "2-5",    label: "第二章 無限公司／第五節 解散、合併及變更組織（§71）" },
+  { key: "2-6",    label: "第二章 無限公司／第六節 清算（§79）" },
+  { key: "3",      label: "第三章 有限公司（§98）" },
+  { key: "4",      label: "第四章 兩合公司（§114）" },
+  { key: "5-1",    label: "第五章 股份有限公司／第一節 設立（§128）" },
+  { key: "5-2",    label: "第五章 股份有限公司／第二節 股份（§156）" },
+  { key: "5-3",    label: "第五章 股份有限公司／第三節 股東會（§170）" },
+  { key: "5-4",    label: "第五章 股份有限公司／第四節 董事及董事會（§192）" },
+  { key: "5-5",    label: "第五章 股份有限公司／第五節 監察人（§216）" },
+  { key: "5-6",    label: "第五章 股份有限公司／第六節 會計（§228）" },
+  { key: "5-7",    label: "第五章 股份有限公司／第七節 公司債（§246）" },
+  { key: "5-8",    label: "第五章 股份有限公司／第八節 發行新股（§266）" },
+  { key: "5-9",    label: "第五章 股份有限公司／第九節 變更章程（§277）" },
+  { key: "5-10",   label: "第五章 股份有限公司／第十節 公司重整（§282）" },
+  { key: "5-11",   label: "第五章 股份有限公司／第十一節 解散、合併及分割（§315）" },
+  { key: "5-12-1", label: "第五章 股份有限公司／第十二節 清算／第一目 普通清算（§322）" },
+  { key: "5-12-2", label: "第五章 股份有限公司／第十二節 清算／第二目 特別清算（§335）" },
+  { key: "5-13",   label: "第五章 股份有限公司／第十三節 閉鎖性股份有限公司（§356-1）" },
+  { key: "6-1",    label: "第六章之一 關係企業（§369-1）" },
+  { key: "7",      label: "第七章 外國公司（§370）" },
+  { key: "8-1",    label: "第八章 登記／第一節 申請（§387）" },
+  { key: "8-2",    label: "第八章 登記／第二節 規費（§438）" },
+  { key: "9",      label: "第九章 附則（§447）" }
+];
+
+/* ============================================================
+   內容清單：每完成一份筆記或案例，新增一筆物件即可
+   - articles: 條號（顯示用）
+   - title: 主題
+   - date: 完成日期 YYYY-MM-DD
+   - chapterKey: 對應 CHAPTERS 的 key
+   - file: 檔案相對路徑
+   - author: "teacher" 或 "student"（用於卡片顯示徽章，可省略）
+   ============================================================ */
+const LECTURES = [
+  // 範例（實際內容尚未加入）：
+  // {
+  //   articles: "第192至200條",
+  //   title: "董事之選任與解任——實務案例分析",
+  //   date: "2026-09-01",
+  //   chapterKey: "5-4",
+  //   file: "講義/公司法192-200條-董事之選任與解任.html",
+  //   author: "teacher"
+  // }
+];
+
+/* ============================================================
+   階層式分類樹（用於分類覆蓋地圖），葉節點 key 對應 CHAPTERS
+   ============================================================ */
+const TREE = [
+  { title: "第一章 總則",
+    leaves: [{ key: "1", label: "§1" }] },
+  { title: "第二章 無限公司",
+    groups: [
+      { title: "第一節 設立", leaves: [{ key: "2-1", label: "§40" }] },
+      { title: "第二節 公司之內部關係", leaves: [{ key: "2-2", label: "§42" }] },
+      { title: "第三節 公司之對外關係", leaves: [{ key: "2-3", label: "§56" }] },
+      { title: "第四節 退股", leaves: [{ key: "2-4", label: "§65" }] },
+      { title: "第五節 解散、合併及變更組織", leaves: [{ key: "2-5", label: "§71" }] },
+      { title: "第六節 清算", leaves: [{ key: "2-6", label: "§79" }] }
+    ]},
+  { title: "第三章 有限公司",
+    leaves: [{ key: "3", label: "§98" }] },
+  { title: "第四章 兩合公司",
+    leaves: [{ key: "4", label: "§114" }] },
+  { title: "第五章 股份有限公司",
+    groups: [
+      { title: "第一節 設立", leaves: [{ key: "5-1", label: "§128" }] },
+      { title: "第二節 股份", leaves: [{ key: "5-2", label: "§156" }] },
+      { title: "第三節 股東會", leaves: [{ key: "5-3", label: "§170" }] },
+      { title: "第四節 董事及董事會", leaves: [{ key: "5-4", label: "§192" }] },
+      { title: "第五節 監察人", leaves: [{ key: "5-5", label: "§216" }] },
+      { title: "第六節 會計", leaves: [{ key: "5-6", label: "§228" }] },
+      { title: "第七節 公司債", leaves: [{ key: "5-7", label: "§246" }] },
+      { title: "第八節 發行新股", leaves: [{ key: "5-8", label: "§266" }] },
+      { title: "第九節 變更章程", leaves: [{ key: "5-9", label: "§277" }] },
+      { title: "第十節 公司重整", leaves: [{ key: "5-10", label: "§282" }] },
+      { title: "第十一節 解散、合併及分割", leaves: [{ key: "5-11", label: "§315" }] },
+      { title: "第十二節 清算", groups: [
+        { title: "第一目 普通清算", leaves: [{ key: "5-12-1", label: "§322" }] },
+        { title: "第二目 特別清算", leaves: [{ key: "5-12-2", label: "§335" }] }
+      ]},
+      { title: "第十三節 閉鎖性股份有限公司", leaves: [{ key: "5-13", label: "§356-1" }] }
+    ]},
+  { title: "第六章之一 關係企業",
+    leaves: [{ key: "6-1", label: "§369-1" }] },
+  { title: "第七章 外國公司",
+    leaves: [{ key: "7", label: "§370" }] },
+  { title: "第八章 登記",
+    groups: [
+      { title: "第一節 申請", leaves: [{ key: "8-1", label: "§387" }] },
+      { title: "第二節 規費", leaves: [{ key: "8-2", label: "§438" }] }
+    ]},
+  { title: "第九章 附則",
+    leaves: [{ key: "9", label: "§447" }] }
+];
+
+/* ============================================================
+   Rendering
+   ============================================================ */
+const chapterMap = Object.fromEntries(CHAPTERS.map(c => [c.key, c.label]));
+
+function countFor(key){
+  return LECTURES.filter(item => item.chapterKey === key).length;
+}
+
+function initCategorySelect(){
+  const select = document.getElementById('categorySelect');
+  const allOption = document.createElement('option');
+  allOption.value = '';
+  allOption.textContent = '全部分類';
+  select.appendChild(allOption);
+  CHAPTERS.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.key;
+    opt.textContent = c.label;
+    select.appendChild(opt);
+  });
+}
+
+function selectCategory(key){
+  const items = LECTURES.filter(item => item.chapterKey === key);
+
+  if (items.length === 0) return;
+
+  if (items.length === 1){
+    window.open(items[0].file, '_blank', 'noopener');
+    return;
+  }
+
+  const select = document.getElementById('categorySelect');
+  select.value = (select.value === key) ? '' : key;
+  render();
+  document.getElementById('countLabel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderLeafList(leaves, depth){
+  const activeKey = document.getElementById('categorySelect').value;
+  const ul = document.createElement('ul');
+  ul.className = 'leaf-list';
+  leaves.forEach(leaf => {
+    const n = countFor(leaf.key);
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    const stateClass = n === 0 ? 'zero' : 'has-count';
+    btn.className = 'leaf-btn ' + stateClass + (activeKey === leaf.key ? ' active' : '');
+    btn.disabled = (n === 0);
+    btn.innerHTML = `<span class="indent">${leaf.label}</span><span class="badge">${n === 0 ? '–' : n}</span>`;
+    btn.addEventListener('click', () => selectCategory(leaf.key));
+    li.appendChild(btn);
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+function isMergeable(node){
+  return !!node.leaves && node.leaves.length === 1 && !node.groups;
+}
+
+function makeMergedButton(labelText, leaf, extraClass){
+  const activeKey = document.getElementById('categorySelect').value;
+  const n = countFor(leaf.key);
+  const stateClass = n === 0 ? 'zero' : 'has-count';
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'leaf-btn ' + stateClass + (activeKey === leaf.key ? ' active' : '') + (extraClass ? (' ' + extraClass) : '');
+  btn.disabled = (n === 0);
+  btn.innerHTML = `<span>${labelText}</span><span class="badge">${n === 0 ? '–' : n}</span>`;
+  btn.addEventListener('click', () => selectCategory(leaf.key));
+  return btn;
+}
+
+function renderGroup(node, container){
+  if (node.groups){
+    node.groups.forEach(g => {
+      const sub = document.createElement('div');
+      sub.style.marginBottom = '.4rem';
+      if (isMergeable(g)){
+        const leaf = g.leaves[0];
+        const btn = makeMergedButton(`${g.title}（${leaf.label}起）`, leaf, 'merged-title');
+        sub.appendChild(btn);
+      } else {
+        const label = document.createElement('div');
+        label.style.fontSize = '.78rem';
+        label.style.color = '#5a6b80';
+        label.style.margin = '.3rem 0 .1rem';
+        label.textContent = g.title;
+        sub.appendChild(label);
+        renderGroup(g, sub);
+      }
+      container.appendChild(sub);
+    });
+  } else if (node.leaves){
+    container.appendChild(renderLeafList(node.leaves));
+  }
+}
+
+function renderCoverageMap(){
+  const grid = document.getElementById('coverageGrid');
+  grid.innerHTML = '';
+  TREE.forEach(chapter => {
+    const block = document.createElement('div');
+    block.className = 'chapter-block';
+
+    if (isMergeable(chapter)){
+      const leaf = chapter.leaves[0];
+      const btn = makeMergedButton(`${chapter.title}（${leaf.label}起）`, leaf, 'chapter-merged');
+      block.appendChild(btn);
+    } else {
+      const title = document.createElement('div');
+      title.className = 'chapter-title';
+      title.textContent = chapter.title;
+      block.appendChild(title);
+      renderGroup(chapter, block);
+    }
+
+    grid.appendChild(block);
+  });
+
+  const coveredLeaves = CHAPTERS.filter(c => countFor(c.key) > 0).length;
+  document.getElementById('coverageProgress').textContent =
+    `已覆蓋 ${coveredLeaves} / ${CHAPTERS.length} 節款 · 共 ${LECTURES.length} 篇內容`;
+}
+
+function render(){
+  const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+  const categorySelectEl = document.getElementById('categorySelect');
+  const category = categorySelectEl.value;
+  categorySelectEl.classList.toggle('filtered', category !== '');
+
+  const filtered = LECTURES.filter(item => {
+    const matchesKeyword = !keyword ||
+      item.articles.toLowerCase().includes(keyword) ||
+      item.title.toLowerCase().includes(keyword);
+    const matchesCategory = !category || item.chapterKey === category;
+    return matchesKeyword && matchesCategory;
+  }).sort((a, b) => b.date.localeCompare(a.date));
+
+  const grid = document.getElementById('cardGrid');
+  const empty = document.getElementById('emptyState');
+  const count = document.getElementById('countLabel');
+
+  count.textContent = `共 ${filtered.length} 份內容（總計 ${LECTURES.length} 份）`;
+
+  grid.innerHTML = '';
+  if (filtered.length === 0){
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    filtered.forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = item.file;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      const authorBadge = item.author
+        ? `<span class="author-badge ${item.author}">${item.author === 'teacher' ? '教師筆記' : '學生案例'}</span>`
+        : '';
+      a.innerHTML = `
+        <div class="articles">${item.articles}</div>
+        <div class="title">${item.title}</div>
+        <div class="meta">
+          <span class="tag">${chapterMap[item.chapterKey] || item.chapterKey}</span>
+          ${authorBadge}
+        </div>
+        <div class="meta" style="margin-top:.5rem;">
+          <span class="date">${item.date}</span>
+        </div>
+      `;
+      grid.appendChild(a);
+    });
+  }
+
+  renderCoverageMap();
+}
+
+initCategorySelect();
+let searchScrollTimer = null;
+document.getElementById('searchInput').addEventListener('input', () => {
+  render();
+  clearTimeout(searchScrollTimer);
+  const keyword = document.getElementById('searchInput').value.trim();
+  if (keyword){
+    searchScrollTimer = setTimeout(() => {
+      document.getElementById('countLabel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 500);
+  }
+});
+document.getElementById('categorySelect').addEventListener('change', render);
+render();
+</script>
+
+</body>
+</html>
