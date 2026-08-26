@@ -404,8 +404,8 @@
   <h1>公司法實務案例集</h1>
   <p class="sub">依《圖解公司法》章節架構．公司法／證券交易法交叉案例</p>
   <div class="cover-meta">
-    <span class="ver-badge">v0.2</span>
-    <span class="meta-date">2026-08-26</span>
+    <span class="ver-badge" id="verBadge">v…</span>
+    <span class="meta-date" id="metaDate">載入中…</span>
     <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.company-law-cases.index" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
   <p class="license-note">
@@ -723,7 +723,50 @@ function render(){
   renderCoverageMap();
 }
 
+/* ============================================================
+   即時串接 GitHub API：抓取真實的更新紀錄
+   - 版次：以 commit 總數呈現（v + commit 數）
+   - 日期：最後一次 commit 的實際時間
+   ============================================================ */
+async function loadRepoMeta(){
+  const verEl = document.getElementById('verBadge');
+  const dateEl = document.getElementById('metaDate');
+  const REPO = 'mjib007/company-law-cases';
+
+  try {
+    // 最後一次 commit（含日期）
+    const commitsRes = await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1`);
+    if (!commitsRes.ok) throw new Error('commits fetch failed');
+    const commits = await commitsRes.json();
+    const lastDate = commits[0]?.commit?.committer?.date;
+    if (lastDate){
+      const d = new Date(lastDate);
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      dateEl.textContent = `最後更新 ${y}-${m}-${day}`;
+    } else {
+      dateEl.textContent = '';
+    }
+
+    // commit 總數（透過 Link header 的最後一頁頁碼推算，較省流量）
+    const countRes = await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1&page=1`);
+    const link = countRes.headers.get('Link');
+    let totalCommits = null;
+    if (link){
+      const match = link.match(/&page=(\d+)>; rel="last"/);
+      if (match) totalCommits = match[1];
+    }
+    verEl.textContent = totalCommits ? `v${totalCommits}` : 'v1';
+  } catch (err){
+    verEl.textContent = '';
+    dateEl.textContent = '';
+    console.warn('GitHub API 版次資訊載入失敗：', err);
+  }
+}
+
 initCategorySelect();
+loadRepoMeta();
 let searchScrollTimer = null;
 document.getElementById('searchInput').addEventListener('input', () => {
   render();
