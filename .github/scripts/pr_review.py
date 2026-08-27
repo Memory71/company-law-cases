@@ -135,6 +135,20 @@ PR 說明：{pr_body or "（無）"}
     return "\n".join(texts) if texts else "⚠️ Claude 未回傳文字內容。"
 
 
+def find_existing_report_issue(title: str):
+    resp = requests.get(
+        f"{GH_API}/repos/{REPO}/issues",
+        headers=GH_HEADERS,
+        params={"state": "open", "labels": "ai-review", "per_page": 30},
+        timeout=30,
+    )
+    resp.raise_for_status()
+    for issue in resp.json():
+        if issue["title"] == title:
+            return issue
+    return None
+
+
 def main():
     prs = list_open_prs()
     if not prs:
@@ -174,18 +188,31 @@ def main():
         + "\n---\n\n".join(sections)
     )
 
-    resp = requests.post(
-        f"{GH_API}/repos/{REPO}/issues",
-        headers=GH_HEADERS,
-        json={
-            "title": f"PR 每日審查報告 - {today}",
-            "body": report_body,
-            "labels": ["ai-review"],
-        },
-        timeout=30,
-    )
-    resp.raise_for_status()
-    print(f"已建立審查報告 Issue：{resp.json()['html_url']}")
+    title = f"PR 每日審查報告 - {today}"
+    existing = find_existing_report_issue(title)
+
+    if existing:
+        resp = requests.patch(
+            f"{GH_API}/repos/{REPO}/issues/{existing['number']}",
+            headers=GH_HEADERS,
+            json={"body": report_body},
+            timeout=30,
+        )
+        resp.raise_for_status()
+        print(f"已更新既有審查報告 Issue：{resp.json()['html_url']}")
+    else:
+        resp = requests.post(
+            f"{GH_API}/repos/{REPO}/issues",
+            headers=GH_HEADERS,
+            json={
+                "title": title,
+                "body": report_body,
+                "labels": ["ai-review"],
+            },
+            timeout=30,
+        )
+        resp.raise_for_status()
+        print(f"已建立審查報告 Issue：{resp.json()['html_url']}")
 
 
 if __name__ == "__main__":
