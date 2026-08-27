@@ -266,6 +266,8 @@ def build_score_table(prs) -> str:
             line = f"| {r['sid']} | {r['name']} | " + "無法評分 | " * len(RUBRIC) + f"- | {r['status']} | #{r['pr']} |\n"
             lines.append(line)
             lines.append(f"> ⚠️ PR #{r['pr']} 評分失敗：{score['error']}\n")
+            if "raw" in score:
+                lines.append(f"> 原始回傳（除錯用）：`{score['raw']}`\n")
             continue
         breakdown = score.get("breakdown", {})
         cells = " | ".join(str(breakdown.get(n, "-")) for n, _, _ in RUBRIC)
