@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新新併與中信金搶親案——合意併購與非合意公開收購的競合 | company-law-cases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --parchment: #f3ede0;
+    --paper-panel: #fffdf8;
+    --seal: #9c2b3a;
+    --brass: #a9832f;
+    --line: #ddd3bf;
+    --ink-70: rgba(22,35,59,0.7);
+    --ink-45: rgba(22,35,59,0.45);
+    --todo: #6b7280;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Noto Sans TC",sans-serif;
+    background:var(--parchment);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.8;
+  }
+  strong { font-weight: 700; color: var(--ink); }
+  .wrap{ max-width:760px; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+  .back{ display:inline-block; font-size:.85rem; color:var(--indigo); text-decoration:none; margin-bottom:1.5rem; }
+  .back:hover{ color:var(--seal); }
+  .eyebrow{ font-size:.74rem; letter-spacing:.2em; color:var(--brass); font-weight:700; margin-bottom:.8rem; }
+  h1{ font-family:"Noto Serif TC",serif; font-weight:900; font-size:1.7rem; line-height:1.4; margin:0 0 .6rem; }
+  .meta-bar{ display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem; font-size:.8rem; }
+  .tag{ background:var(--paper-panel); border:1px solid var(--line); color:var(--brass); padding:.2rem .7rem; border-radius:999px; }
+  .author-badge{ background:rgba(44,74,118,0.12); color:var(--indigo); padding:.2rem .7rem; border-radius:999px; font-weight:700; }
+  .page-meta{ display:flex; align-items:center; gap:10px; margin-bottom:1.8rem; font-size:.78rem; flex-wrap:wrap; }
+  .page-meta .ver-badge{ font-family:"Noto Serif TC",serif; font-weight:700; color:var(--seal); border:1px solid var(--seal); border-radius:20px; padding:2px 10px; }
+  .page-meta .meta-date{ color:var(--ink-45); }
+  .framework-banner{
+    background:rgba(155,43,58,0.07);
+    border:1px solid rgba(156,43,58,0.3);
+    border-radius:8px;
+    padding:.9rem 1.2rem;
+    margin-bottom:1.5rem;
+    font-size:.85rem;
+    color:var(--seal);
+  }
+  section{ background:var(--paper-panel); border:1px solid var(--line); border-radius:10px; padding:1.4rem 1.6rem; margin-bottom:1.3rem; }
+  h2{ font-family:"Noto Serif TC",serif; font-size:1.05rem; font-weight:700; color:var(--ink); margin:0 0 .8rem; padding-bottom:.5rem; border-bottom:1px solid var(--line); }
+  h3{ font-family:"Noto Serif TC",serif; font-size:.95rem; font-weight:700; color:var(--indigo); margin:1.1rem 0 .5rem; }
+  h3:first-of-type{ margin-top:0; }
+  p{ font-size:.95rem; color:var(--ink-70); margin:0 0 1rem; }
+  p:last-child{ margin-bottom:0; }
+  a.src{ color:var(--indigo); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; font-weight:500; }
+  a.src:hover{ color:var(--seal); text-decoration-color:var(--seal); }
+  a.law{ color:var(--brass); font-weight:700; text-decoration:none; border-bottom:1px dashed var(--brass); }
+  a.law:hover{ color:var(--seal); border-bottom-color:var(--seal); }
+  .timeline{ list-style:none; margin:0; padding:0; }
+  .timeline li{ display:flex; gap:1rem; margin-bottom:1rem; align-items:baseline; }
+  .timeline .date{ flex:0 0 auto; font-weight:700; color:var(--seal); font-size:.85rem; white-space:nowrap; }
+  .timeline .desc{ font-size:.92rem; color:var(--ink-70); margin:0; }
+  .qa{ margin-bottom:1.1rem; }
+  .qa .q{ font-weight:700; margin-bottom:.3rem; font-size:.95rem; }
+  .qa .a{ font-size:.92rem; color:var(--ink-70); margin:0; }
+  .discussion ol{ padding-left:1.3rem; font-size:.92rem; color:var(--ink-70); margin:0; }
+  .discussion li{ margin-bottom:1rem; }
+  .discussion li .hint{ display:block; font-size:.85rem; color:var(--ink-45); margin-top:.3rem; }
+  .think-box{ background:rgba(44,74,118,0.06); border:1px solid rgba(44,74,118,0.22); border-radius:8px; padding:1rem 1.2rem; margin:1rem 0; }
+  .think-title{ font-weight:700; color:var(--indigo); font-size:.92rem; margin:0 0 .6rem; }
+  .think-text{ font-size:.9rem; color:var(--ink-70); margin:0; line-height:1.8; }
+  .todo-desc{
+    font-size:.9rem;
+    color:var(--todo);
+    margin:0;
+    font-style:italic;
+    border:1px dashed var(--line);
+    border-radius:6px;
+    padding:.5rem .8rem;
+    background:rgba(107,114,128,0.05);
+  }
+  .todo-list{ list-style:none; margin:0; padding:0; }
+  .todo-list li{
+    font-size:.92rem;
+    color:var(--ink);
+    margin-bottom:.8rem;
+    padding:.6rem .9rem;
+    border:1px dashed var(--line);
+    border-radius:6px;
+    background:rgba(107,114,128,0.05);
+  }
+  .todo-list li .todo-tag{
+    display:inline-block;
+    font-size:.72rem;
+    color:var(--todo);
+    font-style:italic;
+    margin-left:.5rem;
+  }
+  .note{ font-size:.8rem; color:var(--ink-45); }
+  .disclaimer{ font-size:.78rem; color:var(--ink-45); font-style:italic; border-left:3px solid var(--line); padding-left:.8rem; margin-top:2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">← 回總覽頁</a>
+
+  <div class="eyebrow">教師框架教材・第五章 股份有限公司</div>
+  <h1>新新併與中信金搶親案——合意併購與非合意公開收購的競合</h1>
+  <div class="meta-bar">
+    <span class="tag">第十一節 解散、合併及分割（§315）</span>
+    <span class="tag">金融控股公司法（§36、§37）</span>
+    <span class="tag">證券交易法（§43-1以下）</span>
+  </div>
+  <div class="page-meta">
+    <span class="author-badge">教師框架</span>
+    <span class="ver-badge" id="pageVerBadge">v…</span>
+    <span class="meta-date" id="pageMetaDate">載入中…</span>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.company-law-cases.新新併中信金搶親案" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
+  </div>
+
+  <div class="framework-banner">
+    🚧 本篇為教師建立之教材框架：「案例來源」「雙方戰略思考」「課堂討論方向」已完整撰寫；「事件時間軸」「關鍵點」「對應條文」僅列骨架標題，內容開放同學以 Pull Request 查證後補完。補完時請依循本 repo 自我驗證規則（條號、pcode、日期、連結逐一查證），並參考已完成的「中工經營權爭奪案」講義格式。
+  </div>
+
+  <section>
+    <h2>案例來源</h2>
+    <p><a class="src" href="https://tw.stock.yahoo.com/quote/2887.TW/profile" target="_blank" rel="noopener">台新金控</a>（2887）與<a class="src" href="https://tw.stock.yahoo.com/quote/2888.TW/profile" target="_blank" rel="noopener">新光金控</a>（2888）之合併談判歷時約20年，2024年8月22日晚間雙方董事會終於通過以「換股方式」進行合意合併，新光金股東可換發台新金股份。然而隔日，<a class="src" href="https://tw.stock.yahoo.com/quote/2891.TW/profile" target="_blank" rel="noopener">中國信託金控</a>（2891）無預警召開臨時董事會，宣布改以「公開收購」方式取得新光金10%至51%股權，企圖阻斷這場合意併購，形成市場俗稱「金控三角戀」的局面。這起事件同時涉及公司法合併程序、金融控股公司法轉投資核准機制、證券交易法公開收購規範三個層次，且新聞資訊完整、時間軸明確，適合作為觀察「合意併購」與「非合意（敵意）公開收購」兩種經營權變動路徑如何競合、又如何受到主管機關把關的案例。此案最終於2025年7月24日以合意換股合併方式完成，新光金下市，合併後存續公司更名為「台新新光金融控股股份有限公司」。</p>
+  </section>
+
+  <section>
+    <h2>雙方戰略思考</h2>
+
+    <h3>中信金控的算盤</h3>
+    <p>中信金控是國內資產規模數一數二的金控集團，但版圖中相對缺乏規模夠大、體質穩定的壽險子公司。以「公開收購」而非參與董事會協商的方式切入，讓中信金可以繞過新光金經營層與台新金已經談定的合意合併架構，直接向新光金全體股東喊價。收購區間設定為10%至51%，即使無法一舉取得過半股權，仍能取得可觀持股作為長期布局的灘頭堡；一旦收購比例夠高，甚至可能在股東會層次影響或阻斷新新併的換股合併案，形成「進可攻、退可守」的態勢。</p>
+
+    <h3>台新金控的算盤</h3>
+    <p>台新金與新光金的合意合併談了近20年，如果換股比例不夠吸引人，隨時可能在最後一哩路（股東臨時會表決）被中信金的更高出價截胡。面對中信金搶親，台新金與新光金於2024年9月11日緊急召開臨時董事會，調整換股架構、加入特別股設計，提高整體對價的吸引力，藉此鞏固新光金股東在股東臨時會上的支持，避免合意合併案功虧一簣。</p>
+
+    <h3>新光金控（原經營層）的算盤</h3>
+    <p>面對台新金與中信金兩個追求者，新光金原經營層已與台新金談妥合意換股合併，因此將中信金的行動定調為「非合意（敵意）併購」，並在法說會上公開呼籲金管會審慎把關收購程序的合法性。新光金經營層強調的是企業文化整合、長期經營穩定與員工／保戶權益，而非單純以股東短期利益極大化作為唯一考量——這也是合意併購與敵意收購在論述策略上的典型差異。</p>
+  </section>
+
+  <section>
+    <h2>事件時間軸</h2>
+    <p class="note">以下僅列出關鍵日期骨架，具體事件描述、查證來源與新聞連結請同學查證後以 PR 補上（可參考中工案時間軸的行文與引註方式）。</p>
+    <ul class="timeline">
+      <li><span class="date">2024/08/22</span><p class="todo-desc">【待補充：台新金與新光金董事會通過換股合意合併之經過與內容】</p></li>
+      <li><span class="date">2024/08/23</span><p class="todo-desc">【待補充：中信金宣布公開收購新光金之經過與收購條件】</p></li>
+      <li><span class="date">2024/08/26</span><p class="todo-desc">【待補充：中信金遞件金管會申請投資新光金之經過】</p></li>
+      <li><span class="date">2024/08/27–28</span><p class="todo-desc">【待補充：台新金、中信金雙方法說會的攻防表態】</p></li>
+      <li><span class="date">2024/09/11</span><p class="todo-desc">【待補充：台新金、新光金調整換股架構、納入特別股之經過】</p></li>
+      <li><span class="date">2024/09/16</span><p class="todo-desc">【待補充：金管會宣布緩議中信金收購申請之四大理由】</p></li>
+      <li><span class="date">2024/10/09</span><p class="todo-desc">【待補充：新光金、台新金股東臨時會決議換股合併之經過】</p></li>
+      <li><span class="date">2025/03/31</span><p class="todo-desc">【待補充：金管會核准台新金與新光金換股合併案】</p></li>
+      <li><span class="date">2025/06/23–07/24</span><p class="todo-desc">【待補充：合併基準日確定、新光金下市、台新新光金控正式成立之經過】</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>關鍵點</h2>
+    <p class="note">以下僅列出關鍵點標題，具體論述與法律依據（含查證過的條文或修法理由）請同學以 PR 補完。</p>
+    <ul class="todo-list">
+      <li>合意併購與非合意（敵意）公開收購的法律定性與程序差異 <span class="todo-tag">【待補充論述】</span></li>
+      <li>換股合併對價與公司法發行新股規定的關聯 <span class="todo-tag">【待補充論述】</span></li>
+      <li>金融控股公司法轉投資核准機制與公開收購／股東臨時會的時程競合 <span class="todo-tag">【待補充論述】</span></li>
+      <li>以股票作為公開收購對價的爭議與主管機關政策取向 <span class="todo-tag">【待補充論述】</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>對應條文</h2>
+    <p class="note">以下僅列出待查證的法規範圍，具體條號、逐條連結與 pcode 請同學查證後補上（務必留意本 repo 曾發生 pcode 用錯、條號範圍未逐條連結的錯誤，補完時請逐一核對）。</p>
+    <ul class="todo-list">
+      <li>公司法：股份有限公司合併及分割相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
+      <li>金融控股公司法：轉投資核准程序 <span class="todo-tag">【待補充條號與連結】</span></li>
+      <li>證券交易法：公開收購相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
+    </ul>
+  </section>
+
+  <section class="discussion">
+    <h2>課堂討論方向</h2>
+    <ol>
+      <li>「合意併購」與「非合意（敵意）公開收購」在公司法與證券交易法上，分別對應什麼樣的決策程序？
+        <span class="hint">這題在問：換股合併走的是股東會特別決議路線，公開收購走的是個別股東應賣路線，兩者的決策主體、核准機關與時程完全不同。容易誤解成「經營權變動都是同一種法律程序」，法律重點在於辨識這兩條路徑為何能夠彼此競速、互搶時間。</span>
+      </li>
+      <li>中信金以「部分股票、部分現金」作為公開收購對價，為何金管會將此列為緩議理由之一？
+        <span class="hint">這題在問：現金對價金額固定，股票對價的價值會隨市場股價波動，導致應賣股東在決定是否應賣時無法確知實際能拿到的價值。容易誤解成「用股票付錢也是給錢，有什麼問題」，重點其實在於對價不確定對股東保護、市場秩序造成的疑慮，以及主管機關對公開收購對價方式的政策取向。</span>
+      </li>
+      <li>中信金在未確保取得新光金過半股權的情況下即啟動公開收購，可能衍生什麼樣的公司治理風險？
+        <span class="hint">這題在問：公開收購的最低成就門檻與實際控制力之間的落差。容易誤解成「收購成立（達到最低比例）就等於拿到經營權」，事實上未達過半或未達控制性持股的收購，反而可能製造多方大股東並存、經營權更混亂的局面。</span>
+      </li>
+      <li>台新金與新光金在中信金搶親後緊急調整換股架構、加入特別股，這樣的操作在公司法合併程序上是否需要重新踐行相關程序（如重新召集董事會、通知股東等）？
+        <span class="hint">這題在問：合併契約重大內容變更後的程序義務。容易誤解成「反正是同一件合併案，調整條件應該不用重來」，重點在於合併契約內容的實質變更，涉及股東能否在充分資訊下決定是否行使異議股份收買請求權，程序上不能便宜行事。</span>
+      </li>
+      <li>本案最終以合意併購收場，而非敵意收購得逞。你認為公司治理制度設計上，合意併購的股東會決議是否應優先於敵意公開收購？兩種收購路徑各自保障了什麼樣的股東利益？
+        <span class="hint">這是開放性題目，引導學生思考制度設計的價值取捨：合意併購（股東會多數決）保障的是集體決策的民主正當性；敵意公開收購保障的是個別股東用腳投票、把股份賣給出價最高者的自由選擇權。沒有標準答案，重點是論述兩種制度邏輯的優劣。</span>
+      </li>
+    </ol>
+  </section>
+
+  <p class="disclaimer">本教材為教學目的整理，內容依公開新聞報導彙整而成，不代表本課程對任一方之立場評價。「事件時間軸」「關鍵點」「對應條文」為待補完之框架，正式引用前請以查證後的官方來源及正式新聞報導為準。案例分析僅供課堂討論使用。</p>
+
+</div>
+
+<script>
+async function loadPageMeta(){
+  const verEl = document.getElementById('pageVerBadge');
+  const dateEl = document.getElementById('pageMetaDate');
+  const REPO = 'mjib007/company-law-cases';
+  const FILE_PATH = '講義/公司法合併分割-新新併中信金搶親案.html';
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(FILE_PATH)}&per_page=100`);
+    if (!res.ok) throw new Error('commits fetch failed');
+    const commits = await res.json();
+
+    verEl.textContent = `v${commits.length}`;
+
+    const lastDate = commits[0]?.commit?.committer?.date;
+    if (lastDate){
+      const d = new Date(lastDate);
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      dateEl.textContent = `最後更新 ${y}-${m}-${day}`;
+    }
+  } catch (err){
+    verEl.textContent = '';
+    dateEl.textContent = '';
+    console.warn('本篇版次資訊載入失敗：', err);
+  }
+}
+loadPageMeta();
+</script>
+
+</body>
+</html>
