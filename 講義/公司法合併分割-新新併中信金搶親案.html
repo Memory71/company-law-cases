@@ -124,11 +124,13 @@
     <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.company-law-cases.新新併中信金搶親案" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
 
-  <div class="framework-banner">
+  <span class="tour-replay-link" onclick="startTour()">🔄 重新看一次新手導覽</span>
+
+  <div class="framework-banner" id="tour-banner">
     🚧 本篇為教師建立之教材框架：「案例來源」「雙方戰略思考」「課堂討論方向」已完整撰寫；「事件時間軸」「關鍵點」「對應條文」僅列骨架標題，內容開放同學以 Pull Request 查證後補完。補完時請依循本 repo 自我驗證規則（條號、pcode、日期、連結逐一查證），並參考已完成的「中工經營權爭奪案」講義格式。
   </div>
 
-  <div class="steps-box">
+  <div class="steps-box" id="tour-steps">
     <p class="steps-title">📋 補完步驟建議</p>
     <ol class="steps-list">
       <li>找新聞來源：針對該則骨架的日期或標題，搜尋當天／該事件的原始新聞報導</li>
@@ -156,7 +158,7 @@
     .progress-count{ font-weight:700; color:var(--ink); white-space:nowrap; font-size:.82rem; }
   </style>
 
-  <div class="progress-box">
+  <div class="progress-box" id="tour-progress">
     <p class="progress-title">📊 目前補完進度（自動統計，重新整理頁面即可看到最新狀態）</p>
     <div class="progress-row">
       <span style="width:5.5em;">事件時間軸</span>
@@ -197,7 +199,7 @@
     <h2>事件時間軸</h2>
     <p class="note">以下僅列出關鍵日期骨架，具體事件描述、查證來源與新聞連結請同學查證後以 PR 補上（可參考中工案時間軸的行文與引註方式）。補完格式範例：<br><em>「2024年8月22日晚間，台新金與新光金董事會分別通過換股合意合併案。（陳○明，******456）」</em>——句末務必加上遮蔽版姓名學號（本頁為公開頁面，請勿寫完整真實姓名學號）。</p>
     <ul class="timeline" id="timeline-list">
-      <li><span class="date">2024/08/22</span><p class="todo-desc">【待補充：台新金與新光金董事會通過換股合意合併之經過與內容】</p></li>
+      <li><span class="date">2024/08/22</span><p class="todo-desc" id="tour-example">【待補充：台新金與新光金董事會通過換股合意合併之經過與內容】</p></li>
       <li><span class="date">2024/08/23</span><p class="todo-desc">【待補充：中信金宣布公開收購新光金之經過與收購條件】</p></li>
       <li><span class="date">2024/08/26</span><p class="todo-desc">【待補充：中信金遞件金管會申請投資新光金之經過】</p></li>
       <li><span class="date">2024/08/27–28</span><p class="todo-desc">【待補充：台新金、中信金雙方法說會的攻防表態】</p></li>
@@ -346,6 +348,102 @@ function updateTimelineProgress(){
 updateTimelineProgress();
 updateProgress('keypoints-list', 'progress-keypoints', 'progress-keypoints-count');
 updateProgress('articles-list', 'progress-articles', 'progress-articles-count');
+</script>
+
+<style>
+  .tour-overlay-spot{
+    position:fixed; z-index:9998; pointer-events:none;
+    border-radius:10px;
+    box-shadow:0 0 0 9999px rgba(22,35,59,0.72);
+    transition:all .3s ease;
+  }
+  .tour-tooltip{
+    position:fixed; z-index:9999; max-width:min(340px, 88vw);
+    background:var(--paper-panel); border:1px solid var(--line); border-radius:10px;
+    padding:1rem 1.2rem; box-shadow:0 8px 24px rgba(22,35,59,0.25);
+    transition:all .3s ease;
+  }
+  .tour-step-badge{ display:inline-block; background:var(--seal); color:#fff; font-weight:700; font-size:.72rem; border-radius:99px; padding:.15rem .6rem; margin-bottom:.5rem; }
+  .tour-tooltip-text{ font-size:.88rem; color:var(--ink-70); line-height:1.7; margin:0 0 .9rem; }
+  .tour-tooltip-actions{ display:flex; justify-content:space-between; align-items:center; }
+  .tour-btn{ font-size:.82rem; border:none; border-radius:6px; padding:.4rem .9rem; cursor:pointer; font-weight:700; }
+  .tour-btn-next{ background:var(--indigo); color:#fff; }
+  .tour-btn-skip{ background:transparent; color:var(--ink-45); }
+  .tour-replay-link{ display:inline-block; font-size:.78rem; color:var(--ink-45); text-decoration:underline; cursor:pointer; margin-bottom:1rem; }
+</style>
+
+<div id="tour-spot" class="tour-overlay-spot" style="display:none;"></div>
+<div id="tour-tooltip" class="tour-tooltip" style="display:none;">
+  <span class="tour-step-badge" id="tour-step-badge"></span>
+  <p class="tour-tooltip-text" id="tour-step-text"></p>
+  <div class="tour-tooltip-actions">
+    <button class="tour-btn tour-btn-skip" onclick="endTour()">跳過導覽</button>
+    <button class="tour-btn tour-btn-next" id="tour-next-btn" onclick="nextTourStep()">下一步</button>
+  </div>
+</div>
+
+<script>
+const TOUR_STEPS = [
+  { id: 'tour-banner', text: '這篇是老師建立的教材框架。「案例來源」「雙方戰略思考」「課堂討論方向」已經寫好了，「事件時間軸」「關鍵點」「對應條文」還有部分留白，等你來補完。' },
+  { id: 'tour-progress', text: '這裡會即時統計目前補完進度，三個區塊各自完成幾格、還剩幾格，重新整理頁面就會更新。' },
+  { id: 'tour-steps', text: '照這六個步驟走：找來源 → 核對內容 → 查證條文 → 逐條連結 → 標註具名（記得用遮蔽版！）→ 發送 Pull Request。' },
+  { id: 'tour-example', text: '像這樣標示「【待補充：...】」的地方，就是等你動手的位置。點進去查證後，把這段文字換成你查到的內容。' },
+];
+let tourIndex = 0;
+const TOUR_KEY = 'company_law_shinshin_tour_seen';
+
+function positionTour(){
+  const step = TOUR_STEPS[tourIndex];
+  const target = document.getElementById(step.id);
+  const spot = document.getElementById('tour-spot');
+  const tooltip = document.getElementById('tour-tooltip');
+  if (!target) { nextTourStep(); return; }
+
+  target.scrollIntoView({ behavior:'smooth', block:'center' });
+
+  setTimeout(() => {
+    const rect = target.getBoundingClientRect();
+    const pad = 8;
+    spot.style.top = (rect.top - pad) + 'px';
+    spot.style.left = (rect.left - pad) + 'px';
+    spot.style.width = (rect.width + pad*2) + 'px';
+    spot.style.height = (rect.height + pad*2) + 'px';
+    spot.style.display = 'block';
+
+    let tooltipTop = rect.bottom + 16;
+    if (tooltipTop + 160 > window.innerHeight) {
+      tooltipTop = Math.max(16, rect.top - 176);
+    }
+    tooltip.style.top = tooltipTop + 'px';
+    tooltip.style.left = Math.max(12, Math.min(rect.left, window.innerWidth - 340 - 12)) + 'px';
+    tooltip.style.display = 'block';
+
+    document.getElementById('tour-step-badge').textContent = `第 ${tourIndex + 1} / ${TOUR_STEPS.length} 步`;
+    document.getElementById('tour-step-text').textContent = step.text;
+    document.getElementById('tour-next-btn').textContent = (tourIndex === TOUR_STEPS.length - 1) ? '開始補完' : '下一步';
+  }, 300);
+}
+
+function nextTourStep(){
+  tourIndex++;
+  if (tourIndex >= TOUR_STEPS.length) { endTour(); return; }
+  positionTour();
+}
+
+function endTour(){
+  document.getElementById('tour-spot').style.display = 'none';
+  document.getElementById('tour-tooltip').style.display = 'none';
+  localStorage.setItem(TOUR_KEY, '1');
+}
+
+function startTour(){
+  tourIndex = 0;
+  positionTour();
+}
+
+if (!localStorage.getItem(TOUR_KEY)) {
+  window.addEventListener('load', () => setTimeout(startTour, 500));
+}
 </script>
 
 </body>
