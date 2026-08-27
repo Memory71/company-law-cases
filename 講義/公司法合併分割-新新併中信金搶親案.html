@@ -127,6 +127,27 @@
     🚧 本篇為教師建立之教材框架：「案例來源」「雙方戰略思考」「課堂討論方向」已完整撰寫；「事件時間軸」「關鍵點」「對應條文」僅列骨架標題，內容開放同學以 Pull Request 查證後補完。補完時請依循本 repo 自我驗證規則（條號、pcode、日期、連結逐一查證），並參考已完成的「中工經營權爭奪案」講義格式。
   </div>
 
+  <div class="steps-box">
+    <p class="steps-title">📋 補完步驟建議</p>
+    <ol class="steps-list">
+      <li>找新聞來源：針對該則骨架的日期或標題，搜尋當天／該事件的原始新聞報導</li>
+      <li>核對事件內容：確認新聞描述的日期、金額、比例等細節與骨架標記一致</li>
+      <li>查證條文：到<a class="src" href="https://law.moj.gov.tw/" target="_blank" rel="noopener">全國法規資料庫</a>核對條號與 pcode，不要沿用其他法規查過的印象</li>
+      <li>逐條連結：範圍條號「§X至§Y」要每一條個別配對連結，不可只連頭尾兩條</li>
+      <li>標註具名：完成的段落文字後面加上 <code>（姓名，學號）</code>，例如「中信金於2024年8月23日宣布公開收購新光金。（陳小明，109123456）」</li>
+      <li>發送 Pull Request，並在 PR 描述簡述你補完了哪一段</li>
+    </ol>
+  </div>
+
+  <style>
+    .steps-box{ background:rgba(169,131,47,0.08); border:1px solid rgba(169,131,47,0.3); border-radius:8px; padding:1rem 1.3rem; margin-bottom:1.5rem; }
+    .steps-title{ font-weight:700; color:var(--brass); font-size:.9rem; margin:0 0 .6rem; }
+    .steps-list{ margin:0; padding-left:1.2rem; font-size:.88rem; color:var(--ink-70); }
+    .steps-list li{ margin-bottom:.4rem; }
+    .steps-list code{ background:rgba(22,35,59,0.08); padding:.1rem .4rem; border-radius:4px; font-size:.85em; }
+    .hint-tip{ font-size:.82rem; color:var(--indigo); margin:.4rem 0 0; font-style:italic; }
+  </style>
+
   <section>
     <h2>案例來源</h2>
     <p><a class="src" href="https://tw.stock.yahoo.com/quote/2887.TW/profile" target="_blank" rel="noopener">台新金控</a>（2887）與<a class="src" href="https://tw.stock.yahoo.com/quote/2888.TW/profile" target="_blank" rel="noopener">新光金控</a>（2888）之合併談判歷時約20年，2024年8月22日晚間雙方董事會終於通過以「換股方式」進行合意合併，新光金股東可換發台新金股份。然而隔日，<a class="src" href="https://tw.stock.yahoo.com/quote/2891.TW/profile" target="_blank" rel="noopener">中國信託金控</a>（2891）無預警召開臨時董事會，宣布改以「公開收購」方式取得新光金10%至51%股權，企圖阻斷這場合意併購，形成市場俗稱「金控三角戀」的局面。這起事件同時涉及公司法合併程序、金融控股公司法轉投資核准機制、證券交易法公開收購規範三個層次，且新聞資訊完整、時間軸明確，適合作為觀察「合意併購」與「非合意（敵意）公開收購」兩種經營權變動路徑如何競合、又如何受到主管機關把關的案例。此案最終於2025年7月24日以合意換股合併方式完成，新光金下市，合併後存續公司更名為「台新新光金融控股股份有限公司」。</p>
@@ -147,7 +168,7 @@
 
   <section>
     <h2>事件時間軸</h2>
-    <p class="note">以下僅列出關鍵日期骨架，具體事件描述、查證來源與新聞連結請同學查證後以 PR 補上（可參考中工案時間軸的行文與引註方式）。</p>
+    <p class="note">以下僅列出關鍵日期骨架，具體事件描述、查證來源與新聞連結請同學查證後以 PR 補上（可參考中工案時間軸的行文與引註方式）。補完格式範例：<br><em>「2024年8月22日晚間，台新金與新光金董事會分別通過換股合意合併案。（陳小明，109123456）」</em>——句末務必加上你的姓名學號。</p>
     <ul class="timeline">
       <li><span class="date">2024/08/22</span><p class="todo-desc">【待補充：台新金與新光金董事會通過換股合意合併之經過與內容】</p></li>
       <li><span class="date">2024/08/23</span><p class="todo-desc">【待補充：中信金宣布公開收購新光金之經過與收購條件】</p></li>
@@ -165,16 +186,36 @@
     <h2>關鍵點</h2>
     <p class="note">以下僅列出關鍵點標題，具體論述與法律依據（含查證過的條文或修法理由）請同學以 PR 補完。</p>
     <ul class="todo-list">
-      <li>合意併購與非合意（敵意）公開收購的法律定性與程序差異 <span class="todo-tag">【待補充論述】</span></li>
-      <li>換股合併對價與公司法發行新股規定的關聯 <span class="todo-tag">【待補充論述】</span></li>
-      <li>金融控股公司法轉投資核准機制與公開收購／股東臨時會的時程競合 <span class="todo-tag">【待補充論述】</span></li>
-      <li>以股票作為公開收購對價的爭議與主管機關政策取向 <span class="todo-tag">【待補充論述】</span></li>
+      <li>合意併購與非合意（敵意）公開收購的法律定性與程序差異
+        <span class="todo-tag">【待補充論述】</span>
+        <p class="hint-tip">思考方向：兩者的決策主體是誰（股東會 vs 個別股東）？各自要向哪個主管機關申請核准？股東行使權利的方式一樣嗎？</p>
+      </li>
+      <li>換股合併對價與公司法發行新股規定的關聯
+        <span class="todo-tag">【待補充論述】</span>
+        <p class="hint-tip">思考方向：換股合併中，存續公司要發行新股給消滅公司股東，這跟一般發行新股的股東權益保障規定有何異同？</p>
+      </li>
+      <li>金融控股公司法轉投資核准機制與公開收購／股東臨時會的時程競合
+        <span class="todo-tag">【待補充論述】</span>
+        <p class="hint-tip">思考方向：金管會的核准期限（15或30個營業日）跟公開收購、股東臨時會召集的時程，誰快誰慢？這對收購方的策略有什麼影響？</p>
+      </li>
+      <li>以股票作為公開收購對價的爭議與主管機關政策取向
+        <span class="todo-tag">【待補充論述】</span>
+        <p class="hint-tip">思考方向：現金對價跟股票對價，對應賣股東而言最大的差異是什麼？金管會為何偏好現金收購？</p>
+      </li>
     </ul>
   </section>
 
   <section>
     <h2>對應條文</h2>
     <p class="note">以下僅列出待查證的法規範圍，具體條號、逐條連結與 pcode 請同學查證後補上（務必留意本 repo 曾發生 pcode 用錯、條號範圍未逐條連結的錯誤，補完時請逐一核對）。</p>
+    <div class="think-box">
+      <p class="think-title">🔍 查證小提醒</p>
+      <p class="think-text">
+        1. 到<a class="src" href="https://law.moj.gov.tw/" target="_blank" rel="noopener">全國法規資料庫</a>搜尋法規全文，複製當次查到的正確 pcode，不要沿用之前查過其他法規的印象或格式去猜。<br>
+        2. 若引用「§X至§Y」這種範圍條號，請逐一列出範圍內每一條，並個別配對連結，不可只連結頭尾兩條。<br>
+        3. 若涉及法律論斷（例如某條文的適用範圍或修法目的），請查證立法院修法理由或主管機關函釋，不可只憑條文字面印象斷言。
+      </p>
+    </div>
     <ul class="todo-list">
       <li>公司法：股份有限公司合併及分割相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
       <li>金融控股公司法：轉投資核准程序 <span class="todo-tag">【待補充條號與連結】</span></li>
