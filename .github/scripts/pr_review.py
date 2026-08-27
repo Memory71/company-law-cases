@@ -195,7 +195,7 @@ PR 標題：{pr_title}
         },
         json={
             "model": "claude-sonnet-5",
-            "max_tokens": 600,
+            "max_tokens": 2000,
             "messages": [{"role": "user", "content": prompt}],
         },
         timeout=120,
@@ -216,7 +216,7 @@ PR 標題：{pr_title}
         parsed = json.loads(raw)
         return parsed
     except Exception:
-        return {"error": "無法解析評分結果", "raw": raw[:300]}
+        return {"error": "無法解析評分結果", "raw": raw[:500], "stop_reason": data.get("stop_reason")}
 
 
 def build_score_table(prs) -> str:
@@ -267,7 +267,7 @@ def build_score_table(prs) -> str:
             lines.append(line)
             lines.append(f"> ⚠️ PR #{r['pr']} 評分失敗：{score['error']}\n")
             if "raw" in score:
-                lines.append(f"> 原始回傳（除錯用）：`{score['raw']}`\n")
+                lines.append(f"> 原始回傳（除錯用）：`{score['raw']}`（stop_reason: {score.get('stop_reason')}）\n")
             continue
         breakdown = score.get("breakdown", {})
         cells = " | ".join(str(breakdown.get(n, "-")) for n, _, _ in RUBRIC)
