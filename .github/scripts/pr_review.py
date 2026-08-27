@@ -45,6 +45,9 @@ RUBRIC = [
     ("格式規範遵守", 10, "是否遵照既有區塊格式填寫，未破壞其他區塊內容或樣式"),
 ]
 
+REVIEW_LABEL = "ready-for-review"  # 只有貼上這個標籤的 PR 才會被抓去自動審查／評分，避免垃圾 PR 洗 API 額度
+SENSITIVE_PATH_PREFIX = ".github/"  # 動到這個路徑的 PR，不論有沒有標籤都要特別警示
+
 NAME_PATTERN = re.compile(r"（([^\uFF0C,，]{2,6})[，,]\s*([0-9○\*]{4,12})）")
 
 
@@ -93,6 +96,26 @@ def list_all_prs():
     )
     resp.raise_for_status()
     return resp.json()
+
+
+def has_review_label(pr) -> bool:
+    return any(l["name"] == REVIEW_LABEL for l in pr.get("labels", []))
+
+
+def touches_sensitive_path(pr) -> bool:
+    files = get_pr_files(pr["number"])
+    return any(f["filename"].startswith(SENSITIVE_PATH_PREFIX) for f in files)
+
+
+def scan_sensitive_prs(all_prs):
+    """掃描所有『開啟中』的 PR，找出動到 .github/ 路徑的，不論有無標籤都要警示。"""
+    warnings = []
+    for pr in all_prs:
+        if pr["state"] != "open":
+            continue
+        if touches_sensitive_path(pr):
+            warnings.append(pr)
+    return warnings
 
 
 def extract_students(text: str):
@@ -352,9 +375,27 @@ def main():
         return
 
     today = datetime.date.today().isoformat()
-    sections = []
 
-    for pr in open_prs:
+    # 安全警示：不論有沒有標籤，只要開啟中的 PR 動到 .github/，一律警示
+    sensitive_prs = scan_sensitive_prs(open_prs)
+    if sensitive_prs:
+        warn_lines = [
+            "## ⚠️ 安全警示：以下開啟中 PR 動到 `.github/` 路徑，請務必人工檢查後才能合併\n\n",
+            "這個路徑包含 Actions 排程設定與審查腳本本身，合併前請仔細確認變更內容，"
+            "不要因為 CODEOWNERS 要求核准就直接照按。\n\n",
+        ]
+        for pr in sensitive_prs:
+            warn_lines.append(f"- PR #{pr['number']}：{pr['title']}（{pr['html_url']}）\n")
+        security_part = "".join(warn_lines)
+    else:
+        security_part = "## 安全掃描\n\n目前沒有開啟中的 PR 動到 `.github/` 路徑。\n"
+
+    # 只挑貼上 REVIEW_LABEL 標籤的 PR 進入自動審查／評分，避免垃圾 PR 洗 API 額度
+    labeled_open_prs = [pr for pr in open_prs if has_review_label(pr)]
+    labeled_all_prs = [pr for pr in all_prs if has_review_label(pr)]
+
+    sections = []
+    for pr in labeled_open_prs:
         number = pr["number"]
         title = pr["title"]
         author = pr["user"]["login"]
@@ -376,26 +417,39 @@ def main():
             f"**AI 初步審查意見（僅供參考，最終評分由老師決定）：**\n\n{review}\n"
         )
 
-    review_part = (
-        f"## 一、開啟中 PR 的初步審查意見（合併前參考用）\n\n"
-        + (
-            "\n---\n\n".join(sections) if sections
-            else "目前沒有開啟中的 PR。\n"
-        )
+    unlabeled_open_count = len(open_prs) - len(labeled_open_prs)
+    unlabeled_note = (
+        f"\n> ℹ️ 另有 {unlabeled_open_count} 個開啟中的 PR 尚未貼上 `{REVIEW_LABEL}` 標籤，"
+        f"未列入自動審查，請老師先行檢視後手動貼標籤。\n"
+        if unlabeled_open_count > 0 else ""
     )
 
-    score_table = build_score_table(all_prs) if all_prs else "目前沒有任何 PR，無法產生分數表。\n"
+    review_part = (
+        f"## 一、開啟中 PR 的初步審查意見（合併前參考用，僅列已貼 `{REVIEW_LABEL}` 標籤者）\n\n"
+        + (
+            "\n---\n\n".join(sections) if sections
+            else f"目前沒有已貼上 `{REVIEW_LABEL}` 標籤、開啟中的 PR。\n"
+        )
+        + unlabeled_note
+    )
+
+    score_table = build_score_table(labeled_all_prs) if labeled_all_prs else f"目前沒有任何已貼上 `{REVIEW_LABEL}` 標籤的 PR，無法產生分數表。\n"
+    unlabeled_all_count = len(all_prs) - len(labeled_all_prs)
+    unlabeled_all_note = (
+        f"\n> ℹ️ 另有 {unlabeled_all_count} 個 PR（不限狀態）尚未貼上 `{REVIEW_LABEL}` 標籤，未列入分數表。\n"
+        if unlabeled_all_count > 0 else ""
+    )
     score_part = (
-        f"## 二、學生建議分數總表（依學號排序，所有 PR 皆列入，不限是否已合併）\n\n"
+        f"## 二、學生建議分數總表（依學號排序，僅列已貼 `{REVIEW_LABEL}` 標籤者，不限是否已合併）\n\n"
         f"以下分數為 AI 依評分規則產生的**建議分數**，僅供參考，最終分數請老師人工複核後決定。\n\n"
-        + score_table
+        + score_table + unlabeled_all_note
     )
 
     report_body = (
         f"# PR 每日審查報告 - {today}\n\n"
         f"本報告由 GitHub Actions 排程自動產生。學生姓名已遮蔽（僅留頭尾兩字）。"
         f"以下內容**不代表最終分數或是否合併之決定**，請老師人工複核。\n\n---\n\n"
-        + review_part + "\n\n---\n\n" + score_part
+        + security_part + "\n\n---\n\n" + review_part + "\n\n---\n\n" + score_part
     )
 
     title = f"PR 每日審查報告 - {today}"
