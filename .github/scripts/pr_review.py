@@ -176,7 +176,7 @@ PR 說明：{pr_body or "（無）"}
 
 
 def call_claude_score(pr_title: str, diff_summary: str) -> dict:
-    """呼叫 Claude 依 RUBRIC 給建議分數，回傳 dict：{breakdown: {...}, total: int, reason: str}"""
+    """呼叫 Claude 依 RUBRIC 給建議分數，回傳 dict：{breakdown: {...}, total: int, reason_points: [str, ...]}"""
     if not ANTHROPIC_API_KEY:
         return {"error": "未設定 ANTHROPIC_API_KEY"}
 
@@ -195,7 +195,9 @@ PR 標題：{pr_title}
 {diff_summary}
 
 請只回傳一個 JSON 物件，不要有任何其他文字、不要用 markdown code fence 包起來，格式如下：
-{{"breakdown": {{"具名格式": 分數, "論述完整度與邏輯": 分數, "法規依據": 分數, "查證與來源": 分數, "格式規範遵守": 分數}}, "total": 總分, "reason": "一段簡短理由，說明扣分或加分關鍵"}}"""
+{{"breakdown": {{"具名格式": 分數, "論述完整度與邏輯": 分數, "法規依據": 分數, "查證與來源": 分數, "格式規範遵守": 分數}}, "total": 總分, "reason_points": ["理由1（一句話，說明某一項配分的關鍵）", "理由2", "理由3", "理由4"]}}
+
+reason_points 請拆成 3-5 條，每條只講一件事、一句話，不要把所有理由擠成一大段。"""
 
     resp = requests.post(
         "https://api.anthropic.com/v1/messages",
@@ -230,26 +232,30 @@ PR 標題：{pr_title}
         return {"error": "無法解析評分結果", "raw": raw[:500], "stop_reason": data.get("stop_reason")}
 
 
-def extract_submission_quote(raw_text: str, name: str, sid: str, context_chars: int = 300):
-    """從 diff 內容中，擷取（姓名，學號）標註前後的原文片段，清理成可讀文字。"""
-    pattern = re.compile(re.escape(f"（{name}") + r"[，,]\s*" + re.escape(sid) + r"）")
-    m = pattern.search(raw_text)
+def extract_submission_quote(raw_text: str, name: str, sid: str):
+    """從 diff 內容中，找出包含（姓名，學號）標註的完整段落（<p>或<li>），清理成可讀文字。"""
+    clean = re.sub(r"(?m)^\+", "", raw_text)      # 去除 diff 新增行前綴
+    clean = re.sub(r"(?m)^-.*$", "", clean)        # 去除 diff 刪除行，避免混入舊內容
+    clean = re.sub(r"```diff|```", "", clean)      # 去除 code fence
+
+    tag_pattern = re.escape(f"（{name}") + r"[，,]\s*" + re.escape(sid) + r"）"
+
+    for block_pattern in (r"<p[^>]*>(.*?)</p>", r"<li[^>]*>(.*?)</li>"):
+        for m in re.finditer(block_pattern, clean, re.DOTALL):
+            if re.search(tag_pattern, m.group(1)):
+                text = re.sub(r"<[^>]+>", "", m.group(1))
+                text = re.sub(r"\s+", " ", text).strip()
+                return text[:600]
+
+    # 找不到完整標籤時，退回抓取標註前後一段文字作為備用
+    pattern = re.compile(tag_pattern)
+    m = pattern.search(clean)
     if not m:
         return None
-    start = max(0, m.start() - context_chars)
-    snippet = raw_text[start:m.end()]
-    snippet = re.sub(r"(?m)^\+", "", snippet)          # 去除 diff 新增行前綴
-    snippet = re.sub(r"(?m)^-.*$", "", snippet)          # 去除 diff 刪除行，避免混入舊內容
-    snippet = re.sub(r"```diff|```", "", snippet)        # 去除 code fence
-    snippet = re.sub(r"<[^>]+>", "", snippet)             # 去除 HTML tag，只留文字
-    snippet = re.sub(r"\s+", " ", snippet).strip()
-    # 若片段開頭卡在句子中間，嘗試從最近的句號/分號後開始，讓引文比較完整
-    for sep in ["。", "；", "："]:
-        idx = snippet.find(sep)
-        if 0 < idx < len(snippet) - 20:
-            snippet = snippet[idx + 1:]
-            break
-    return snippet[-400:]  # 避免過長
+    start = max(0, m.start() - 300)
+    snippet = clean[start:m.end()]
+    snippet = re.sub(r"<[^>]+>", "", snippet)
+    return re.sub(r"\s+", " ", snippet).strip()[:600]
 
 
 def build_score_table(prs) -> str:
@@ -313,9 +319,12 @@ def build_score_table(prs) -> str:
         lines.append(line)
         if r.get("quote"):
             lines.append(f"> 📝 提交內容：「{r['quote']}」\n")
-        reason = score.get("reason")
-        if reason:
-            lines.append(f"> {reason}\n")
+        reason_points = score.get("reason_points") or []
+        if reason_points:
+            for point in reason_points:
+                lines.append(f"> - {point}\n")
+        elif score.get("reason"):  # 相容舊格式
+            lines.append(f"> {score['reason']}\n")
 
     return "".join(lines)
 
