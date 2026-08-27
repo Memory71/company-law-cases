@@ -1,0 +1,7 @@
+# CODEOWNERS
+# 指定特定路徑的變更，一定要由對應的人核准才能合併。
+# 語法：路徑 @GitHub帳號
+
+# .github/ 底下是 Actions 排程、審查腳本、workflow 設定，風險最高，
+# 任何變更都必須由老師本人核准，不可由學生 PR 自動通過。
+/.github/ @mjib007
