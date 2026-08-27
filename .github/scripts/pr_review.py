@@ -230,6 +230,28 @@ PR 標題：{pr_title}
         return {"error": "無法解析評分結果", "raw": raw[:500], "stop_reason": data.get("stop_reason")}
 
 
+def extract_submission_quote(raw_text: str, name: str, sid: str, context_chars: int = 300):
+    """從 diff 內容中，擷取（姓名，學號）標註前後的原文片段，清理成可讀文字。"""
+    pattern = re.compile(re.escape(f"（{name}") + r"[，,]\s*" + re.escape(sid) + r"）")
+    m = pattern.search(raw_text)
+    if not m:
+        return None
+    start = max(0, m.start() - context_chars)
+    snippet = raw_text[start:m.end()]
+    snippet = re.sub(r"(?m)^\+", "", snippet)          # 去除 diff 新增行前綴
+    snippet = re.sub(r"(?m)^-.*$", "", snippet)          # 去除 diff 刪除行，避免混入舊內容
+    snippet = re.sub(r"```diff|```", "", snippet)        # 去除 code fence
+    snippet = re.sub(r"<[^>]+>", "", snippet)             # 去除 HTML tag，只留文字
+    snippet = re.sub(r"\s+", " ", snippet).strip()
+    # 若片段開頭卡在句子中間，嘗試從最近的句號/分號後開始，讓引文比較完整
+    for sep in ["。", "；", "："]:
+        idx = snippet.find(sep)
+        if 0 < idx < len(snippet) - 20:
+            snippet = snippet[idx + 1:]
+            break
+    return snippet[-400:]  # 避免過長
+
+
 def build_score_table(prs) -> str:
     """對所有 PR 產生依學號排序的建議分數表。"""
     rows = []  # (學號, 姓名遮蔽, breakdown, total, 狀態, 連結, error)
@@ -256,13 +278,15 @@ def build_score_table(prs) -> str:
         if not students:
             rows.append({
                 "sid": "（未標註學號）", "sid_display": "（未標註學號）", "name": "-", "score": score,
-                "status": status, "url": html_url, "pr": number,
+                "status": status, "url": html_url, "pr": number, "quote": None,
             })
         else:
             for name, sid in students:
+                quote_raw = extract_submission_quote(diff_summary_raw, name, sid)
+                quote_masked = mask_names_in_text(quote_raw) if quote_raw else None
                 rows.append({
                     "sid": sid, "sid_display": mask_id(sid), "name": mask_name(name), "score": score,
-                    "status": status, "url": html_url, "pr": number,
+                    "status": status, "url": html_url, "pr": number, "quote": quote_masked,
                 })
 
     rows.sort(key=lambda r: r["sid"])
@@ -276,6 +300,8 @@ def build_score_table(prs) -> str:
         if "error" in score:
             line = f"| {r['sid_display']} | {r['name']} | " + "無法評分 | " * len(RUBRIC) + f"- | {r['status']} | #{r['pr']} |\n"
             lines.append(line)
+            if r.get("quote"):
+                lines.append(f"> 📝 提交內容：「{r['quote']}」\n")
             lines.append(f"> ⚠️ PR #{r['pr']} 評分失敗：{score['error']}\n")
             if "raw" in score:
                 lines.append(f"> 原始回傳（除錯用）：`{score['raw']}`（stop_reason: {score.get('stop_reason')}）\n")
@@ -285,6 +311,8 @@ def build_score_table(prs) -> str:
         total = score.get("total", "-")
         line = f"| {r['sid_display']} | {r['name']} | {cells} | {total} | {r['status']} | #{r['pr']} |\n"
         lines.append(line)
+        if r.get("quote"):
+            lines.append(f"> 📝 提交內容：「{r['quote']}」\n")
         reason = score.get("reason")
         if reason:
             lines.append(f"> {reason}\n")
