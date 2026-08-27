@@ -154,24 +154,25 @@
   .difficulty-medium{ background:rgba(169,131,47,0.15); color:var(--brass); }
   .difficulty-hard{ background:rgba(156,43,58,0.12); color:var(--seal); }
 
-  .relation-diagram{ display:flex; align-items:center; justify-content:center; gap:.6rem; margin:1.2rem 0; flex-wrap:wrap; }
-  .relation-diagram-second{ margin-top:1.5rem; }
-  .relation-box{ flex:0 0 auto; width:9.5rem; text-align:center; border-radius:10px; padding:.9rem .6rem; border:2px solid var(--line); background:var(--paper-panel); }
-  .relation-box-a{ border-color:var(--indigo); }
-  .relation-box-b{ border-color:var(--brass); }
-  .relation-box-c{ border-color:var(--seal); }
-  .relation-box-target{ box-shadow:0 0 0 3px rgba(156,43,58,0.15); }
-  .relation-name{ font-family:"Noto Serif TC",serif; font-weight:700; font-size:.95rem; color:var(--ink); margin-bottom:.3rem; }
-  .relation-role{ font-size:.72rem; color:var(--ink-45); }
-  .relation-arrow{ display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:6rem; }
-  .relation-arrow-label{ font-size:.68rem; color:var(--ink-45); text-align:center; line-height:1.4; margin-bottom:.2rem; }
-  .relation-arrow-line{ font-size:1.4rem; font-weight:700; }
-  .relation-arrow-agree .relation-arrow-line{ color:var(--indigo); }
-  .relation-arrow-hostile .relation-arrow-line{ color:var(--seal); }
-  @media (max-width: 480px){
-    .relation-diagram{ flex-direction:column; }
-    .relation-arrow{ min-width:auto; }
-    .relation-arrow-line{ transform:rotate(90deg); }
+  .triangle-diagram{ position:relative; width:100%; max-width:400px; aspect-ratio:1/0.85; margin:1.2rem auto; }
+  .triangle-svg{ position:absolute; top:0; left:0; width:100%; height:100%; }
+  .triangle-box{ position:absolute; transform:translate(-50%,-50%); width:9rem; text-align:center; border-radius:10px; padding:.7rem .5rem; border:2px solid var(--line); background:var(--paper-panel); z-index:2; }
+  .triangle-box-top{ top:10%; left:50%; border-color:var(--brass); box-shadow:0 0 0 3px rgba(169,131,47,0.15); }
+  .triangle-box-left{ top:88%; left:14%; border-color:var(--indigo); width:8rem; }
+  .triangle-box-right{ top:88%; left:86%; border-color:var(--seal); width:9rem; }
+  .relation-name{ font-family:"Noto Serif TC",serif; font-weight:700; font-size:.88rem; color:var(--ink); margin-bottom:.2rem; }
+  .relation-role{ font-size:.68rem; color:var(--ink-45); }
+  .triangle-label{ position:absolute; font-size:.66rem; color:var(--ink-45); text-align:center; line-height:1.4; background:var(--parchment); padding:0 .3rem; z-index:1; }
+  .triangle-label-left{ top:48%; left:22%; transform:translate(-50%,-50%); color:var(--indigo); }
+  .triangle-label-right{ top:48%; left:78%; transform:translate(-50%,-50%); color:var(--seal); }
+  .triangle-label-bottom{ top:94%; left:50%; transform:translate(-50%,-50%); }
+  @media (max-width: 420px){
+    .triangle-box{ width:6.6rem; padding:.5rem .3rem; }
+    .triangle-box-left{ width:6rem; }
+    .triangle-box-right{ width:6.6rem; }
+    .relation-name{ font-size:.76rem; }
+    .relation-role{ font-size:.6rem; }
+    .triangle-label{ font-size:.58rem; }
   }
     .progress-box{ background:var(--paper-panel); border:1px solid var(--line); border-radius:8px; padding:1rem 1.3rem; margin-bottom:1.5rem; }
     .progress-title{ font-weight:700; color:var(--ink); font-size:.9rem; margin:0 0 .7rem; }
@@ -208,35 +209,41 @@
 
   <section>
     <h2>案情關係圖</h2>
-    <p class="note">看文字之前，先看這張圖，理解三方各自在做什麼動作。</p>
-    <div class="relation-diagram">
-      <div class="relation-box relation-box-a">
-        <div class="relation-name">台新金控</div>
-        <div class="relation-role">合意併購發起方</div>
-      </div>
-      <div class="relation-arrow relation-arrow-agree">
-        <span class="relation-arrow-label">2024/08/22<br>合意換股合併</span>
-        <span class="relation-arrow-line">↔</span>
-      </div>
-      <div class="relation-box relation-box-b">
+    <p class="note">看文字之前，先看這張圖，理解三方各自在做什麼動作——這是一個三角關係：新光金是被追求的一方，台新金與中信金分別用不同手段爭取。</p>
+
+    <div class="triangle-diagram">
+      <svg class="triangle-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow-indigo" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#2c4a76" />
+          </marker>
+          <marker id="arrow-seal" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#9c2b3a" />
+          </marker>
+        </defs>
+        <line x1="20" y1="82" x2="47" y2="20" stroke="#2c4a76" stroke-width="1.2" marker-end="url(#arrow-indigo)" />
+        <line x1="80" y1="82" x2="53" y2="20" stroke="#9c2b3a" stroke-width="1.2" marker-end="url(#arrow-seal)" />
+        <line x1="24" y1="86" x2="76" y2="86" stroke="#a9832f" stroke-width="1" stroke-dasharray="3,2" />
+      </svg>
+
+      <div class="triangle-box triangle-box-top">
         <div class="relation-name">新光金控</div>
         <div class="relation-role">被追求方</div>
       </div>
-    </div>
-    <div class="relation-diagram relation-diagram-second">
-      <div class="relation-box relation-box-c">
+      <div class="triangle-box triangle-box-left">
+        <div class="relation-name">台新金控</div>
+        <div class="relation-role">合意併購發起方</div>
+      </div>
+      <div class="triangle-box triangle-box-right">
         <div class="relation-name">中國信託金控</div>
         <div class="relation-role">非合意（敵意）收購方</div>
       </div>
-      <div class="relation-arrow relation-arrow-hostile">
-        <span class="relation-arrow-label">2024/08/23<br>公開收購10%~51%股權</span>
-        <span class="relation-arrow-line">→</span>
-      </div>
-      <div class="relation-box relation-box-b relation-box-target">
-        <div class="relation-name">新光金控</div>
-        <div class="relation-role">收購目標</div>
-      </div>
+
+      <div class="triangle-label triangle-label-left">2024/08/22<br>合意換股合併</div>
+      <div class="triangle-label triangle-label-right">2024/08/23<br>公開收購10%~51%</div>
+      <div class="triangle-label triangle-label-bottom">競爭／搶親關係</div>
     </div>
+
     <p class="note" style="margin-top:1rem;">看懂這張圖之後再往下讀「雙方戰略思考」，會比較容易理解每一方在盤算什麼。</p>
   </section>
 
