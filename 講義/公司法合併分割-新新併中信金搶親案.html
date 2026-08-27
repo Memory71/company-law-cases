@@ -401,28 +401,43 @@ function positionTour(){
 
   target.scrollIntoView({ behavior:'smooth', block:'center' });
 
-  setTimeout(() => {
-    const rect = target.getBoundingClientRect();
-    const pad = 8;
-    spot.style.top = (rect.top - pad) + 'px';
-    spot.style.left = (rect.left - pad) + 'px';
-    spot.style.width = (rect.width + pad*2) + 'px';
-    spot.style.height = (rect.height + pad*2) + 'px';
-    spot.style.display = 'block';
-
-    let tooltipTop = rect.bottom + 16;
-    if (tooltipTop + 160 > window.innerHeight) {
-      tooltipTop = Math.max(16, rect.top - 176);
-    }
-    tooltip.style.top = tooltipTop + 'px';
-    tooltip.style.left = Math.max(12, Math.min(rect.left, window.innerWidth - 340 - 12)) + 'px';
-    tooltip.style.display = 'block';
-
-    document.getElementById('tour-step-badge').textContent = `第 ${tourIndex + 1} / ${TOUR_STEPS.length} 步`;
-    document.getElementById('tour-step-text').textContent = step.text;
-    document.getElementById('tour-next-btn').textContent = (tourIndex === TOUR_STEPS.length - 1) ? '開始補完' : '下一步';
-  }, 300);
+  clearTimeout(window._tourPositionTimer);
+  window._tourPositionTimer = setTimeout(() => renderTourAt(target, step), 600);
 }
+
+function renderTourAt(target, step){
+  const spot = document.getElementById('tour-spot');
+  const tooltip = document.getElementById('tour-tooltip');
+  const rect = target.getBoundingClientRect();
+  const pad = 8;
+  spot.style.top = (rect.top - pad) + 'px';
+  spot.style.left = (rect.left - pad) + 'px';
+  spot.style.width = (rect.width + pad*2) + 'px';
+  spot.style.height = (rect.height + pad*2) + 'px';
+  spot.style.display = 'block';
+
+  const tooltipWidth = Math.min(340, window.innerWidth * 0.88);
+  let tooltipTop = rect.bottom + 16;
+  if (tooltipTop + 180 > window.innerHeight) {
+    tooltipTop = Math.max(16, rect.top - 196);
+  }
+  tooltip.style.top = tooltipTop + 'px';
+  tooltip.style.left = Math.max(12, Math.min(rect.left, window.innerWidth - tooltipWidth - 12)) + 'px';
+  tooltip.style.display = 'block';
+
+  document.getElementById('tour-step-badge').textContent = `第 ${tourIndex + 1} / ${TOUR_STEPS.length} 步`;
+  document.getElementById('tour-step-text').textContent = step.text;
+  document.getElementById('tour-next-btn').textContent = (tourIndex === TOUR_STEPS.length - 1) ? '開始補完' : '下一步';
+}
+
+window.addEventListener('resize', () => {
+  const tooltip = document.getElementById('tour-tooltip');
+  if (tooltip && tooltip.style.display === 'block') {
+    const step = TOUR_STEPS[tourIndex];
+    const target = document.getElementById(step.id);
+    if (target) renderTourAt(target, step);
+  }
+});
 
 function nextTourStep(){
   tourIndex++;
