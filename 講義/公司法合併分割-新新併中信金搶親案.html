@@ -149,6 +149,30 @@
     .steps-list li{ margin-bottom:.4rem; }
     .steps-list code{ background:rgba(22,35,59,0.08); padding:.1rem .4rem; border-radius:4px; font-size:.85em; }
     .hint-tip{ font-size:.82rem; color:var(--indigo); margin:.4rem 0 0; font-style:italic; }
+  .difficulty-badge{ display:inline-block; font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:99px; vertical-align:middle; margin-left:.5rem; }
+  .difficulty-easy{ background:rgba(34,139,34,0.12); color:#1e6b1e; }
+  .difficulty-medium{ background:rgba(169,131,47,0.15); color:var(--brass); }
+  .difficulty-hard{ background:rgba(156,43,58,0.12); color:var(--seal); }
+
+  .relation-diagram{ display:flex; align-items:center; justify-content:center; gap:.6rem; margin:1.2rem 0; flex-wrap:wrap; }
+  .relation-diagram-second{ margin-top:1.5rem; }
+  .relation-box{ flex:0 0 auto; width:9.5rem; text-align:center; border-radius:10px; padding:.9rem .6rem; border:2px solid var(--line); background:var(--paper-panel); }
+  .relation-box-a{ border-color:var(--indigo); }
+  .relation-box-b{ border-color:var(--brass); }
+  .relation-box-c{ border-color:var(--seal); }
+  .relation-box-target{ box-shadow:0 0 0 3px rgba(156,43,58,0.15); }
+  .relation-name{ font-family:"Noto Serif TC",serif; font-weight:700; font-size:.95rem; color:var(--ink); margin-bottom:.3rem; }
+  .relation-role{ font-size:.72rem; color:var(--ink-45); }
+  .relation-arrow{ display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:6rem; }
+  .relation-arrow-label{ font-size:.68rem; color:var(--ink-45); text-align:center; line-height:1.4; margin-bottom:.2rem; }
+  .relation-arrow-line{ font-size:1.4rem; font-weight:700; }
+  .relation-arrow-agree .relation-arrow-line{ color:var(--indigo); }
+  .relation-arrow-hostile .relation-arrow-line{ color:var(--seal); }
+  @media (max-width: 480px){
+    .relation-diagram{ flex-direction:column; }
+    .relation-arrow{ min-width:auto; }
+    .relation-arrow-line{ transform:rotate(90deg); }
+  }
     .progress-box{ background:var(--paper-panel); border:1px solid var(--line); border-radius:8px; padding:1rem 1.3rem; margin-bottom:1.5rem; }
     .progress-title{ font-weight:700; color:var(--ink); font-size:.9rem; margin:0 0 .7rem; }
     .progress-row{ display:flex; justify-content:space-between; align-items:center; font-size:.85rem; color:var(--ink-70); margin-bottom:.5rem; }
@@ -183,6 +207,40 @@
   </section>
 
   <section>
+    <h2>案情關係圖</h2>
+    <p class="note">看文字之前，先看這張圖，理解三方各自在做什麼動作。</p>
+    <div class="relation-diagram">
+      <div class="relation-box relation-box-a">
+        <div class="relation-name">台新金控</div>
+        <div class="relation-role">合意併購發起方</div>
+      </div>
+      <div class="relation-arrow relation-arrow-agree">
+        <span class="relation-arrow-label">2024/08/22<br>合意換股合併</span>
+        <span class="relation-arrow-line">↔</span>
+      </div>
+      <div class="relation-box relation-box-b">
+        <div class="relation-name">新光金控</div>
+        <div class="relation-role">被追求方</div>
+      </div>
+    </div>
+    <div class="relation-diagram relation-diagram-second">
+      <div class="relation-box relation-box-c">
+        <div class="relation-name">中國信託金控</div>
+        <div class="relation-role">非合意（敵意）收購方</div>
+      </div>
+      <div class="relation-arrow relation-arrow-hostile">
+        <span class="relation-arrow-label">2024/08/23<br>公開收購10%~51%股權</span>
+        <span class="relation-arrow-line">→</span>
+      </div>
+      <div class="relation-box relation-box-b relation-box-target">
+        <div class="relation-name">新光金控</div>
+        <div class="relation-role">收購目標</div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:1rem;">看懂這張圖之後再往下讀「雙方戰略思考」，會比較容易理解每一方在盤算什麼。</p>
+  </section>
+
+  <section>
     <h2>雙方戰略思考</h2>
 
     <h3>中信金控的算盤</h3>
@@ -196,7 +254,7 @@
   </section>
 
   <section>
-    <h2>事件時間軸</h2>
+    <h2>事件時間軸 <span class="difficulty-badge difficulty-easy">🟢 建議先做</span></h2>
     <p class="note">以下僅列出關鍵日期骨架，具體事件描述、查證來源與新聞連結請同學查證後以 PR 補上（可參考中工案時間軸的行文與引註方式）。補完格式範例：<br><em>「2024年8月22日晚間，台新金與新光金董事會分別通過換股合意合併案。（陳○明，******456）」</em>——句末務必加上遮蔽版姓名學號（本頁為公開頁面，請勿寫完整真實姓名學號）。</p>
     <ul class="timeline" id="timeline-list">
       <li><span class="date">2024/08/22</span><p class="todo-desc" id="tour-example">【待補充：台新金與新光金董事會通過換股合意合併之經過與內容】</p></li>
@@ -212,7 +270,7 @@
   </section>
 
   <section>
-    <h2>關鍵點</h2>
+    <h2>關鍵點 <span class="difficulty-badge difficulty-medium">🟡 有點挑戰</span></h2>
     <p class="note">以下僅列出關鍵點標題，具體論述與法律依據（含查證過的條文或修法理由）請同學以 PR 補完。補完格式參考（示範句型，非本案內容）：<br><em>「◯◯制度指……，公司法§XXX明定其……範圍。」</em>——先講清楚這個概念是什麼、再帶出對應法條，而不是只丟結論。</p>
     <ul class="todo-list" id="keypoints-list">
       <li>合意併購與非合意（敵意）公開收購的法律定性與程序差異
@@ -235,7 +293,7 @@
   </section>
 
   <section>
-    <h2>對應條文</h2>
+    <h2>對應條文 <span class="difficulty-badge difficulty-hard">🔴 進階（需查證條號）</span></h2>
     <p class="note">以下僅列出待查證的法規範圍，具體條號、逐條連結與 pcode 請同學查證後補上（務必留意本 repo 曾發生 pcode 用錯、條號範圍未逐條連結的錯誤，補完時請逐一核對）。</p>
     <div class="think-box">
       <p class="think-title">🔍 查證小提醒</p>
