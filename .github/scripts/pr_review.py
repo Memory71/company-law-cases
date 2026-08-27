@@ -25,6 +25,7 @@ GH_HEADERS = {
 }
 
 MAX_DIFF_CHARS_PER_PR = 40000  # 單一 PR 內容上限，超出的部分做部分截斷（保留能放的內容），而非整段跳過
+WORD_LIMIT_WARNING = 1000  # 學生單次提交內容建議字數上限，超過在報告中標記警示（規則見 CONTRIBUTING.md）
 
 SELF_VERIFICATION_RULES = """\
 審查時請依照以下規則檢查，並在意見中具體指出哪裡符合、哪裡有疑慮（不要只給籠統評語）：
@@ -364,9 +365,11 @@ def build_score_table(prs) -> str:
             for name, sid in students:
                 quote_raw = extract_submission_quote(diff_summary_raw, name, sid)
                 quote_masked = mask_names_in_text(quote_raw) if quote_raw else None
+                word_count = len(quote_raw) if quote_raw else 0
                 rows.append({
                     "sid": sid, "sid_display": mask_id(sid), "name": mask_name(name), "score": score,
-                    "status": status, "url": html_url, "pr": number, "quote": quote_masked, "truncated": truncated,
+                    "status": status, "url": html_url, "pr": number, "quote": quote_masked,
+                    "truncated": truncated, "word_count": word_count,
                 })
 
     rows.sort(key=lambda r: r["sid"])
@@ -395,6 +398,9 @@ def build_score_table(prs) -> str:
         lines.append(line)
         if r.get("truncated"):
             lines.append(f"> ⚠️ 此 PR 內容過長已被截斷，AI 僅根據部分內容審查／評分，建議人工複核完整版本\n")
+        wc = r.get("word_count") or 0
+        if wc > WORD_LIMIT_WARNING:
+            lines.append(f"> ⚠️ 提交內容約 {wc} 字，超過建議上限 {WORD_LIMIT_WARNING} 字（CONTRIBUTING.md 規定超過部分學生自行負責）\n")
         if r.get("quote"):
             lines.append(f"> 📝 提交內容：「{r['quote']}」\n")
         reason_points = score.get("reason_points") or []
