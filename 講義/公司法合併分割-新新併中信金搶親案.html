@@ -370,6 +370,7 @@ updateProgress('articles-list', 'progress-articles', 'progress-articles-count');
   .tour-btn-next{ background:var(--indigo); color:#fff; }
   .tour-btn-skip{ background:transparent; color:var(--ink-45); }
   .tour-replay-link{ display:inline-block; font-size:.78rem; color:var(--ink-45); text-decoration:underline; cursor:pointer; margin-bottom:1rem; }
+  @media (max-width: 767px){ .tour-replay-link{ display:none; } }
 </style>
 
 <div id="tour-spot" class="tour-overlay-spot" style="display:none;"></div>
@@ -451,12 +452,19 @@ function endTour(){
   localStorage.setItem(TOUR_KEY, '1');
 }
 
+const TOUR_MIN_WIDTH = 768; // 只在畫面寬度足夠（電腦瀏覽器）才啟用導覽，手機一律不觸發
+
+function isDesktopWidth(){
+  return window.innerWidth >= TOUR_MIN_WIDTH;
+}
+
 function startTour(){
+  if (!isDesktopWidth()) return;
   tourIndex = 0;
   positionTour();
 }
 
-if (!localStorage.getItem(TOUR_KEY)) {
+if (isDesktopWidth() && !localStorage.getItem(TOUR_KEY)) {
   window.addEventListener('load', () => setTimeout(startTour, 500));
 }
 </script>
