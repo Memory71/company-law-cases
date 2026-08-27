@@ -55,10 +55,17 @@ def mask_name(name: str) -> str:
     return name[0] + "○" * (len(name) - 2) + name[-1]
 
 
+def mask_id(sid: str) -> str:
+    """只留末三碼，其餘以*取代，保護學生隱私。"""
+    if len(sid) <= 3:
+        return sid
+    return "*" * (len(sid) - 3) + sid[-3:]
+
+
 def mask_names_in_text(text: str) -> str:
     def _replace(m):
         name, sid = m.group(1), m.group(2)
-        return f"（{mask_name(name)}，{sid}）"
+        return f"（{mask_name(name)}，{mask_id(sid)}）"
     return NAME_PATTERN.sub(_replace, text)
 
 
@@ -244,13 +251,13 @@ def build_score_table(prs) -> str:
 
         if not students:
             rows.append({
-                "sid": "（未標註學號）", "name": "-", "score": score,
+                "sid": "（未標註學號）", "sid_display": "（未標註學號）", "name": "-", "score": score,
                 "status": status, "url": html_url, "pr": number,
             })
         else:
             for name, sid in students:
                 rows.append({
-                    "sid": sid, "name": mask_name(name), "score": score,
+                    "sid": sid, "sid_display": mask_id(sid), "name": mask_name(name), "score": score,
                     "status": status, "url": html_url, "pr": number,
                 })
 
@@ -263,7 +270,7 @@ def build_score_table(prs) -> str:
     for r in rows:
         score = r["score"]
         if "error" in score:
-            line = f"| {r['sid']} | {r['name']} | " + "無法評分 | " * len(RUBRIC) + f"- | {r['status']} | #{r['pr']} |\n"
+            line = f"| {r['sid_display']} | {r['name']} | " + "無法評分 | " * len(RUBRIC) + f"- | {r['status']} | #{r['pr']} |\n"
             lines.append(line)
             lines.append(f"> ⚠️ PR #{r['pr']} 評分失敗：{score['error']}\n")
             if "raw" in score:
@@ -272,7 +279,7 @@ def build_score_table(prs) -> str:
         breakdown = score.get("breakdown", {})
         cells = " | ".join(str(breakdown.get(n, "-")) for n, _, _ in RUBRIC)
         total = score.get("total", "-")
-        line = f"| {r['sid']} | {r['name']} | {cells} | {total} | {r['status']} | #{r['pr']} |\n"
+        line = f"| {r['sid_display']} | {r['name']} | {cells} | {total} | {r['status']} | #{r['pr']} |\n"
         lines.append(line)
         reason = score.get("reason")
         if reason:
