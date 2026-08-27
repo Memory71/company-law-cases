@@ -147,7 +147,33 @@
     .steps-list li{ margin-bottom:.4rem; }
     .steps-list code{ background:rgba(22,35,59,0.08); padding:.1rem .4rem; border-radius:4px; font-size:.85em; }
     .hint-tip{ font-size:.82rem; color:var(--indigo); margin:.4rem 0 0; font-style:italic; }
+    .progress-box{ background:var(--paper-panel); border:1px solid var(--line); border-radius:8px; padding:1rem 1.3rem; margin-bottom:1.5rem; }
+    .progress-title{ font-weight:700; color:var(--ink); font-size:.9rem; margin:0 0 .7rem; }
+    .progress-row{ display:flex; justify-content:space-between; align-items:center; font-size:.85rem; color:var(--ink-70); margin-bottom:.5rem; }
+    .progress-row:last-child{ margin-bottom:0; }
+    .progress-bar-track{ flex:1; height:8px; background:rgba(22,35,59,0.08); border-radius:99px; margin:0 .8rem; overflow:hidden; }
+    .progress-bar-fill{ height:100%; background:var(--brass); border-radius:99px; transition:width .3s; }
+    .progress-count{ font-weight:700; color:var(--ink); white-space:nowrap; font-size:.82rem; }
   </style>
+
+  <div class="progress-box">
+    <p class="progress-title">📊 目前補完進度（自動統計，重新整理頁面即可看到最新狀態）</p>
+    <div class="progress-row">
+      <span style="width:5.5em;">事件時間軸</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-timeline"></span></span>
+      <span class="progress-count" id="progress-timeline-count">-</span>
+    </div>
+    <div class="progress-row">
+      <span style="width:5.5em;">關鍵點</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-keypoints"></span></span>
+      <span class="progress-count" id="progress-keypoints-count">-</span>
+    </div>
+    <div class="progress-row">
+      <span style="width:5.5em;">對應條文</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-articles"></span></span>
+      <span class="progress-count" id="progress-articles-count">-</span>
+    </div>
+  </div>
 
   <section>
     <h2>案例來源</h2>
@@ -170,7 +196,7 @@
   <section>
     <h2>事件時間軸</h2>
     <p class="note">以下僅列出關鍵日期骨架，具體事件描述、查證來源與新聞連結請同學查證後以 PR 補上（可參考中工案時間軸的行文與引註方式）。補完格式範例：<br><em>「2024年8月22日晚間，台新金與新光金董事會分別通過換股合意合併案。（陳○明，******456）」</em>——句末務必加上遮蔽版姓名學號（本頁為公開頁面，請勿寫完整真實姓名學號）。</p>
-    <ul class="timeline">
+    <ul class="timeline" id="timeline-list">
       <li><span class="date">2024/08/22</span><p class="todo-desc">【待補充：台新金與新光金董事會通過換股合意合併之經過與內容】</p></li>
       <li><span class="date">2024/08/23</span><p class="todo-desc">【待補充：中信金宣布公開收購新光金之經過與收購條件】</p></li>
       <li><span class="date">2024/08/26</span><p class="todo-desc">【待補充：中信金遞件金管會申請投資新光金之經過】</p></li>
@@ -185,9 +211,8 @@
 
   <section>
     <h2>關鍵點</h2>
-    <p class="note">以下僅列出關鍵點標題，具體論述與法律依據（含查證過的條文或修法理由）請同學以 PR 補完。</p>
-    <ul class="todo-list">
-      <li>合意併購與非合意（敵意）公開收購的法律定性與程序差異
+    <p class="note">以下僅列出關鍵點標題，具體論述與法律依據（含查證過的條文或修法理由）請同學以 PR 補完。補完格式參考（示範句型，非本案內容）：<br><em>「◯◯制度指……，公司法§XXX明定其……範圍。」</em>——先講清楚這個概念是什麼、再帶出對應法條，而不是只丟結論。</p>
+    <ul class="todo-list" id="keypoints-list">
         <span class="todo-tag"></span>
         <p class="desc">合意併購是由雙方公司董事會先協商合併條件，作成合併契約後提交股東會特別決議通過；非合意（敵意）公開收購則是收購方跳過對方董事會，直接向個別股東公開喊價收購股份，不需要對方公司內部同意。本案中，台新金與新光金走的是前者，中信金走的是後者，兩條路徑在核准機關、決策主體、時程安排上都不相同。（測○○學，******000）</p>
       </li>
@@ -217,7 +242,8 @@
         3. 若涉及法律論斷（例如某條文的適用範圍或修法目的），請查證立法院修法理由或主管機關函釋，不可只憑條文字面印象斷言。
       </p>
     </div>
-    <ul class="todo-list">
+    <p class="hint-tip">補完格式參考（示範句型，非本案內容）：<br><em>「股東會之召集程序或決議方法，違反法令或章程者，股東得自決議之日起三十日內，訴請法院撤銷其決議（<a class="law" href="#" target="_blank" rel="noopener">公司法§189</a>）。」</em>——條號要連結到查證過的正確頁面，不要只寫條號數字。</p>
+    <ul class="todo-list" id="articles-list">
       <li>公司法：股份有限公司合併及分割相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
       <li>金融控股公司法：轉投資核准程序 <span class="todo-tag">【待補充條號與連結】</span></li>
       <li>證券交易法：公開收購相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
@@ -278,6 +304,47 @@ async function loadPageMeta(){
   }
 }
 loadPageMeta();
+
+function updateProgress(listId, barId, countId){
+  const list = document.getElementById(listId);
+  if (!list) return;
+  const items = list.querySelectorAll('li');
+  const total = items.length;
+  let done = 0;
+  items.forEach(li => {
+    const tag = li.querySelector('.todo-tag');
+    // 待補充的項目：todo-tag 裡還有文字（例如【待補充論述】）
+    // 已完成的項目：todo-tag 是空的，或整個 li 找不到 todo-tag（時間軸用 todo-desc/desc 判斷）
+    const descEl = li.querySelector('.todo-desc');
+    const isPending = (tag && tag.textContent.trim().length > 0) || !!descEl;
+    if (!isPending) done++;
+  });
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const bar = document.getElementById(barId);
+  const countEl = document.getElementById(countId);
+  if (bar) bar.style.width = pct + '%';
+  if (countEl) countEl.textContent = `${done} / ${total}`;
+}
+
+function updateTimelineProgress(){
+  const list = document.getElementById('timeline-list');
+  if (!list) return;
+  const items = list.querySelectorAll('li');
+  const total = items.length;
+  let done = 0;
+  items.forEach(li => {
+    if (li.querySelector('p.desc') && !li.querySelector('p.todo-desc')) done++;
+  });
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const bar = document.getElementById('progress-timeline');
+  const countEl = document.getElementById('progress-timeline-count');
+  if (bar) bar.style.width = pct + '%';
+  if (countEl) countEl.textContent = `${done} / ${total}`;
+}
+
+updateTimelineProgress();
+updateProgress('keypoints-list', 'progress-keypoints', 'progress-keypoints-count');
+updateProgress('articles-list', 'progress-articles', 'progress-articles-count');
 </script>
 
 </body>
