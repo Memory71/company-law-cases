@@ -45,18 +45,22 @@ RUBRIC = [
     ("格式規範遵守", 10, "是否遵照既有區塊格式填寫，未破壞其他區塊內容或樣式"),
 ]
 
-NAME_PATTERN = re.compile(r"（([^\uFF0C,，]{2,6})[，,]\s*([A-Za-z0-9]{4,12})）")
+NAME_PATTERN = re.compile(r"（([^\uFF0C,，]{2,6})[，,]\s*([0-9○\*]{4,12})）")
 
 
 def mask_name(name: str) -> str:
-    """只留頭尾兩字，中間以○取代，保護學生隱私。"""
+    """只留頭尾兩字，中間以○取代，保護學生隱私。若已是遮蔽格式則不重複處理。"""
+    if "○" in name:
+        return name
     if len(name) <= 2:
         return name
     return name[0] + "○" * (len(name) - 2) + name[-1]
 
 
 def mask_id(sid: str) -> str:
-    """只留末三碼，其餘以*取代，保護學生隱私。"""
+    """只留末三碼，其餘以*取代，保護學生隱私。若已是遮蔽格式則不重複處理。"""
+    if "○" in sid or "*" in sid:
+        return sid
     if len(sid) <= 3:
         return sid
     return "*" * (len(sid) - 3) + sid[-3:]
