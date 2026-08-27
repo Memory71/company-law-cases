@@ -277,6 +277,9 @@ def build_score_table(prs) -> str:
             lines.append(f"> {reason}\n")
 
     return "".join(lines)
+
+
+def find_existing_report_issue(title: str):
     resp = requests.get(
         f"{GH_API}/repos/{REPO}/issues",
         headers=GH_HEADERS,
