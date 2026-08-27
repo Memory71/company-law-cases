@@ -24,7 +24,7 @@ GH_HEADERS = {
     "Accept": "application/vnd.github+json",
 }
 
-MAX_DIFF_CHARS_PER_PR = 6000  # 避免單一 PR 內容過長，超出的部分截斷
+MAX_DIFF_CHARS_PER_PR = 40000  # 單一 PR 內容上限，超出的部分做部分截斷（保留能放的內容），而非整段跳過
 
 SELF_VERIFICATION_RULES = """\
 審查時請依照以下規則檢查，並在意見中具體指出哪裡符合、哪裡有疑慮（不要只給籠統評語）：
@@ -123,7 +123,7 @@ def scan_injection_prs(open_prs):
     for pr in open_prs:
         body = pr.get("body") or ""
         files = get_pr_files(pr["number"])
-        diff_text = build_diff_summary(files)
+        diff_text, _ = build_diff_summary(files)
         hits = scan_prompt_injection(body + "\n" + diff_text)
         if hits:
             flagged.append((pr, hits))
@@ -174,17 +174,26 @@ def get_pr_files(pr_number: int):
 def build_diff_summary(files):
     parts = []
     total = 0
+    truncated = False
     for f in files:
         patch = f.get("patch")
         if not patch:
             continue
         chunk = f"### 檔案：{f['filename']}\n```diff\n{patch}\n```\n"
-        if total + len(chunk) > MAX_DIFF_CHARS_PER_PR:
-            parts.append("（後續變更內容過長，已截斷，請至 PR 頁面查看完整內容）")
+        remaining = MAX_DIFF_CHARS_PER_PR - total
+        if remaining <= 0:
+            truncated = True
+            break
+        if len(chunk) > remaining:
+            # 部分截斷：保留這個檔案能放進去的前半段，而不是整個跳過
+            parts.append(chunk[:remaining] + "\n（此檔案內容過長，以下已截斷）\n")
+            total += remaining
+            truncated = True
             break
         parts.append(chunk)
         total += len(chunk)
-    return "\n".join(parts) if parts else "（此 PR 沒有可讀取的文字變更內容）"
+    summary = "\n".join(parts) if parts else "（此 PR 沒有可讀取的文字變更內容）"
+    return summary, truncated
 
 
 def call_claude_review(pr_title: str, pr_body: str, diff_summary: str) -> str:
@@ -340,7 +349,7 @@ def build_score_table(prs) -> str:
             status = "Open"
 
         files = get_pr_files(number)
-        diff_summary_raw = build_diff_summary(files)
+        diff_summary_raw, truncated = build_diff_summary(files)
         students = extract_students(diff_summary_raw) or extract_students(pr.get("body") or "")
 
         diff_summary_masked = mask_names_in_text(diff_summary_raw)
@@ -349,7 +358,7 @@ def build_score_table(prs) -> str:
         if not students:
             rows.append({
                 "sid": "（未標註學號）", "sid_display": "（未標註學號）", "name": "-", "score": score,
-                "status": status, "url": html_url, "pr": number, "quote": None,
+                "status": status, "url": html_url, "pr": number, "quote": None, "truncated": truncated,
             })
         else:
             for name, sid in students:
@@ -357,7 +366,7 @@ def build_score_table(prs) -> str:
                 quote_masked = mask_names_in_text(quote_raw) if quote_raw else None
                 rows.append({
                     "sid": sid, "sid_display": mask_id(sid), "name": mask_name(name), "score": score,
-                    "status": status, "url": html_url, "pr": number, "quote": quote_masked,
+                    "status": status, "url": html_url, "pr": number, "quote": quote_masked, "truncated": truncated,
                 })
 
     rows.sort(key=lambda r: r["sid"])
@@ -371,6 +380,8 @@ def build_score_table(prs) -> str:
         if "error" in score:
             line = f"| {r['sid_display']} | {r['name']} | " + "無法評分 | " * len(RUBRIC) + f"- | {r['status']} | #{r['pr']} |\n"
             lines.append(line)
+            if r.get("truncated"):
+                lines.append(f"> ⚠️ 此 PR 內容過長已被截斷\n")
             if r.get("quote"):
                 lines.append(f"> 📝 提交內容：「{r['quote']}」\n")
             lines.append(f"> ⚠️ PR #{r['pr']} 評分失敗：{score['error']}\n")
@@ -382,6 +393,8 @@ def build_score_table(prs) -> str:
         total = score.get("total", "-")
         line = f"| {r['sid_display']} | {r['name']} | {cells} | {total} | {r['status']} | #{r['pr']} |\n"
         lines.append(line)
+        if r.get("truncated"):
+            lines.append(f"> ⚠️ 此 PR 內容過長已被截斷，AI 僅根據部分內容審查／評分，建議人工複核完整版本\n")
         if r.get("quote"):
             lines.append(f"> 📝 提交內容：「{r['quote']}」\n")
         reason_points = score.get("reason_points") or []
@@ -459,17 +472,23 @@ def main():
         body = pr.get("body") or ""
 
         files = get_pr_files(number)
-        diff_summary = build_diff_summary(files)
+        diff_summary, truncated = build_diff_summary(files)
         diff_summary = mask_names_in_text(diff_summary)
         body_masked = mask_names_in_text(body)
 
         review = call_claude_review(title, body_masked, diff_summary)
         review = mask_names_in_text(review)
 
+        truncated_note = (
+            "\n⚠️ 此 PR 內容過長已被截斷，AI 僅根據部分內容審查，建議人工複核完整版本。\n"
+            if truncated else ""
+        )
+
         sections.append(
             f"## PR #{number}：{title}\n"
             f"- GitHub 帳號：{author}\n"
-            f"- 連結：{html_url}\n\n"
+            f"- 連結：{html_url}\n"
+            f"{truncated_note}\n"
             f"**AI 初步審查意見（僅供參考，最終評分由老師決定）：**\n\n{review}\n"
         )
 
