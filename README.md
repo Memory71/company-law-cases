@@ -22,15 +22,33 @@
 
 ```
 company-law-cases/
-├── index.html          # 總覽頁（分類地圖＋搜尋＋卡片牆，GitHub Pages 進入點）
-├── 講義/                 # 教師筆記與學生案例（平面存放，分類靠 index.html 內的 metadata）
-├── CONTRIBUTING.md
+├── index.html                      # 總覽頁（分類地圖＋搜尋＋卡片牆，GitHub Pages 進入點）
+├── 講義/                             # 教師筆記與學生案例（平面存放，分類靠 index.html 內的 metadata）
+├── .github/
+│   ├── workflows/
+│   │   └── pr-daily-review.yml     # 每日排程：自動審查／建議評分 PR（見下方「PR 自動審查機制」）
+│   ├── scripts/
+│   │   └── pr_review.py            # 上述排程實際執行的邏輯
+│   └── CODEOWNERS                  # .github/ 路徑的變更需老師本人核准才能合併
+├── CONTRIBUTING.md                 # 案例提交規則、AI協助與具名規則、隱私與安全機制
+├── TODO.md                         # 目前進度與待辦
 └── LICENSE
 ```
 
 新增內容時，只需要：
 1. 把 HTML 檔案放進 `講義/` 資料夾
 2. 在 `index.html` 的 `LECTURES` 陣列裡新增一筆物件（條號、標題、日期、對應章節 key、檔案路徑、author 為 teacher 或 student）
+
+## PR 自動審查機制
+
+本 repo 設有每天台北時間 18:00 自動執行的 GitHub Actions 排程，會：
+
+- 掃描目前所有 PR，只有貼上 `ready-for-review` 標籤的才會進入 AI 審查與建議評分流程（避免垃圾 PR 濫用 API 額度）
+- 產生一則「PR 每日審查報告」Issue，內容包含 AI 初步審查意見、依學號排序的建議分數表（僅供參考，最終分數與是否合併皆由老師人工決定）
+- 內建 `.github/` 路徑異動安全掃描、提示詞注入（Prompt Injection）關鍵字掃描、內容過長截斷警示
+- 學生姓名與學號在報告中一律遮蔽顯示（詳見 [CONTRIBUTING.md](./CONTRIBUTING.md)）
+
+搭配 branch protection（要求 PR 需人工核准才能合併）與 CODEOWNERS（`.github/` 路徑變更需老師本人核准），構成這個公開 repo 的內容安全防線。
 
 ## 授權
 
@@ -69,6 +87,8 @@ Skill 裡的「GitHub 操作流程」章節會要求你提供 GitHub Personal Ac
 3. **Repository access** 選 **Only select repositories**，選你自己的 repo
 4. **Permissions** 裡把 **Contents** 設成 **Read and write**
 5. **Generate token** 後複製給 Claude
+
+> 若你也想套用「PR 自動審查機制」（見上方章節），除了 Contents，還需要額外把 **Workflows**、**Actions**、**Issues**、**Administration** 都設成 Read and write，並在 repo 的 `Settings → Secrets and variables → Actions` 新增一組名為 `ANTHROPIC_API_KEY` 的 secret（去 [console.anthropic.com](https://console.anthropic.com/settings/keys) 產生），排程才能正常呼叫 Claude API。
 
 **注意事項：**
 - 這組 token 只在**當次對話**中使用，Claude 不會把它存進記憶，換一個新對話時要重新提供
