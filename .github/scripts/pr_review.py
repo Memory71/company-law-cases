@@ -353,8 +353,11 @@ def build_score_table(prs) -> str:
         diff_summary_raw, truncated = build_diff_summary(files)
         students = extract_students(diff_summary_raw) or extract_students(pr.get("body") or "")
 
-        diff_summary_masked = mask_names_in_text(diff_summary_raw)
-        score = call_claude_score(title, diff_summary_masked)
+        if has_review_label(pr):
+            diff_summary_masked = mask_names_in_text(diff_summary_raw)
+            score = call_claude_score(title, diff_summary_masked)
+        else:
+            score = {"pending": True}  # 未貼標籤，不呼叫 API，避免浪費額度
 
         if not students:
             rows.append({
@@ -380,6 +383,13 @@ def build_score_table(prs) -> str:
     lines = [header]
     for r in rows:
         score = r["score"]
+        if score.get("pending"):
+            line = f"| {r['sid_display']} | {r['name']} | " + "⏳ | " * len(RUBRIC) + f"⏳ | {r['status']} | #{r['pr']} |\n"
+            lines.append(line)
+            lines.append(f"> ⏳ 待評分（此 PR 尚未標記 `{REVIEW_LABEL}`，老師確認後貼上標籤，隔天即會出現 AI 建議分數）\n")
+            if r.get("quote"):
+                lines.append(f"> 📝 提交內容：「{r['quote']}」\n")
+            continue
         if "error" in score:
             line = f"| {r['sid_display']} | {r['name']} | " + "無法評分 | " * len(RUBRIC) + f"- | {r['status']} | #{r['pr']} |\n"
             lines.append(line)
@@ -465,9 +475,8 @@ def main():
     else:
         injection_part = "## 🛡️ 提示詞注入（Prompt Injection）防制機制\n\n目前沒有開啟中的 PR 偵測到可疑的操控性關鍵字。\n"
 
-    # 只挑貼上 REVIEW_LABEL 標籤的 PR 進入自動審查／評分，避免垃圾 PR 洗 API 額度
+    # 只挑貼上 REVIEW_LABEL 標籤的 PR 進入「開啟中PR審查意見」區塊；分數表則涵蓋所有PR（未標籤者標記待評分）
     labeled_open_prs = [pr for pr in open_prs if has_review_label(pr)]
-    labeled_all_prs = [pr for pr in all_prs if has_review_label(pr)]
 
     sections = []
     for pr in labeled_open_prs:
@@ -514,16 +523,12 @@ def main():
         + unlabeled_note
     )
 
-    score_table = build_score_table(labeled_all_prs) if labeled_all_prs else f"目前沒有任何已貼上 `{REVIEW_LABEL}` 標籤的 PR，無法產生分數表。\n"
-    unlabeled_all_count = len(all_prs) - len(labeled_all_prs)
-    unlabeled_all_note = (
-        f"\n> ℹ️ 另有 {unlabeled_all_count} 個 PR（不限狀態）尚未貼上 `{REVIEW_LABEL}` 標籤，未列入分數表。\n"
-        if unlabeled_all_count > 0 else ""
-    )
+    score_table = build_score_table(all_prs) if all_prs else "目前沒有任何 PR，無法產生分數表。\n"
     score_part = (
-        f"## 二、學生建議分數總表（依學號排序，僅列已貼 `{REVIEW_LABEL}` 標籤者，不限是否已合併）\n\n"
-        f"以下分數為 AI 依評分規則產生的**建議分數**，僅供參考，最終分數請老師人工複核後決定。\n\n"
-        + score_table + unlabeled_all_note
+        f"## 二、學生建議分數總表（依學號排序，涵蓋所有 PR、不限是否已合併）\n\n"
+        f"以下分數為 AI 依評分規則產生的**建議分數**，僅供參考，最終分數請老師人工複核後決定。"
+        f"未貼上 `{REVIEW_LABEL}` 標籤的 PR 會列在表中但標記為「待評分」，不會呼叫 API。\n\n"
+        + score_table
     )
 
     report_body = (
