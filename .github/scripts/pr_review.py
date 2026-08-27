@@ -123,7 +123,12 @@ PR 說明：{pr_body or "（無）"}
         timeout=120,
     )
     if resp.status_code != 200:
-        return f"⚠️ 呼叫 Claude API 失敗（HTTP {resp.status_code}），略過此 PR 的 AI 審查。"
+        try:
+            err_detail = resp.json().get("error", {}).get("message", resp.text[:300])
+        except Exception:
+            err_detail = resp.text[:300]
+        print(f"Claude API 呼叫失敗：HTTP {resp.status_code} - {err_detail}")
+        return f"⚠️ 呼叫 Claude API 失敗（HTTP {resp.status_code}）：{err_detail}"
 
     data = resp.json()
     texts = [b["text"] for b in data.get("content", []) if b.get("type") == "text"]
