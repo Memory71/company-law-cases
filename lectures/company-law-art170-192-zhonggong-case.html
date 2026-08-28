@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中工經營權爭奪案——股東提名權與董事改選 | company-law-cases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --parchment: #f3ede0;
+    --paper-panel: #fffdf8;
+    --seal: #9c2b3a;
+    --brass: #a9832f;
+    --line: #ddd3bf;
+    --ink-70: rgba(22,35,59,0.7);
+    --ink-45: rgba(22,35,59,0.45);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Noto Sans TC",sans-serif;
+    background:var(--parchment);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.8;
+  }
+  /* 顯式設定 strong 樣式，確保能呈現明顯粗體 */
+  strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:2.5rem 1.5rem 4rem;
+  }
+  .back{
+    display:inline-block;
+    font-size:.85rem;
+    color:var(--indigo);
+    text-decoration:none;
+    margin-bottom:1.5rem;
+  }
+  .back:hover{ color:var(--seal); }
+  .eyebrow{
+    font-size:.74rem;
+    letter-spacing:.2em;
+    color:var(--brass);
+    font-weight:700;
+    margin-bottom:.8rem;
+  }
+  h1{
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:1.7rem;
+    line-height:1.4;
+    margin:0 0 .6rem;
+  }
+  .meta-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+    margin-bottom:2rem;
+    font-size:.8rem;
+  }
+  .tag{
+    background:var(--paper-panel);
+    border:1px solid var(--line);
+    color:var(--brass);
+    padding:.2rem .7rem;
+    border-radius:999px;
+  }
+  .author-badge{
+    background:rgba(44,74,118,0.12);
+    color:var(--indigo);
+    padding:.2rem .7rem;
+    border-radius:999px;
+    font-weight:700;
+  }
+  .page-meta{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:1.8rem;
+    font-size:.78rem;
+  }
+  .page-meta .ver-badge{
+    font-family:"Noto Serif TC",serif;
+    font-weight:700;
+    color:var(--seal);
+    border:1px solid var(--seal);
+    border-radius:20px;
+    padding:2px 10px;
+  }
+  .page-meta .meta-date{
+    color:var(--ink-45);
+  }
+  section{
+    background:var(--paper-panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:1.4rem 1.6rem;
+    margin-bottom:1.3rem;
+  }
+  h2{
+    font-family:"Noto Serif TC",serif;
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--ink);
+    margin:0 0 .8rem;
+    padding-bottom:.5rem;
+    border-bottom:1px solid var(--line);
+  }
+  p{
+    font-size:.95rem;
+    color:var(--ink-70);
+    margin:0 0 1rem;
+  }
+  p:last-child{ margin-bottom:0; }
+  a.src{
+    color:var(--indigo);
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:3px;
+    font-weight:500;
+  }
+  a.src:hover{ color:var(--seal); text-decoration-color:var(--seal); }
+  a.law{
+    color:var(--brass);
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:1px dashed var(--brass);
+  }
+  a.law:hover{ color:var(--seal); border-bottom-color:var(--seal); }
+  .timeline{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .timeline li{
+    display:flex;
+    gap:1rem;
+    margin-bottom:1rem;
+    align-items:baseline;
+  }
+  .timeline .date{
+    flex:0 0 auto;
+    font-weight:700;
+    color:var(--seal);
+    font-size:.85rem;
+    white-space:nowrap;
+  }
+  .timeline .desc{
+    font-size:.92rem;
+    color:var(--ink-70);
+    margin:0;
+  }
+  .qa{
+    margin-bottom:1.1rem;
+  }
+  .qa .q{
+    font-weight:700;
+    margin-bottom:.3rem;
+    font-size:.95rem;
+  }
+  .qa .a{
+    font-size:.92rem;
+    color:var(--ink-70);
+    margin:0;
+  }
+  .discussion ol{
+    padding-left:1.3rem;
+    font-size:.92rem;
+    color:var(--ink-70);
+    margin:0;
+  }
+  .discussion li{
+    margin-bottom:.7rem;
+  }
+  .plain-box{
+    background:rgba(169,131,47,0.07);
+    border:1px solid rgba(169,131,47,0.25);
+    border-radius:8px;
+    padding:1rem 1.2rem;
+    margin-top:1rem;
+  }
+  .plain-title{
+    font-weight:700;
+    color:var(--brass);
+    font-size:.92rem;
+    margin:0 0 .6rem;
+  }
+  .plain-text{
+    font-size:.9rem;
+    color:var(--ink-70);
+    margin:0 0 .7rem;
+    line-height:1.8;
+  }
+  .plain-text:last-child{ margin-bottom:0; }
+  .think-box{
+    background:rgba(44,74,118,0.06);
+    border:1px solid rgba(44,74,118,0.22);
+    border-radius:8px;
+    padding:1rem 1.2rem;
+    margin:1rem 0;
+  }
+  .think-title{
+    font-weight:700;
+    color:var(--indigo);
+    font-size:.92rem;
+    margin:0 0 .6rem;
+  }
+  .think-text{
+    font-size:.9rem;
+    color:var(--ink-70);
+    margin:0;
+    line-height:1.8;
+  }
+  .evidence-img{
+    width:100%;
+    max-width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    margin-top:.6rem;
+    display:block;
+  }
+  .evidence-caption{
+    font-size:.78rem;
+    color:var(--ink-45);
+    margin-top:.4rem;
+    text-align:center;
+  }
+  .note{
+    font-size:.8rem;
+    color:var(--ink-45);
+  }
+  .disclaimer{
+    font-size:.78rem;
+    color:var(--ink-45);
+    font-style:italic;
+    border-left:3px solid var(--line);
+    padding-left:.8rem;
+    margin-top:2rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">← 回總覽頁</a>
+
+  <div class="eyebrow">案例研究 Case Study</div>
+  <h1>中工經營權爭奪案——股東提名權、假處分與董事改選</h1>
+  <div class="meta-bar">
+    <span class="tag">第四節 董事及董事會（§192-1）</span>
+    <span class="tag">證券交易法（§43-1至§43-5、§157-1、§155）</span>
+  </div>
+  <div class="page-meta">
+    <span class="author-badge">教師範例</span>
+    <span class="ver-badge" id="pageVerBadge">v…</span>
+    <span class="meta-date" id="pageMetaDate">載入中…</span>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.company-law-cases.中工經營權爭奪案" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
+  </div>
+
+  <section>
+    <h2>案例來源</h2>
+    <p><a class="src" href="https://tw.stock.yahoo.com/quote/2515.TW/profile" target="_blank" rel="noopener">中華工程股份有限公司（股票代號 2515，下稱「中工」）</a>2026年董監事改選經營權爭奪案，由市場派寶佳機構與公司派威京集團對決。事件發生於2026年4月至5月，媒體報導完整，適合作為觀察經營權爭奪實務操作的案例。</p>
+  </section>
+
+  <section>
+    <h2>事件時間軸</h2>
+    <ul class="timeline">
+      <li><span class="date">2025/04/08–11/04</span><p class="desc">寶佳集團旗下堡新投資、<a class="src" href="https://tw.stock.yahoo.com/quote/2530.TW/profile" target="_blank" rel="noopener">大華建設</a>（2530）等15家投資公司及自然人，在公開市場陸續買進中工股票，累計取得約18.3萬張（181,316,000股），耗資約23億元。</p></li>
+      <li><span class="date">2025/11/03</span><p class="desc">中工發出聲明，指控堡新投資以「禿鷹掠奪」方式，在4個交易日內耗資逾20億元大量買進中工股票。
+        <img class="evidence-img" src="../圖片/中工股價週線圖_2025年10-11月異常波動.png" alt="中工股價週線圖，2025年10-11月異常波動">
+        <span class="evidence-caption">中工（2515）週線圖，紅框標示區間即為股價與成交量劇烈波動的時間點；資料來源：雅虎奇摩股市</span>
+      </p></li>
+      <li><span class="date">2025/11/04</span><p class="desc">大華建設依<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=43-1" target="_blank" rel="noopener">證券交易法§43-1</a>公告，<a class="src" href="https://news.cnyes.com/news/id/6218544" target="_blank" rel="noopener">首度證實以「併購」為目的取得中工11.8%股權</a>，經營權之爭正式浮上檯面。</p></li>
+    </ul>
+
+    <div class="think-box">
+      <p class="think-title">🤔 延伸思考：市場派收購股權以取得經營權，是否違法？</p>
+      <p class="think-text">這題容易讓人直覺誤會，覺得用錢買股份、搶走別人公司的經營權聽起來就不對勁。但事實上，收購股權以取得經營權本身完全合法，是股份自由轉讓原則（<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=163" target="_blank" rel="noopener">公司法§163</a>）下的正常市場機制。真正受到規範的不是「能不能買」，而是「收購的過程是否公開透明」：持股達一定比例以上須依§43-1公告申報，避免市場資訊不對稱；符合法定門檻的收購方式須依證券交易法§43-2至§43-5（<a class="src" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=43-2" target="_blank" rel="noopener">§43-2</a>、<a class="src" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=43-3" target="_blank" rel="noopener">§43-3</a>、<a class="src" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=43-4" target="_blank" rel="noopener">§43-4</a>、<a class="src" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=43-5" target="_blank" rel="noopener">§43-5</a>）踐行公開收購程序，讓所有股東有平等機會決定是否出售股票。換句話說，違法與否的關鍵在於「收購的方式」，不在於「收購取得經營權」這個結果本身。</p>
+    </div>
+
+    <ul class="timeline">
+      <li><span class="date">2025/12/01</span><p class="desc">中工釋出善意，讓出一席董事，由大華建設董事長鄭斯聰以法人董事代表人身分進入中工董事會。</p></li>
+      <li><span class="date">2025/12/23</span><p class="desc">中工董事會通過隔年（115年度）財務預算案，內容顯示預期營收將成長近93億元、稅後淨利成長約172%，屬極度重大之利多消息。鄭斯聰當時以法人董事代表人身分親自出席該次會議，知悉此一足以顯著影響股價的重大未公開消息。</p></li>
+      <li><span class="date">2026/01/23</span><p class="desc">依<a class="src" href="https://mops.twse.com.tw/" target="_blank" rel="noopener">公開資訊觀測站</a>公告，鄭斯聰於當日18時18分07秒正式辭任中工法人董事（常理股份有限公司）代表人職務，公告原因為「因業務繁忙，故請辭法人董事代表人職務」。中工其後指控，此舉意在規避「內部人」身分，以便在消息公開前提前交易。
+        <img class="evidence-img" src="../圖片/鄭斯聰請辭公告_MOPS_20260123.png" alt="公開資訊觀測站鄭斯聰請辭公告截圖">
+        <span class="evidence-caption">公開資訊觀測站重大訊息公告，序號1，115/01/23 18:18:07</span>
+      </p></li>
+      <li><span class="date">2025/11/21–2026/02/12</span><p class="desc"><a class="src" href="https://money.udn.com/money/story/5613/9327181" target="_blank" rel="noopener">大華建設持續加碼買進中工股票</a>，累計持股比率提升至16.604%（約2.7億股）。中工發表聲明，質疑鄭斯聰請辭法人董事後、內部人責任尚未解除之際隨即加碼買股的時機點，並提及已有小股東就特定人士涉嫌內線交易向主管機關提出檢舉。</p></li>
+      <li><span class="date">2026/02/26</span><p class="desc">中工正式對外公告115年度簡式財務預測，前述重大利多消息至此才算公開。依證券交易法規定，內部人（含曾任內部人者）於知悉重大消息後，至消息公開18小時內，均屬絕對禁止交易之法定期間。</p></li>
+      <li><span class="date">2026/03/19</span><p class="desc">中工<a class="src" href="https://www.cna.com.tw/news/afe/202603190353.aspx" target="_blank" rel="noopener">發動第二波法律行動</a>，正式對鄭斯聰提出內線交易之刑事告發，指控其請辭後、財測公告前的禁售期間內，透過堡新投資、源通投資等旗下公司大舉加碼，堡新持股由11.363%增至13.851%，成交量異常暴增逾10倍。</p></li>
+      <li><span class="date">2026/02/24</span><p class="desc">中工董事長周志明率律師團召開記者會，對10名人士提出<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=157-1" target="_blank" rel="noopener">證券交易法§157-1（內線交易）</a>及<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=155" target="_blank" rel="noopener">§155（操縱股價）</a>刑事告發，<a class="src" href="https://estate.ltn.com.tw/article/27008" target="_blank" rel="noopener">指控原受中工委任的股東會顧問業者及律師</a>，在2025年11月4日重大消息公開前即集體布局買股，並指出新增股東群的股東戶號呈現異常的連續連號現象，懷疑涉及多帳戶協同操縱股價。</p></li>
+    </ul>
+
+    <div class="think-box">
+      <p class="think-title">🤔 延伸思考：這起告發指控的行為，違反證券交易法哪些規定？</p>
+      <p class="think-text">中工對10人提告內線交易與操縱股價，指控部分股東會顧問業者及律師利用職務之便知悉內幕消息並私下佈局買股。這與前面討論的「收購行為本身合法、違法與否在於程序」的原則，是否矛盾？（提示：內線交易規範的是「利用未公開資訊」，與「收購行為是否公開透明」是不同層次的問題）</p>
+    </div>
+
+    <div class="plain-box">
+      <p class="plain-title">💡 白話補充：什麼是「股東戶號連號」？</p>
+      <p class="plain-text">去證券商開戶買股票，就像去銀行辦帳戶一樣，系統會依「開戶時間先後」自動排發一組帳戶編號，很像排隊拿號碼牌。全台灣每天有成千上萬人在不同證券商、不同時間開戶，正常情況下，兩個互不相識的人幾乎不可能拿到相鄰或連續的號碼。</p>
+      <p class="plain-text">中工比對股東名冊後，發現一批「新股東」（包含委託書通路商高層、寶佳集團關係人）的帳戶編號竟然高度密集地連在一起。這暗示這些帳戶很可能是<strong>在同一段極短時間內、由同一個人集中安排開設的</strong>，不是各自獨立發生的投資行為。</p>
+      <p class="plain-text">如果背後真的是同一個操盤者用一堆人頭帳戶分散操作，就可以：（1）避開單一帳戶大額買進會被交易所系統自動盯上、列為「注意股」或「處置股」的監控機制；（2）讓多個帳戶之間互相買賣（自己人賣給自己人），製造這檔股票交易熱絡的假象，吸引真正的散戶跟著追價。這正是§155操縱股價要規範的核心行為：<strong>用人為方式製造交易活絡或價格異常的假象，誤導其他投資人的判斷</strong>。</p>
+      <p class="plain-text">戶號連號本身不是直接的犯罪證據，而是一個很強的「異常訊號」，通常會搭配股價漲幅、成交量異常這些客觀數據一起佐證，檢調才會進一步追查金流與通聯紀錄，確認背後是否真有人在操盤。</p>
+    </div>
+
+    <div class="think-box">
+      <p class="think-title">🤔 延伸思考：除了戶號連號，還有哪些訊號可以佐證操縱股價？</p>
+      <p class="think-text">如果你是檢調人員，除了戶號連號之外，還有哪些交易面的證據可以佐證「多帳戶協同操縱股價」的懷疑？（提示：新聞中提到的股價漲幅55.16%、單日成交量暴增13.31倍、交易所列注意及處置股票，這些各自對應什麼樣的操縱股價手法）</p>
+    </div>
+
+    <ul class="timeline">
+      <li><span class="date">2026/04/15</span><p class="desc">中工董事會將寶佳陣營提名的董事候選人自公告名單中刪除，寶佳陣營旗下三家投資公司向<a class="src" href="https://news.nextapple.com/local/20260415/6EB7F8F900E9725D0AAB959301369B4B" target="_blank" rel="noopener">智慧財產及商業法院聲請假處分</a>，法院裁准提供擔保金後恢復候選人資格。</p></li>
+      <li><span class="date">2026/04/17</span><p class="desc">雙方陣營<a class="src" href="https://www.ctwant.com/article/477632/" target="_blank" rel="noopener">召開記者會宣布達成和平共識</a>，公司派同意由寶佳陣營主導未來董事會。</p></li>
+      <li><span class="date">2026/05/19</span><p class="desc">原任董事長周志明請辭。</p></li>
+      <li><span class="date">2026/05/21</span><p class="desc"><a class="src" href="https://www.ctee.com.tw/news/20260521700838-430606" target="_blank" rel="noopener">股東常會完成第28屆董事全面改選</a>，寶佳陣營取得4席（含2席獨立董事），威京陣營保有3席，經營權正式易主。</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>引導討論</h2>
+    <div class="qa">
+      <div class="q">1. 董事會是否有權將股東合法提名的董事候選人從名單中刪除？</div>
+      <p class="a">依<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=192-1" target="_blank" rel="noopener">公司法§192-1</a>，持股一定比例以上的股東有權提出董事候選人名單。<a class="src" href="https://lis.ly.gov.tw/lglawc/lawsingle?016B393512E9000000000000000001400000000400FFFFFD00^04517107070600^00000000000" target="_blank" rel="noopener">107年修法理由</a>明確指出，該條刪除了「對董事被提名人應予審查」之文字，董事會或其他召集權人不再對被提名人有審查權，僅得依同條第5項列舉事由（如逾期提出、持股不足、提名人數超額、未敘明學經歷）進行形式認定。本案中工刪除寶佳提名候選人的正當性，即為假處分程序中的核心爭點。</p>
+    </div>
+
+    <div class="think-box">
+      <p class="think-title">🤔 延伸思考：股東提名權背後的立法目的是什麼？</p>
+      <p class="think-text">如果你是中工的小股東，在假處分裁准前，你的股東提名權事實上是被誰、以什麼理由侵害的？公司法§192-1設計董事候選人提名權的立法目的是什麼？</p>
+    </div>
+
+    <div class="qa">
+      <div class="q">2. 股東可否透過假處分程序，要求法院命公司回復候選人名單？</div>
+      <p class="a">股東認為自身提名權遭侵害，得聲請假處分作為保全程序，避免股東會在爭議未解前逕行召開、造成既成事實而難以回復。事實上，<a class="src" href="https://lis.ly.gov.tw/lglawc/lawsingle?016B393512E9000000000000000001400000000400FFFFFD00^04517107070600^00000000000" target="_blank" rel="noopener">§192-1的107年修法理由</a>亦明確指出，董事會或召集權人違反第5項規定（應列入候選人名單而未列入）者，提名股東得依民事訴訟法第七編「保全程序」辦理——這正是假處分制度在此類爭議中的法理依據。本案法院裁准假處分，展現這項程序在公司治理爭議中的實務功能。</p>
+    </div>
+
+    <div class="think-box">
+      <p class="think-title">🤔 延伸思考：沒有假處分制度會怎樣？</p>
+      <p class="think-text">假處分作為保全程序，為什麼在公司經營權爭奪案中經常被使用？如果沒有假處分制度，股東的提名權要如何救濟？</p>
+    </div>
+
+    <div class="qa">
+      <div class="q">3. 董事在知悉重大利多消息後主動請辭，是否就能脫離「內部人」身分而自由交易？</div>
+      <p class="a">鄭斯聰於2025年12月23日以法人董事身分出席董事會、知悉隔年財測大幅成長的重大利多消息後，於2026年1月23日隨即請辭。中工指控此舉意在規避內部人身分限制。依<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=157-1" target="_blank" rel="noopener">證券交易法§157-1</a>第1項第4款，「<strong>喪失前三款身分後，未滿六個月者</strong>」仍受內線交易規範拘束；且該條規定的禁止交易期間，是延續到「消息公開後18小時內」，不因辭職而立即解除。中工主張，鄭斯聰旗下堡新投資、源通投資在財測正式公告（2026年2月26日）前的禁售期間內持續加碼買股，即已涉及內線交易。</p>
+    </div>
+
+    <div class="think-box">
+      <p class="think-title">🤔 延伸思考：立法者為什麼要堵住「先辭職再交易」這個漏洞？</p>
+      <p class="think-text">請對照證券交易法§157-1第1項第4款「<strong>喪失前三款身分後，未滿六個月者</strong>」這個規定，思考立法者為什麼要把「曾經是內部人」的人也一併納入禁止交易的範圍，而不是只規範「現任」內部人？（提示：如果法律只管現任內部人，內部人只要先辭職就能規避所有交易限制，這樣的規範會有什麼漏洞？）</p>
+    </div>
+  </section>
+
+  <section class="discussion">
+    <h2>其他討論</h2>
+    <ol>
+      <li>比較本案與2020年<a class="src" href="https://plainlaw.me/article/datong" target="_blank" rel="noopener">大同公司經營權之爭</a>，兩案在董事提名爭議上的操作手法有何異同？</li>
+    </ol>
+  </section>
+
+  <p class="note">相關報導亦可參考：<a class="src" href="https://udn.com/news/story/7241/9516489" target="_blank" rel="noopener">聯合新聞網</a>、<a class="src" href="https://udn.com/news/story/7241/9516409" target="_blank" rel="noopener">經濟日報</a>、<a class="src" href="https://today.line.me/tw/v3/article/7N1DnZP" target="_blank" rel="noopener">MoneyDJ理財網</a>；延伸閱讀可參考<a class="src" href="https://vocus.cc/article/6a8ee84bfd89780001353ec0" target="_blank" rel="noopener">〈中工經營權爭奪案〉</a>一文的完整分析。</p>
+
+  <p class="disclaimer">本教材為教學目的整理，內容依公開新聞報導彙整而成，不代表本課程對任一方之立場評價。案例分析僅供課堂討論使用，實際法律爭議應以正式裁判文書及專業法律諮詢為準。</p>
+
+</div>
+
+<script>
+/* ============================================================
+   即時串接 GitHub API：抓取「本篇檔案」自己的更新紀錄
+   - 版次：本檔案自己的 commit 次數
+   - 日期：本檔案最後一次被修改的時間
+   ============================================================ */
+async function loadPageMeta(){
+  const verEl = document.getElementById('pageVerBadge');
+  const dateEl = document.getElementById('pageMetaDate');
+  const REPO = 'mjib007/company-law-cases';
+  const FILE_PATH = '講義/公司法170-192條-中工經營權爭奪案.html';
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(FILE_PATH)}&per_page=100`);
+    if (!res.ok) throw new Error('commits fetch failed');
+    const commits = await res.json();
+
+    verEl.textContent = `v${commits.length}`;
+
+    const lastDate = commits[0]?.commit?.committer?.date;
+    if (lastDate){
+      const d = new Date(lastDate);
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      dateEl.textContent = `最後更新 ${y}-${m}-${day}`;
+    }
+  } catch (err){
+    verEl.textContent = '';
+    dateEl.textContent = '';
+    console.warn('本篇版次資訊載入失敗：', err);
+  }
+}
+loadPageMeta();
+</script>
+
+</body>
+</html>
