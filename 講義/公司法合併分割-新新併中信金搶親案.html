@@ -151,6 +151,17 @@
     .hint-tip{ font-size:.82rem; color:var(--indigo); margin:.4rem 0 0; font-style:italic; }
   .difficulty-badge{ display:inline-block; font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:99px; vertical-align:middle; margin-left:.5rem; }
   .step-badge{ display:inline-block; font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:99px; vertical-align:middle; margin-left:.5rem; background:rgba(44,74,118,0.12); color:var(--indigo); }
+
+  .strategy-note-box{ background:rgba(44,74,118,0.06); border:1px solid rgba(44,74,118,0.22); border-radius:8px; padding:.9rem 1.1rem; margin-bottom:1.3rem; }
+  .strategy-note-title{ font-weight:700; color:var(--indigo); font-size:.86rem; margin:0 0 .4rem; }
+  .strategy-note-text{ font-size:.82rem; color:var(--ink-70); margin:0; line-height:1.7; }
+  .strategy-note-text code{ background:rgba(22,35,59,0.08); padding:.1rem .35rem; border-radius:4px; font-size:.85em; }
+  .strategy-card{ border:1px solid var(--line); border-radius:8px; padding:1rem 1.2rem; margin-bottom:1.2rem; background:var(--paper-panel); }
+  .strategy-card h3{ font-family:"Noto Serif TC",serif; font-size:.92rem; font-weight:700; color:var(--ink); margin:0 0 .5rem; }
+  .strategy-proposals{ list-style:none; margin:.8rem 0 0; padding:0; }
+  .strategy-proposals li{ font-size:.88rem; color:var(--ink-70); border-top:1px solid var(--line); padding:.7rem 0; line-height:1.8; }
+  .strategy-proposals li:first-child{ border-top:none; }
+  .strategy-proposals li.todo-placeholder{ color:var(--todo); font-style:italic; border-top:none; padding:.4rem 0 0; }
   .difficulty-easy{ background:rgba(34,139,34,0.12); color:#1e6b1e; }
   .difficulty-medium{ background:rgba(169,131,47,0.15); color:var(--brass); }
   .difficulty-hard{ background:rgba(156,43,58,0.12); color:var(--seal); }
@@ -314,20 +325,34 @@
   <section>
     <h2>換你當事人 <span class="step-badge">步驟④ 提出你的致勝策略</span></h2>
     <p class="note">前面你已經釐清了事實、法規依據跟關鍵爭點。現在請選一方，假設自己是那一方的決策者，寫出你會怎麼規劃策略。這是你自己的推演，不需要跟實際發生的結果一樣，重點是你的判斷有沒有邏輯依據。完成後可以到下方「老師的分析」對照，看看有什麼異同。</p>
-    <ul class="todo-list" id="strategy-list">
-      <li>如果你是台新金的決策者，面對中信金半路殺出搶親，你會怎麼因應？
-        <span class="todo-tag">【待補充：你的策略規劃】</span>
-        <p class="hint-tip">思考方向：你手上有哪些籌碼可以用（既有的20年談判基礎、股東關係）？你會不會調整換股條件？時間上你有多少餘裕？</p>
-      </li>
-      <li>如果你是新光金原經營層，同時面對合意併購與敵意收購兩個選項，你會怎麼決策、怎麼對外說明？
-        <span class="todo-tag">【待補充：你的策略規劃】</span>
-        <p class="hint-tip">思考方向：你要對誰負責（股東？員工？保戶？）？合意併購與敵意收購對你的經營團隊未來各自代表什麼？</p>
-      </li>
-      <li>如果你是中信金的決策者，在對手已經談定合意合併的情況下，你會用什麼方式切入、爭取最大利益？
-        <span class="todo-tag">【待補充：你的策略規劃】</span>
-        <p class="hint-tip">思考方向：你明知道可能拿不到過半股權，為什麼還要出手？除了「拿下經營權」以外，還有沒有其他你可能想要達成的目標？</p>
-      </li>
-    </ul>
+    <div class="strategy-note-box">
+      <p class="strategy-note-title">💬 這一題歡迎多人各自作答，不用互相覆蓋</p>
+      <p class="strategy-note-text">同一方可以有好幾位同學提出不同的策略觀點。發 PR 時，請直接在對應角色的清單裡<strong>新增一條 `&lt;li&gt;`</strong>，不要修改或刪除別人已經寫好的內容。格式：把你的策略內容加上遮蔽版具名，例如 <code>&lt;li&gt;我會先……（陳○明，******456）&lt;/li&gt;</code>。</p>
+    </div>
+
+    <div class="strategy-card">
+      <h3>如果你是台新金的決策者，面對中信金半路殺出搶親，你會怎麼因應？</h3>
+      <p class="hint-tip">思考方向：你手上有哪些籌碼可以用（既有的20年談判基礎、股東關係）？你會不會調整換股條件？時間上你有多少餘裕？</p>
+      <ul class="strategy-proposals" id="strategy-taishin">
+        <li class="todo-placeholder">【目前還沒有人提案，歡迎成為第一個補完的同學！】</li>
+      </ul>
+    </div>
+
+    <div class="strategy-card">
+      <h3>如果你是新光金原經營層，同時面對合意併購與敵意收購兩個選項，你會怎麼決策、怎麼對外說明？</h3>
+      <p class="hint-tip">思考方向：你要對誰負責（股東？員工？保戶？）？合意併購與敵意收購對你的經營團隊未來各自代表什麼？</p>
+      <ul class="strategy-proposals" id="strategy-shinkong">
+        <li class="todo-placeholder">【目前還沒有人提案，歡迎成為第一個補完的同學！】</li>
+      </ul>
+    </div>
+
+    <div class="strategy-card">
+      <h3>如果你是中信金的決策者，在對手已經談定合意合併的情況下，你會用什麼方式切入、爭取最大利益？</h3>
+      <p class="hint-tip">思考方向：你明知道可能拿不到過半股權，為什麼還要出手？除了「拿下經營權」以外，還有沒有其他你可能想要達成的目標？</p>
+      <ul class="strategy-proposals" id="strategy-ctbc">
+        <li class="todo-placeholder">【目前還沒有人提案，歡迎成為第一個補完的同學！】</li>
+      </ul>
+    </div>
   </section>
 
   <section>
@@ -439,7 +464,24 @@ function updateTimelineProgress(){
 updateTimelineProgress();
 updateProgress('keypoints-list', 'progress-keypoints', 'progress-keypoints-count');
 updateProgress('articles-list', 'progress-articles', 'progress-articles-count');
-updateProgress('strategy-list', 'progress-strategy', 'progress-strategy-count');
+function updateStrategyProgress(){
+  const ids = ['strategy-taishin', 'strategy-shinkong', 'strategy-ctbc'];
+  let totalProposals = 0;
+  let coveredRoles = 0;
+  ids.forEach(id => {
+    const list = document.getElementById(id);
+    if (!list) return;
+    const items = list.querySelectorAll('li:not(.todo-placeholder)');
+    if (items.length > 0) coveredRoles++;
+    totalProposals += items.length;
+  });
+  const pct = Math.round((coveredRoles / ids.length) * 100);
+  const bar = document.getElementById('progress-strategy');
+  const countEl = document.getElementById('progress-strategy-count');
+  if (bar) bar.style.width = pct + '%';
+  if (countEl) countEl.textContent = `${totalProposals} 則・涵蓋${coveredRoles}/3方`;
+}
+updateStrategyProgress();
 </script>
 
 <style>
