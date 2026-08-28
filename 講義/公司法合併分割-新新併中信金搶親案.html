@@ -626,11 +626,11 @@ if (typeof Chart === 'undefined') {
     '<p class="note" style="color:var(--seal);">⚠️ 圖表元件載入失敗（可能是網路或 CDN 問題），請重新整理頁面再試一次。</p>';
 } else {
 new Chart(document.getElementById('priceRevenueChart'), {
-  type: 'line',
   data: {
     labels: priceRevenueLabels,
     datasets: [
       {
+        type: 'line',
         label: '月收盤價（元）',
         data: priceData,
         borderColor: '#2c4a76',
@@ -638,15 +638,17 @@ new Chart(document.getElementById('priceRevenueChart'), {
         yAxisID: 'yPrice',
         tension: 0.15,
         pointRadius: 2,
+        order: 1,
       },
       {
+        type: 'bar',
         label: '單月合併營收（億元）',
         data: revenueData,
+        backgroundColor: 'rgba(156,43,58,0.35)',
         borderColor: '#9c2b3a',
-        backgroundColor: 'rgba(156,43,58,0.08)',
+        borderWidth: 1,
         yAxisID: 'yRevenue',
-        tension: 0.15,
-        pointRadius: 2,
+        order: 2,
       }
     ]
   },
