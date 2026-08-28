@@ -536,11 +536,11 @@ updateStrategyProgress();
   .tour-btn-next{ background:var(--indigo); color:#fff; }
   .tour-btn-skip{ background:transparent; color:var(--ink-45); }
   .tour-replay-link{ display:inline-block; font-size:.78rem; color:var(--ink-45); text-decoration:underline; cursor:pointer; margin-bottom:1rem; }
-  .anchor-nav{ display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:1px solid var(--line); }
+  .anchor-nav{ position:sticky; top:0; z-index:100; display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem; padding:.8rem 0 1rem; background:var(--parchment); border-bottom:1px solid var(--line); }
   .anchor-nav a{ font-size:.78rem; color:var(--indigo); background:rgba(44,74,118,0.08); border-radius:99px; padding:.35rem .8rem; text-decoration:none; white-space:nowrap; }
   .anchor-nav a:hover{ background:rgba(44,74,118,0.18); }
   html{ scroll-behavior:smooth; }
-  section{ scroll-margin-top:1rem; }
+  section{ scroll-margin-top:4.2rem; }
   .chart-wrap{ position:relative; height:340px; margin:1rem 0; }
   @media (max-width: 480px){ .chart-wrap{ height:280px; } }
 </style>
