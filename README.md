@@ -58,7 +58,7 @@ company-law-cases/
 
 這個 repo 的內容（章節分類、講義格式、版次與計數器、GitHub 推送流程）是透過與 Claude 對話、搭配一份自訂的 [`SKILL.md`](./SKILL.md) 規則產生的。這套方法**不限於公司法**，其他科目（民法、刑法、行政法等）都可以套用同一套架構。
 
-📖 這套設計不是憑空想像，背後參考了案例教學法、GitHub 協作教學工具、AI 輔助評分等國際實證研究，整理在 [`教學方法參考頁面`](./teaching-methods-reference.html)，附上每個方法的原始出處連結，建議評估是否採用前先看一下。
+📖 這套設計不是憑空想像，背後參考了案例教學法、GitHub 協作教學工具、AI 輔助評分等國際實證研究，整理在[總覽頁的「教學方法參考」分頁籤](https://mjib007.github.io/company-law-cases/#methods)，附上每個方法的原始出處連結，建議評估是否採用前先看一下。
 
 ### 使用方法：Claude Skills 版（推薦 Claude.ai 用戶使用）
 
