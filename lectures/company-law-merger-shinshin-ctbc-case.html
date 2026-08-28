@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新新併與中信金搶親案——合意併購與非合意公開收購的競合 | company-law-cases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --ink: #16233b;
+    --indigo: #2c4a76;
+    --parchment: #f3ede0;
+    --paper-panel: #fffdf8;
+    --seal: #9c2b3a;
+    --brass: #a9832f;
+    --line: #ddd3bf;
+    --ink-70: rgba(22,35,59,0.7);
+    --ink-45: rgba(22,35,59,0.45);
+    --todo: #6b7280;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Noto Sans TC",sans-serif;
+    background:var(--parchment);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.8;
+  }
+  strong { font-weight: 700; color: var(--ink); }
+  .wrap{ max-width:760px; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+  .back{ display:inline-block; font-size:.85rem; color:var(--indigo); text-decoration:none; margin-bottom:1.5rem; }
+  .back:hover{ color:var(--seal); }
+  .eyebrow{ font-size:.74rem; letter-spacing:.2em; color:var(--brass); font-weight:700; margin-bottom:.8rem; }
+  h1{ font-family:"Noto Serif TC",serif; font-weight:900; font-size:1.7rem; line-height:1.4; margin:0 0 .6rem; }
+  .meta-bar{ display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem; font-size:.8rem; }
+  .tag{ background:var(--paper-panel); border:1px solid var(--line); color:var(--brass); padding:.2rem .7rem; border-radius:999px; }
+  .author-badge{ background:rgba(44,74,118,0.12); color:var(--indigo); padding:.2rem .7rem; border-radius:999px; font-weight:700; }
+  .page-meta{ display:flex; align-items:center; gap:10px; margin-bottom:1.8rem; font-size:.78rem; flex-wrap:wrap; }
+  .page-meta .ver-badge{ font-family:"Noto Serif TC",serif; font-weight:700; color:var(--seal); border:1px solid var(--seal); border-radius:20px; padding:2px 10px; }
+  .page-meta .meta-date{ color:var(--ink-45); }
+  .framework-banner{
+    background:rgba(155,43,58,0.07);
+    border:1px solid rgba(156,43,58,0.3);
+    border-radius:8px;
+    padding:.9rem 1.2rem;
+    margin-bottom:1.5rem;
+    font-size:.85rem;
+    color:var(--seal);
+  }
+  section{ background:var(--paper-panel); border:1px solid var(--line); border-radius:10px; padding:1.4rem 1.6rem; margin-bottom:1.3rem; }
+  h2{ font-family:"Noto Serif TC",serif; font-size:1.05rem; font-weight:700; color:var(--ink); margin:0 0 .8rem; padding-bottom:.5rem; border-bottom:1px solid var(--line); }
+  h3{ font-family:"Noto Serif TC",serif; font-size:.95rem; font-weight:700; color:var(--indigo); margin:1.1rem 0 .5rem; }
+  h3:first-of-type{ margin-top:0; }
+  p{ font-size:.95rem; color:var(--ink-70); margin:0 0 1rem; }
+  p:last-child{ margin-bottom:0; }
+  a.src{ color:var(--indigo); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; font-weight:500; }
+  a.src:hover{ color:var(--seal); text-decoration-color:var(--seal); }
+  a.law{ color:var(--brass); font-weight:700; text-decoration:none; border-bottom:1px dashed var(--brass); }
+  a.law:hover{ color:var(--seal); border-bottom-color:var(--seal); }
+  .timeline{ list-style:none; margin:0; padding:0; }
+  .timeline li{ display:flex; gap:1rem; margin-bottom:1rem; align-items:baseline; }
+  .timeline .date{ flex:0 0 auto; font-weight:700; color:var(--seal); font-size:.85rem; white-space:nowrap; }
+  .timeline .desc{ font-size:.92rem; color:var(--ink-70); margin:0; }
+  .qa{ margin-bottom:1.1rem; }
+  .qa .q{ font-weight:700; margin-bottom:.3rem; font-size:.95rem; }
+  .qa .a{ font-size:.92rem; color:var(--ink-70); margin:0; }
+  .discussion ol{ padding-left:1.3rem; font-size:.92rem; color:var(--ink-70); margin:0; }
+  .discussion li{ margin-bottom:1rem; }
+  .discussion li .hint{ display:block; font-size:.85rem; color:var(--ink-45); margin-top:.3rem; }
+  .think-box{ background:rgba(44,74,118,0.06); border:1px solid rgba(44,74,118,0.22); border-radius:8px; padding:1rem 1.2rem; margin:1rem 0; }
+  .think-title{ font-weight:700; color:var(--indigo); font-size:.92rem; margin:0 0 .6rem; }
+  .think-text{ font-size:.9rem; color:var(--ink-70); margin:0; line-height:1.8; }
+  .todo-desc{
+    font-size:.9rem;
+    color:var(--todo);
+    margin:0;
+    font-style:italic;
+    border:1px dashed var(--line);
+    border-radius:6px;
+    padding:.5rem .8rem;
+    background:rgba(107,114,128,0.05);
+  }
+  .todo-list{ list-style:none; margin:0; padding:0; }
+  .todo-list li{
+    font-size:.92rem;
+    color:var(--ink);
+    margin-bottom:.8rem;
+    padding:.6rem .9rem;
+    border:1px dashed var(--line);
+    border-radius:6px;
+    background:rgba(107,114,128,0.05);
+  }
+  .todo-list li .todo-tag{
+    display:inline-block;
+    font-size:.72rem;
+    color:var(--todo);
+    font-style:italic;
+    margin-left:.5rem;
+  }
+  .todo-list li .desc{ font-size:.92rem; color:var(--ink-70); line-height:1.75; margin:.5rem 0 0; }
+  .note{ font-size:.8rem; color:var(--ink-45); }
+  .disclaimer{ font-size:.78rem; color:var(--ink-45); font-style:italic; border-left:3px solid var(--line); padding-left:.8rem; margin-top:2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">← 回總覽頁</a>
+
+  <div class="eyebrow">案例研究 Case Study</div>
+  <h1>新新併與中信金搶親案——合意併購與非合意公開收購的競合</h1>
+  <div class="meta-bar">
+    <span class="tag">第十一節 解散、合併及分割（§315）</span>
+    <span class="tag">金融控股公司法（§36、§37）</span>
+    <span class="tag">證券交易法（§43-1以下）</span>
+  </div>
+  <div class="page-meta">
+    <span class="author-badge">教師框架</span>
+    <span class="ver-badge" id="pageVerBadge">v…</span>
+    <span class="meta-date" id="pageMetaDate">載入中…</span>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.company-law-cases.新新併中信金搶親案" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
+  </div>
+
+  <span class="tour-replay-link" onclick="startTour()">🔄 重新看一次新手導覽</span>
+
+  <div class="framework-banner" id="tour-banner">
+    🚧 本篇為教師建立之教材框架：「案例來源」「案情關係圖」「課堂討論方向」已完整撰寫；學生要動手的部分依序是「①事件時間軸」「②對應條文」「③關鍵點」「④換你當事人（提出你自己的策略）」，這個順序刻意設計成「先事實、再法規、再爭點、最後策略應用」的思考流程。「老師的雙方戰略思考」放在最後，建議完成④之後再看，避免先偷看答案。補完時請依循本 repo 自我驗證規則（條號、pcode、日期、連結逐一查證），並參考已完成的「中工經營權爭奪案」講義格式。
+  </div>
+
+  <div class="steps-box" id="tour-steps">
+    <p class="steps-title">📋 補完步驟建議</p>
+    <ol class="steps-list">
+      <li>找新聞來源：針對該則骨架的日期或標題，搜尋當天／該事件的原始新聞報導</li>
+      <li>核對事件內容：確認新聞描述的日期、金額、比例等細節與骨架標記一致</li>
+      <li>查證條文：到<a class="src" href="https://law.moj.gov.tw/" target="_blank" rel="noopener">全國法規資料庫</a>核對條號與 pcode，不要沿用其他法規查過的印象</li>
+      <li>逐條連結：範圍條號「§X至§Y」要每一條個別配對連結，不可只連頭尾兩條</li>
+      <li>標註具名：完成的段落文字後面加上遮蔽版 <code>（姓名，學號）</code>，姓名只留頭尾兩字、中間用○，學號只留末三碼、其餘用*（本 repo 為公開頁面，請勿寫完整真實姓名學號），例如「中信金於2024年8月23日宣布公開收購新光金。（陳○明，******456）」</li>
+      <li>發送 Pull Request，並在 PR 描述簡述你補完了哪一段</li>
+    </ol>
+  </div>
+
+  <style>
+    .steps-box{ background:rgba(169,131,47,0.08); border:1px solid rgba(169,131,47,0.3); border-radius:8px; padding:1rem 1.3rem; margin-bottom:1.5rem; }
+    .steps-title{ font-weight:700; color:var(--brass); font-size:.9rem; margin:0 0 .6rem; }
+    .steps-list{ margin:0; padding-left:1.2rem; font-size:.88rem; color:var(--ink-70); }
+    .steps-list li{ margin-bottom:.4rem; }
+    .steps-list code{ background:rgba(22,35,59,0.08); padding:.1rem .4rem; border-radius:4px; font-size:.85em; }
+    .hint-tip{ font-size:.82rem; color:var(--indigo); margin:.4rem 0 0; font-style:italic; }
+  .difficulty-badge{ display:inline-block; font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:99px; vertical-align:middle; margin-left:.5rem; }
+  .step-badge{ display:inline-block; font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:99px; vertical-align:middle; margin-left:.5rem; background:rgba(44,74,118,0.12); color:var(--indigo); }
+
+  .strategy-note-box{ background:rgba(44,74,118,0.06); border:1px solid rgba(44,74,118,0.22); border-radius:8px; padding:.9rem 1.1rem; margin-bottom:1.3rem; }
+  .strategy-note-title{ font-weight:700; color:var(--indigo); font-size:.86rem; margin:0 0 .4rem; }
+  .strategy-note-text{ font-size:.82rem; color:var(--ink-70); margin:0; line-height:1.7; }
+  .strategy-note-text code{ background:rgba(22,35,59,0.08); padding:.1rem .35rem; border-radius:4px; font-size:.85em; }
+  .strategy-card{ border:1px solid var(--line); border-radius:8px; padding:1rem 1.2rem; margin-bottom:1.2rem; background:var(--paper-panel); }
+  .strategy-card h3{ font-family:"Noto Serif TC",serif; font-size:.92rem; font-weight:700; color:var(--ink); margin:0 0 .5rem; }
+  .strategy-proposals{ list-style:none; margin:.8rem 0 0; padding:0; }
+  .strategy-proposals li{ font-size:.88rem; color:var(--ink-70); border-top:1px solid var(--line); padding:.7rem 0; line-height:1.8; }
+  .strategy-proposals li:first-child{ border-top:none; }
+  .strategy-proposals li.todo-placeholder{ color:var(--todo); font-style:italic; border-top:none; padding:.4rem 0 0; }
+  .difficulty-easy{ background:rgba(34,139,34,0.12); color:#1e6b1e; }
+  .difficulty-medium{ background:rgba(169,131,47,0.15); color:var(--brass); }
+  .difficulty-hard{ background:rgba(156,43,58,0.12); color:var(--seal); }
+
+  .triangle-diagram{ position:relative; width:100%; max-width:400px; aspect-ratio:1/0.85; margin:1.2rem auto; }
+  .triangle-svg{ position:absolute; top:0; left:0; width:100%; height:100%; }
+  .triangle-box{ position:absolute; transform:translate(-50%,-50%); width:9rem; text-align:center; border-radius:10px; padding:.7rem .5rem; border:2px solid var(--line); background:var(--paper-panel); z-index:2; }
+  .triangle-box-top{ top:10%; left:50%; border-color:var(--brass); box-shadow:0 0 0 3px rgba(169,131,47,0.15); }
+  .triangle-box-left{ top:88%; left:14%; border-color:var(--indigo); width:8rem; }
+  .triangle-box-right{ top:88%; left:86%; border-color:var(--seal); width:9rem; }
+  .relation-name{ font-family:"Noto Serif TC",serif; font-weight:700; font-size:.88rem; color:var(--ink); margin-bottom:.2rem; }
+  .relation-role{ font-size:.68rem; color:var(--ink-45); }
+  .triangle-label{ position:absolute; font-size:.66rem; color:var(--ink-45); text-align:center; line-height:1.4; background:var(--parchment); padding:0 .3rem; z-index:1; }
+  .triangle-label-left{ top:48%; left:22%; transform:translate(-50%,-50%); color:var(--indigo); }
+  .triangle-label-right{ top:48%; left:78%; transform:translate(-50%,-50%); color:var(--seal); }
+  .triangle-label-bottom{ top:94%; left:50%; transform:translate(-50%,-50%); }
+  @media (max-width: 420px){
+    .triangle-box{ width:6.6rem; padding:.5rem .3rem; }
+    .triangle-box-left{ width:6rem; }
+    .triangle-box-right{ width:6.6rem; }
+    .relation-name{ font-size:.76rem; }
+    .relation-role{ font-size:.6rem; }
+    .triangle-label{ font-size:.58rem; }
+  }
+    .progress-box{ background:var(--paper-panel); border:1px solid var(--line); border-radius:8px; padding:1rem 1.3rem; margin-bottom:1.5rem; }
+    .progress-title{ font-weight:700; color:var(--ink); font-size:.9rem; margin:0 0 .7rem; }
+    .progress-row{ display:flex; justify-content:space-between; align-items:center; font-size:.85rem; color:var(--ink-70); margin-bottom:.5rem; }
+    .progress-row:last-child{ margin-bottom:0; }
+    .progress-bar-track{ flex:1; height:8px; background:rgba(22,35,59,0.08); border-radius:99px; margin:0 .8rem; overflow:hidden; }
+    .progress-bar-fill{ display:block; width:0%; height:100%; background:var(--brass); border-radius:99px; transition:width .3s; }
+    .progress-count{ font-weight:700; color:var(--ink); white-space:nowrap; font-size:.82rem; }
+  </style>
+
+  <div class="progress-box" id="tour-progress">
+    <p class="progress-title">📊 目前補完進度（自動統計，重新整理頁面即可看到最新狀態）</p>
+    <div class="progress-row">
+      <span style="width:5.5em;">①時間軸</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-timeline"></span></span>
+      <span class="progress-count" id="progress-timeline-count">-</span>
+    </div>
+    <div class="progress-row">
+      <span style="width:5.5em;">②條文</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-articles"></span></span>
+      <span class="progress-count" id="progress-articles-count">-</span>
+    </div>
+    <div class="progress-row">
+      <span style="width:5.5em;">③關鍵點</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-keypoints"></span></span>
+      <span class="progress-count" id="progress-keypoints-count">-</span>
+    </div>
+    <div class="progress-row">
+      <span style="width:5.5em;">④你的策略</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-strategy"></span></span>
+      <span class="progress-count" id="progress-strategy-count">-</span>
+    </div>
+  </div>
+
+  <section>
+    <h2>案例來源</h2>
+    <p><a class="src" href="https://tw.stock.yahoo.com/quote/2887.TW/profile" target="_blank" rel="noopener">台新金控</a>（2887）與新光金控（2888，已於2025年7月24日下市，詳見<a class="src" href="https://zh.wikipedia.org/zh-tw/%E5%8F%B0%E6%96%B0%E6%96%B0%E5%85%89%E9%87%91%E8%9E%8D%E6%8E%A7%E8%82%A1" target="_blank" rel="noopener">維基百科條目</a>）之合併談判歷時約20年，<a class="src" href="https://tw.stock.yahoo.com/news/%E3%80%8C%E6%96%B0%E6%96%B0%E4%BD%B5%E3%80%8D%E6%88%90%E7%9C%9F%EF%BC%81%E5%8F%B0%E6%96%B0%E9%87%91%E5%AD%98%E7%BA%8C%E5%B0%87%E6%9B%B4%E5%90%8D%E3%80%8C%E5%8F%B0%E6%96%B0%E6%96%B0%E5%85%89%E9%87%91%E6%8E%A7%E3%80%8D-121434495.html" target="_blank" rel="noopener">2024年8月22日晚間雙方董事會終於通過以「換股方式」進行合意合併</a>，新光金股東可換發台新金股份。然而隔日，<a class="src" href="https://tw.stock.yahoo.com/quote/2891.TW/profile" target="_blank" rel="noopener">中國信託金控</a>（2891）無預警召開臨時董事會，<a class="src" href="https://www.cna.com.tw/news/afe/202408230340.aspx" target="_blank" rel="noopener">宣布改以「公開收購」方式取得新光金10%至51%股權</a>，企圖阻斷這場合意併購，形成市場俗稱「金控三角戀」的局面。這起事件同時涉及公司法合併程序、金融控股公司法轉投資核准機制、證券交易法公開收購規範三個層次，且新聞資訊完整、時間軸明確，適合作為觀察「合意併購」與「非合意（敵意）公開收購」兩種經營權變動路徑如何競合、又如何受到主管機關把關的案例。<a class="src" href="https://www.bnext.com.tw/article/82938/taishinbank-skbank-merge" target="_blank" rel="noopener">此案最終於2025年7月24日以合意換股合併方式完成</a>，新光金下市，合併後存續公司更名為「台新新光金融控股股份有限公司」。</p>
+  </section>
+
+  <section>
+    <h2>案情關係圖</h2>
+    <p class="note">看文字之前，先看這張圖，理解三方各自在做什麼動作——這是一個三角關係：新光金是被追求的一方，台新金與中信金分別用不同手段爭取。</p>
+
+    <div class="triangle-diagram">
+      <svg class="triangle-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow-indigo" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#2c4a76" />
+          </marker>
+          <marker id="arrow-seal" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#9c2b3a" />
+          </marker>
+        </defs>
+        <line x1="20" y1="82" x2="47" y2="20" stroke="#2c4a76" stroke-width="1.2" marker-end="url(#arrow-indigo)" />
+        <line x1="80" y1="82" x2="53" y2="20" stroke="#9c2b3a" stroke-width="1.2" marker-end="url(#arrow-seal)" />
+        <line x1="24" y1="86" x2="76" y2="86" stroke="#a9832f" stroke-width="1" stroke-dasharray="3,2" />
+      </svg>
+
+      <div class="triangle-box triangle-box-top">
+        <div class="relation-name">新光金控</div>
+        <div class="relation-role">被追求方</div>
+      </div>
+      <div class="triangle-box triangle-box-left">
+        <div class="relation-name">台新金控</div>
+        <div class="relation-role">合意併購發起方</div>
+      </div>
+      <div class="triangle-box triangle-box-right">
+        <div class="relation-name">中國信託金控</div>
+        <div class="relation-role">非合意（敵意）收購方</div>
+      </div>
+
+      <div class="triangle-label triangle-label-left">2024/08/22<br>合意換股合併</div>
+      <div class="triangle-label triangle-label-right">2024/08/23<br>公開收購10%~51%</div>
+      <div class="triangle-label triangle-label-bottom">競爭／搶親關係</div>
+    </div>
+
+    <p class="note" style="margin-top:1rem;">看懂這張圖之後再往下讀「雙方戰略思考」，會比較容易理解每一方在盤算什麼。</p>
+  </section>
+
+  <section>
+    <h2>延伸圖表：台新（新光）金月股價與營收對照（2887）</h2>
+    <p class="note">以下是台新金（合併後為台新新光金，股票代號皆為 2887）2023/08~2026/07 的月收盤價與單月合併營收對照。合併基準日（2025/07/24）以垂直虛線標示。</p>
+
+    <div class="chart-wrap">
+      <canvas id="priceRevenueChart"></canvas>
+    </div>
+
+    <div class="think-box" style="margin-top:1rem;">
+      <p class="think-title">📌 讀圖時要注意的兩個時間差</p>
+      <p class="think-text">
+        1. <strong>月營收公布有時間落差</strong>：上市公司月營收依規定於次月10日前公布，例如「2025年7月營收」是在2025年8月才對外公告。市場對這筆營收的反應（若有）通常出現在公布後的那個月，而不是營收所屬的那個月，讀圖時不要誤以為股價變化跟「當月」營收是同步因果關係。<br>
+        2. <strong>合併效應是逐步發酵，不是消息面單日反應</strong>：從圖上可以看到，2025/07/24 合併生效當月，股價其實沒有明顯跳升；真正的大幅上漲要到將近一年後（2026年上半年）才出現。合理的解讀是：合併帶來的營收成長是逐月累積、逐步反映在基本面上的效果，而不是靠「合併」這則消息本身讓股價一次到位；同時期整體金融股的補漲行情（Fed啟動降息循環、資金輪動）也疊加在這段期間，讓漲勢更明顯。
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>事件時間軸 <span class="step-badge">步驟① 釐清事實</span></h2>
+    <p class="note">以下僅列出關鍵日期骨架，具體事件描述、查證來源與新聞連結請同學查證後以 PR 補上（可參考中工案時間軸的行文與引註方式）。補完格式範例：<br><em>「2024年8月22日晚間，台新金與新光金董事會分別通過換股合意合併案。（陳○明，******456）」</em>——句末務必加上遮蔽版姓名學號（本頁為公開頁面，請勿寫完整真實姓名學號）。</p>
+    <ul class="timeline" id="timeline-list">
+      <li><span class="date">2024/08/22</span><p class="todo-desc" id="tour-example">【待補充：台新金與新光金董事會通過換股合意合併之經過與內容】</p></li>
+      <li><span class="date">2024/08/23</span><p class="todo-desc">【待補充：中信金宣布公開收購新光金之經過與收購條件】</p></li>
+      <li><span class="date">2024/08/26</span><p class="todo-desc">【待補充：中信金遞件金管會申請投資新光金之經過】</p></li>
+      <li><span class="date">2024/08/27–28</span><p class="todo-desc">【待補充：台新金、中信金雙方法說會的攻防表態】</p></li>
+      <li><span class="date">2024/09/11</span><p class="todo-desc">【待補充：台新金、新光金調整換股架構、納入特別股之經過】</p></li>
+      <li><span class="date">2024/09/16</span><p class="todo-desc">【待補充：金管會宣布緩議中信金收購申請之四大理由】</p></li>
+      <li><span class="date">2024/10/09</span><p class="todo-desc">【待補充：新光金、台新金股東臨時會決議換股合併之經過】</p></li>
+      <li><span class="date">2025/03/31</span><p class="todo-desc">【待補充：金管會核准台新金與新光金換股合併案】</p></li>
+      <li><span class="date">2025/06/23–07/24</span><p class="todo-desc">【待補充：合併基準日確定、新光金下市、台新新光金控正式成立之經過】</p></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>對應條文 <span class="step-badge">步驟② 確認法規依據</span></h2>
+    <p class="note">以下僅列出待查證的法規範圍，具體條號、逐條連結與 pcode 請同學查證後補上（務必留意本 repo 曾發生 pcode 用錯、條號範圍未逐條連結的錯誤，補完時請逐一核對）。</p>
+    <div class="think-box">
+      <p class="think-title">🔍 查證小提醒</p>
+      <p class="think-text">
+        <strong>什麼是 pcode？</strong>全國法規資料庫的每一部法規網址裡都有一段代碼（例如公司法是 J0080001），這段代碼就叫 pcode，用來標示「這個網址連到的是哪一部法規」。代碼跟法規之間沒有規律可循，猜錯就會連到完全不相干的法規，所以每次換一部新法規都要重新到網站上查證，不能沿用其他法規的代碼去套。<br><br>
+        1. 到<a class="src" href="https://law.moj.gov.tw/" target="_blank" rel="noopener">全國法規資料庫</a>搜尋法規全文，複製當次查到的正確 pcode，不要沿用之前查過其他法規的印象或格式去猜。<br>
+        2. 若引用「§X至§Y」這種範圍條號，請逐一列出範圍內每一條，並個別配對連結，不可只連結頭尾兩條。<br>
+        3. 若涉及法律論斷（例如某條文的適用範圍或修法目的），請查證立法院修法理由或主管機關函釋，不可只憑條文字面印象斷言。
+      </p>
+    </div>
+    <p class="hint-tip">補完格式參考（示範句型，非本案內容）：<br><em>「股東會之召集程序或決議方法，違反法令或章程者，股東得自決議之日起三十日內，訴請法院撤銷其決議（<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=189" target="_blank" rel="noopener">公司法§189</a>）。」</em>——條號要連結到查證過的正確頁面，不要只寫條號數字。</p>
+    <ul class="todo-list" id="articles-list">
+      <li>公司法：股份有限公司合併及分割相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
+      <li>金融控股公司法：轉投資核准程序 <span class="todo-tag">【待補充條號與連結】</span></li>
+      <li>證券交易法：公開收購相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>關鍵點 <span class="step-badge">步驟③ 找出爭點</span></h2>
+    <p class="note">以下僅列出關鍵點標題，具體論述與法律依據（含查證過的條文或修法理由）請同學以 PR 補完。補完格式參考（示範句型，非本案內容）：<br><em>「◯◯制度指……，公司法§XXX明定其……範圍。」</em>——先講清楚這個概念是什麼、再帶出對應法條，而不是只丟結論。</p>
+    <ul class="todo-list" id="keypoints-list">
+      <li>合意併購與非合意（敵意）公開收購的法律定性與程序差異
+        <span class="todo-tag"></span>
+        <p class="desc">合意併購是由雙方公司董事會先協商合併條件，作成合併契約後提交股東會特別決議通過；非合意（敵意）公開收購則是收購方跳過對方董事會，直接向個別股東公開喊價收購股份，不需要對方公司內部同意。本案中，台新金與新光金走的是前者，中信金走的是後者，兩條路徑在核准機關、決策主體、時程安排上都不相同。（測○○學，******000）</p>
+      </li>
+      <li>換股合併對價與公司法發行新股規定的關聯
+        <span class="todo-tag">【待補充論述】</span>
+        <p class="hint-tip">思考方向：換股合併中，存續公司要發行新股給消滅公司股東，這跟一般發行新股的股東權益保障規定有何異同？</p>
+      </li>
+      <li>金融控股公司法轉投資核准機制與公開收購／股東臨時會的時程競合
+        <span class="todo-tag">【待補充論述】</span>
+        <p class="hint-tip">思考方向：金管會的核准期限（15或30個營業日）跟公開收購、股東臨時會召集的時程，誰快誰慢？這對收購方的策略有什麼影響？<br><br>
+        還要考慮更關鍵的一個時間點——<strong>停止過戶</strong>：依<a class="law" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=165" target="_blank" rel="noopener">公司法§165第3項</a>，公開發行股票之公司於股東臨時會開會前30日內不得辦理股東名簿變更（過戶）。新光金與台新金的股東臨時會訂在2024年10月9日，往前推30日，<strong>停止過戶起始日為2024年9月10日</strong>——也就是說，就算中信金後來真的拿到金管會核准，只要股份過戶登記的時間點晚於9月10日，這批股份在10月9日的股東會上依然不算數、沒有投票權。這比「金管會核准期限誰快誰慢」還要更精確：真正的關鍵時間點是「能不能在9月10日之前完成過戶」，不是「能不能在10月9日之前拿到核准」。</p>
+      </li>
+      <li>以股票作為公開收購對價的爭議與主管機關政策取向
+        <span class="todo-tag">【待補充論述】</span>
+        <p class="hint-tip">思考方向：現金對價跟股票對價，對應賣股東而言最大的差異是什麼？金管會為何偏好現金收購？</p>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>換你當事人 <span class="step-badge">步驟④ 提出你的致勝策略</span></h2>
+    <p class="note">前面你已經釐清了事實、法規依據跟關鍵爭點。現在請選一方，假設自己是那一方的決策者，寫出你會怎麼規劃策略。這是你自己的推演，不需要跟實際發生的結果一樣，重點是你的判斷有沒有邏輯依據。完成後可以到下方「老師的分析」對照，看看有什麼異同。</p>
+    <div class="strategy-note-box">
+      <p class="strategy-note-title">💬 這一題歡迎多人各自作答，不用互相覆蓋</p>
+      <p class="strategy-note-text">同一方可以有好幾位同學提出不同的策略觀點。發 PR 時，請直接在對應角色的清單裡<strong>新增一條 `&lt;li&gt;`</strong>，不要修改或刪除別人已經寫好的內容。格式：把你的策略內容加上遮蔽版具名，例如 <code>&lt;li&gt;我會先……（陳○明，******456）&lt;/li&gt;</code>。</p>
+    </div>
+
+    <div class="strategy-card">
+      <h3>如果你是台新金的決策者，面對中信金半路殺出搶親，你會怎麼因應？</h3>
+      <p class="hint-tip">思考方向：你手上有哪些籌碼可以用（既有的20年談判基礎、股東關係）？你會不會調整換股條件？時間上你有多少餘裕？</p>
+      <ul class="strategy-proposals" id="strategy-taishin">
+        <li class="todo-placeholder">【目前還沒有人提案，歡迎成為第一個補完的同學！】</li>
+      </ul>
+    </div>
+
+    <div class="strategy-card">
+      <h3>如果你是新光金原經營層，同時面對合意併購與敵意收購兩個選項，你會怎麼決策、怎麼對外說明？</h3>
+      <p class="hint-tip">思考方向：你要對誰負責（股東？員工？保戶？）？合意併購與敵意收購對你的經營團隊未來各自代表什麼？</p>
+      <ul class="strategy-proposals" id="strategy-shinkong">
+        <li class="todo-placeholder">【目前還沒有人提案，歡迎成為第一個補完的同學！】</li>
+      </ul>
+    </div>
+
+    <div class="strategy-card">
+      <h3>如果你是中信金的決策者，在對手已經談定合意合併的情況下，你會用什麼方式切入、爭取最大利益？</h3>
+      <p class="hint-tip">思考方向：你明知道可能拿不到過半股權，為什麼還要出手？除了「拿下經營權」以外，還有沒有其他你可能想要達成的目標？</p>
+      <ul class="strategy-proposals" id="strategy-ctbc">
+        <li class="todo-placeholder">【目前還沒有人提案，歡迎成為第一個補完的同學！】</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>老師的分析：雙方戰略思考（對照用，建議完成步驟④後再看）</h2>
+    <p class="note">這是老師整理的實際戰略分析，建議你先完成上面「換你當事人」的練習，再回來對照，看看你的判斷跟實際發生的策略有什麼異同。</p>
+
+    <h3>中信金控的算盤</h3>
+    <p>中信金控是國內資產規模數一數二的金控集團，但版圖中相對缺乏規模夠大、體質穩定的壽險子公司。以「公開收購」而非參與董事會協商的方式切入，讓中信金可以繞過新光金經營層與台新金已經談定的合意合併架構，直接向新光金全體股東喊價。收購區間設定為10%至51%，即使無法一舉取得過半股權，仍能取得可觀持股作為長期布局的灘頭堡；一旦收購比例夠高，甚至可能在股東會層次影響或阻斷新新併的換股合併案，形成「進可攻、退可守」的態勢。</p>
+
+    <h3>台新金控的算盤</h3>
+    <p>台新金與新光金的合意合併談了近20年，如果換股比例不夠吸引人，隨時可能在最後一哩路（股東臨時會表決）被中信金的更高出價截胡。面對中信金搶親，台新金與新光金於2024年9月11日緊急召開臨時董事會，調整換股架構、加入特別股設計，提高整體對價的吸引力，藉此鞏固新光金股東在股東臨時會上的支持，避免合意合併案功虧一簣。</p>
+
+    <h3>新光金控（原經營層）的算盤</h3>
+    <p>面對台新金與中信金兩個追求者，新光金原經營層已與台新金談妥合意換股合併，因此將中信金的行動定調為「非合意（敵意）併購」，並在法說會上公開呼籲金管會審慎把關收購程序的合法性。新光金經營層強調的是企業文化整合、長期經營穩定與員工／保戶權益，而非單純以股東短期利益極大化作為唯一考量——這也是合意併購與敵意收購在論述策略上的典型差異。</p>
+  </section>
+
+  <section class="discussion">
+    <h2>課堂討論方向</h2>
+    <ol>
+      <li>「合意併購」與「非合意（敵意）公開收購」在公司法與證券交易法上，分別對應什麼樣的決策程序？
+        <span class="hint">這題在問：換股合併走的是股東會特別決議路線，公開收購走的是個別股東應賣路線，兩者的決策主體、核准機關與時程完全不同。容易誤解成「經營權變動都是同一種法律程序」，法律重點在於辨識這兩條路徑為何能夠彼此競速、互搶時間。</span>
+      </li>
+      <li>中信金以「部分股票、部分現金」作為公開收購對價，為何金管會將此列為緩議理由之一？
+        <span class="hint">這題在問：現金對價金額固定，股票對價的價值會隨市場股價波動，導致應賣股東在決定是否應賣時無法確知實際能拿到的價值。容易誤解成「用股票付錢也是給錢，有什麼問題」，重點其實在於對價不確定對股東保護、市場秩序造成的疑慮，以及主管機關對公開收購對價方式的政策取向。</span>
+      </li>
+      <li>中信金在未確保取得新光金過半股權的情況下即啟動公開收購，可能衍生什麼樣的公司治理風險？
+        <span class="hint">這題在問：公開收購的最低成就門檻與實際控制力之間的落差。容易誤解成「收購成立（達到最低比例）就等於拿到經營權」，事實上未達過半或未達控制性持股的收購，反而可能製造多方大股東並存、經營權更混亂的局面。</span>
+      </li>
+      <li>台新金與新光金在中信金搶親後緊急調整換股架構、加入特別股，這樣的操作在公司法合併程序上是否需要重新踐行相關程序（如重新召集董事會、通知股東等）？
+        <span class="hint">這題在問：合併契約重大內容變更後的程序義務。容易誤解成「反正是同一件合併案，調整條件應該不用重來」，重點在於合併契約內容的實質變更，涉及股東能否在充分資訊下決定是否行使異議股份收買請求權，程序上不能便宜行事。</span>
+      </li>
+      <li>本案最終以合意併購收場，而非敵意收購得逞。你認為公司治理制度設計上，合意併購的股東會決議是否應優先於敵意公開收購？兩種收購路徑各自保障了什麼樣的股東利益？
+        <span class="hint">這是開放性題目，引導學生思考制度設計的價值取捨：合意併購（股東會多數決）保障的是集體決策的民主正當性；敵意公開收購保障的是個別股東用腳投票、把股份賣給出價最高者的自由選擇權。沒有標準答案，重點是論述兩種制度邏輯的優劣。</span>
+      </li>
+    </ol>
+  </section>
+
+  <p class="disclaimer">本教材為教學目的整理，內容依公開新聞報導彙整而成，不代表本課程對任一方之立場評價。「事件時間軸」「關鍵點」「對應條文」為待補完之框架，正式引用前請以查證後的官方來源及正式新聞報導為準。案例分析僅供課堂討論使用。</p>
+
+</div>
+
+<script>
+async function loadPageMeta(){
+  const verEl = document.getElementById('pageVerBadge');
+  const dateEl = document.getElementById('pageMetaDate');
+  const REPO = 'mjib007/company-law-cases';
+  const FILE_PATH = '講義/公司法合併分割-新新併中信金搶親案.html';
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(FILE_PATH)}&per_page=100`);
+    if (!res.ok) throw new Error('commits fetch failed');
+    const commits = await res.json();
+
+    verEl.textContent = `v${commits.length}`;
+
+    const lastDate = commits[0]?.commit?.committer?.date;
+    if (lastDate){
+      const d = new Date(lastDate);
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      dateEl.textContent = `最後更新 ${y}-${m}-${day}`;
+    }
+  } catch (err){
+    verEl.textContent = '';
+    dateEl.textContent = '';
+    console.warn('本篇版次資訊載入失敗：', err);
+  }
+}
+loadPageMeta();
+
+function updateProgress(listId, barId, countId){
+  const list = document.getElementById(listId);
+  if (!list) return;
+  const items = list.querySelectorAll('li');
+  const total = items.length;
+  let done = 0;
+  items.forEach(li => {
+    const tag = li.querySelector('.todo-tag');
+    // 待補充的項目：todo-tag 裡還有文字（例如【待補充論述】）
+    // 已完成的項目：todo-tag 是空的，或整個 li 找不到 todo-tag（時間軸用 todo-desc/desc 判斷）
+    const descEl = li.querySelector('.todo-desc');
+    const isPending = (tag && tag.textContent.trim().length > 0) || !!descEl;
+    if (!isPending) done++;
+  });
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const bar = document.getElementById(barId);
+  const countEl = document.getElementById(countId);
+  if (bar) bar.style.width = pct + '%';
+  if (countEl) countEl.textContent = `${done} / ${total}`;
+}
+
+function updateTimelineProgress(){
+  const list = document.getElementById('timeline-list');
+  if (!list) return;
+  const items = list.querySelectorAll('li');
+  const total = items.length;
+  let done = 0;
+  items.forEach(li => {
+    if (li.querySelector('p.desc') && !li.querySelector('p.todo-desc')) done++;
+  });
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const bar = document.getElementById('progress-timeline');
+  const countEl = document.getElementById('progress-timeline-count');
+  if (bar) bar.style.width = pct + '%';
+  if (countEl) countEl.textContent = `${done} / ${total}`;
+}
+
+updateTimelineProgress();
+updateProgress('keypoints-list', 'progress-keypoints', 'progress-keypoints-count');
+updateProgress('articles-list', 'progress-articles', 'progress-articles-count');
+function updateStrategyProgress(){
+  const ids = ['strategy-taishin', 'strategy-shinkong', 'strategy-ctbc'];
+  let totalProposals = 0;
+  let coveredRoles = 0;
+  ids.forEach(id => {
+    const list = document.getElementById(id);
+    if (!list) return;
+    const items = list.querySelectorAll('li:not(.todo-placeholder)');
+    if (items.length > 0) coveredRoles++;
+    totalProposals += items.length;
+  });
+  const pct = Math.round((coveredRoles / ids.length) * 100);
+  const bar = document.getElementById('progress-strategy');
+  const countEl = document.getElementById('progress-strategy-count');
+  if (bar) bar.style.width = pct + '%';
+  if (countEl) countEl.textContent = `${totalProposals} 則・涵蓋${coveredRoles}/3方`;
+}
+updateStrategyProgress();
+</script>
+
+<style>
+  .tour-overlay-spot{
+    position:fixed; z-index:9998; pointer-events:none;
+    border-radius:10px;
+    box-shadow:0 0 0 9999px rgba(22,35,59,0.72);
+    transition:all .3s ease;
+  }
+  .tour-tooltip{
+    position:fixed; z-index:9999; max-width:min(340px, 88vw);
+    background:var(--paper-panel); border:1px solid var(--line); border-radius:10px;
+    padding:1rem 1.2rem; box-shadow:0 8px 24px rgba(22,35,59,0.25);
+    transition:all .3s ease;
+  }
+  .tour-step-badge{ display:inline-block; background:var(--seal); color:#fff; font-weight:700; font-size:.72rem; border-radius:99px; padding:.15rem .6rem; margin-bottom:.5rem; }
+  .tour-tooltip-text{ font-size:.88rem; color:var(--ink-70); line-height:1.7; margin:0 0 .9rem; }
+  .tour-tooltip-actions{ display:flex; justify-content:space-between; align-items:center; }
+  .tour-btn{ font-size:.82rem; border:none; border-radius:6px; padding:.4rem .9rem; cursor:pointer; font-weight:700; }
+  .tour-btn-next{ background:var(--indigo); color:#fff; }
+  .tour-btn-skip{ background:transparent; color:var(--ink-45); }
+  .tour-replay-link{ display:inline-block; font-size:.78rem; color:var(--ink-45); text-decoration:underline; cursor:pointer; margin-bottom:1rem; }
+  .chart-wrap{ position:relative; height:340px; margin:1rem 0; }
+  @media (max-width: 480px){ .chart-wrap{ height:280px; } }
+</style>
+
+<div id="tour-spot" class="tour-overlay-spot" style="display:none;"></div>
+<div id="tour-tooltip" class="tour-tooltip" style="display:none;">
+  <span class="tour-step-badge" id="tour-step-badge"></span>
+  <p class="tour-tooltip-text" id="tour-step-text"></p>
+  <div class="tour-tooltip-actions">
+    <button class="tour-btn tour-btn-skip" onclick="endTour()">跳過導覽</button>
+    <button class="tour-btn tour-btn-next" id="tour-next-btn" onclick="nextTourStep()">下一步</button>
+  </div>
+</div>
+
+<script>
+const TOUR_STEPS = [
+  { id: 'tour-banner', text: '這篇是老師建立的教材框架。「案例來源」「雙方戰略思考」「課堂討論方向」已經寫好了，「事件時間軸」「關鍵點」「對應條文」還有部分留白，等你來補完。' },
+  { id: 'tour-progress', text: '這裡會即時統計目前補完進度，四個步驟各自完成幾格、還剩幾格，重新整理頁面就會更新。' },
+  { id: 'tour-steps', text: '照這六個步驟走：找來源 → 核對內容 → 查證條文 → 逐條連結 → 標註具名（記得用遮蔽版！）→ 發送 Pull Request。' },
+  { id: 'tour-example', text: '像這樣標示「【待補充：...】」的地方，就是等你動手的位置。點進去查證後，把這段文字換成你查到的內容。' },
+];
+let tourIndex = 0;
+const TOUR_KEY = 'company_law_shinshin_tour_seen';
+
+function positionTour(){
+  const step = TOUR_STEPS[tourIndex];
+  const target = document.getElementById(step.id);
+  const spot = document.getElementById('tour-spot');
+  const tooltip = document.getElementById('tour-tooltip');
+  if (!target) { nextTourStep(); return; }
+
+  target.scrollIntoView({ behavior:'smooth', block:'center' });
+
+  clearTimeout(window._tourPositionTimer);
+  window._tourPositionTimer = setTimeout(() => renderTourAt(target, step), 600);
+}
+
+function renderTourAt(target, step){
+  const spot = document.getElementById('tour-spot');
+  const tooltip = document.getElementById('tour-tooltip');
+  const rect = target.getBoundingClientRect();
+  const pad = 8;
+  spot.style.top = (rect.top - pad) + 'px';
+  spot.style.left = (rect.left - pad) + 'px';
+  spot.style.width = (rect.width + pad*2) + 'px';
+  spot.style.height = (rect.height + pad*2) + 'px';
+  spot.style.display = 'block';
+
+  const tooltipWidth = Math.min(340, window.innerWidth * 0.88);
+  let tooltipTop = rect.bottom + 16;
+  if (tooltipTop + 180 > window.innerHeight) {
+    tooltipTop = Math.max(16, rect.top - 196);
+  }
+  tooltip.style.top = tooltipTop + 'px';
+  tooltip.style.left = Math.max(12, Math.min(rect.left, window.innerWidth - tooltipWidth - 12)) + 'px';
+  tooltip.style.display = 'block';
+
+  document.getElementById('tour-step-badge').textContent = `第 ${tourIndex + 1} / ${TOUR_STEPS.length} 步`;
+  document.getElementById('tour-step-text').textContent = step.text;
+  document.getElementById('tour-next-btn').textContent = (tourIndex === TOUR_STEPS.length - 1) ? '開始補完' : '下一步';
+}
+
+window.addEventListener('resize', () => {
+  const tooltip = document.getElementById('tour-tooltip');
+  if (tooltip && tooltip.style.display === 'block') {
+    const step = TOUR_STEPS[tourIndex];
+    const target = document.getElementById(step.id);
+    if (target) renderTourAt(target, step);
+  }
+});
+
+function nextTourStep(){
+  tourIndex++;
+  if (tourIndex >= TOUR_STEPS.length) { endTour(); return; }
+  positionTour();
+}
+
+function endTour(){
+  document.getElementById('tour-spot').style.display = 'none';
+  document.getElementById('tour-tooltip').style.display = 'none';
+  localStorage.setItem(TOUR_KEY, '1');
+}
+
+function startTour(){
+  tourIndex = 0;
+  positionTour();
+}
+
+if (!localStorage.getItem(TOUR_KEY)) {
+  window.addEventListener('load', () => setTimeout(startTour, 500));
+}
+</script>
+
+<script>
+const priceRevenueLabels = ["2023/08","2023/09","2023/10","2023/11","2023/12","2024/01","2024/02","2024/03","2024/04","2024/05","2024/06","2024/07","2024/08","2024/09","2024/10","2024/11","2024/12","2025/01","2025/02","2025/03","2025/04","2025/05","2025/06","2025/07","2025/08","2025/09","2025/10","2025/11","2025/12","2026/01","2026/02","2026/03","2026/04","2026/05","2026/06","2026/07"];
+const priceData   = [17.80,17.90,17.25,18.30,18.10,17.15,17.40,18.00,17.95,18.40,18.85,20.30,18.50,18.40,17.10,17.10,17.40,17.45,17.40,17.20,16.70,17.15,15.75,16.35,16.25,18.00,18.70,18.05,20.40,22.70,25.60,23.15,23.80,23.35,33.25,35.95];
+const revenueData = [63.99,34.15,52.54,61.79,53.15,82.63,67.31,64.21,66.50,67.44,79.996,75.45,88.25,71.10,65.75,71.48,67.57,86.25,85.28,77.12,73.33,68.13,59.44,100.72,157.07,239.48,176.65,205.29,222.66,187.73,162.84,129.38,172.21,148.43,177.37,180.52];
+const mergerIndex = priceRevenueLabels.indexOf("2025/07"); // 合併基準日 2025/07/24 所在月份
+
+if (typeof Chart === 'undefined') {
+  document.getElementById('priceRevenueChart').parentElement.innerHTML =
+    '<p class="note" style="color:var(--seal);">⚠️ 圖表元件載入失敗（可能是網路或 CDN 問題），請重新整理頁面再試一次。</p>';
+} else {
+new Chart(document.getElementById('priceRevenueChart'), {
+  data: {
+    labels: priceRevenueLabels,
+    datasets: [
+      {
+        type: 'line',
+        label: '月收盤價（元）',
+        data: priceData,
+        borderColor: '#2c4a76',
+        backgroundColor: 'rgba(44,74,118,0.08)',
+        yAxisID: 'yPrice',
+        tension: 0.15,
+        pointRadius: 2,
+        order: 1,
+      },
+      {
+        type: 'bar',
+        label: '單月合併營收（億元）',
+        data: revenueData,
+        backgroundColor: 'rgba(156,43,58,0.35)',
+        borderColor: '#9c2b3a',
+        borderWidth: 1,
+        yAxisID: 'yRevenue',
+        order: 2,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'top', labels: { font: { family: "'Noto Sans TC', sans-serif" }, boxWidth: 14 } },
+      tooltip: { titleFont: { family: "'Noto Sans TC', sans-serif" }, bodyFont: { family: "'Noto Sans TC', sans-serif" } },
+    },
+    scales: {
+      x: {
+        ticks: { font: { family: "'Noto Sans TC', sans-serif", size: 10 }, maxRotation: 60, minRotation: 60 },
+      },
+      yPrice: {
+        type: 'linear', position: 'left',
+        title: { display: true, text: '收盤價（元）', font: { family: "'Noto Sans TC', sans-serif" } },
+        ticks: { font: { family: "'Noto Sans TC', sans-serif" } },
+      },
+      yRevenue: {
+        type: 'linear', position: 'right',
+        title: { display: true, text: '單月營收（億元）', font: { family: "'Noto Sans TC', sans-serif" } },
+        ticks: { font: { family: "'Noto Sans TC', sans-serif" } },
+        grid: { drawOnChartArea: false },
+      }
+    }
+  },
+  plugins: [{
+    id: 'mergerLine',
+    afterDraw: (chart) => {
+      if (mergerIndex < 0) return;
+      const xScale = chart.scales.x;
+      const x = xScale.getPixelForValue(mergerIndex);
+      const ctx = chart.ctx;
+      const top = chart.chartArea.top;
+      const bottom = chart.chartArea.bottom;
+      ctx.save();
+      ctx.beginPath();
+      ctx.setLineDash([5, 4]);
+      ctx.moveTo(x, top);
+      ctx.lineTo(x, bottom);
+      ctx.strokeStyle = '#a9832f';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#a9832f';
+      ctx.font = "11px 'Noto Sans TC', sans-serif";
+      ctx.fillText('合併基準日 2025/07/24', x + 4, top + 12);
+      ctx.restore();
+    }
+  }]
+});
+}
+</script>
+
+</body>
+</html>
