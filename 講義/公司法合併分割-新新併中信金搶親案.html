@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <style>
   :root{
     --ink: #16233b;
@@ -621,6 +621,10 @@ const priceData   = [17.80,17.90,17.25,18.30,18.10,17.15,17.40,18.00,17.95,18.40
 const revenueData = [63.99,34.15,52.54,61.79,53.15,82.63,67.31,64.21,66.50,67.44,79.996,75.45,88.25,71.10,65.75,71.48,67.57,86.25,85.28,77.12,73.33,68.13,59.44,100.72,157.07,239.48,176.65,205.29,222.66,187.73,162.84,129.38,172.21,148.43,177.37,180.52];
 const mergerIndex = priceRevenueLabels.indexOf("2025/07"); // 合併基準日 2025/07/24 所在月份
 
+if (typeof Chart === 'undefined') {
+  document.getElementById('priceRevenueChart').parentElement.innerHTML =
+    '<p class="note" style="color:var(--seal);">⚠️ 圖表元件載入失敗（可能是網路或 CDN 問題），請重新整理頁面再試一次。</p>';
+} else {
 new Chart(document.getElementById('priceRevenueChart'), {
   type: 'line',
   data: {
@@ -696,6 +700,7 @@ new Chart(document.getElementById('priceRevenueChart'), {
     }
   }]
 });
+}
 </script>
 
 </body>
