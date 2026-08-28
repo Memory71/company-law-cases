@@ -127,7 +127,7 @@
   <span class="tour-replay-link" onclick="startTour()">🔄 重新看一次新手導覽</span>
 
   <div class="framework-banner" id="tour-banner">
-    🚧 本篇為教師建立之教材框架：「案例來源」「雙方戰略思考」「課堂討論方向」已完整撰寫；「事件時間軸」「關鍵點」「對應條文」僅列骨架標題，內容開放同學以 Pull Request 查證後補完。補完時請依循本 repo 自我驗證規則（條號、pcode、日期、連結逐一查證），並參考已完成的「中工經營權爭奪案」講義格式。
+    🚧 本篇為教師建立之教材框架：「案例來源」「案情關係圖」「課堂討論方向」已完整撰寫；學生要動手的部分依序是「①事件時間軸」「②對應條文」「③關鍵點」「④換你當事人（提出你自己的策略）」，這個順序刻意設計成「先事實、再法規、再爭點、最後策略應用」的思考流程。「老師的雙方戰略思考」放在最後，建議完成④之後再看，避免先偷看答案。補完時請依循本 repo 自我驗證規則（條號、pcode、日期、連結逐一查證），並參考已完成的「中工經營權爭奪案」講義格式。
   </div>
 
   <div class="steps-box" id="tour-steps">
@@ -150,6 +150,7 @@
     .steps-list code{ background:rgba(22,35,59,0.08); padding:.1rem .4rem; border-radius:4px; font-size:.85em; }
     .hint-tip{ font-size:.82rem; color:var(--indigo); margin:.4rem 0 0; font-style:italic; }
   .difficulty-badge{ display:inline-block; font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:99px; vertical-align:middle; margin-left:.5rem; }
+  .step-badge{ display:inline-block; font-size:.68rem; font-weight:700; padding:.15rem .55rem; border-radius:99px; vertical-align:middle; margin-left:.5rem; background:rgba(44,74,118,0.12); color:var(--indigo); }
   .difficulty-easy{ background:rgba(34,139,34,0.12); color:#1e6b1e; }
   .difficulty-medium{ background:rgba(169,131,47,0.15); color:var(--brass); }
   .difficulty-hard{ background:rgba(156,43,58,0.12); color:var(--seal); }
@@ -186,19 +187,24 @@
   <div class="progress-box" id="tour-progress">
     <p class="progress-title">📊 目前補完進度（自動統計，重新整理頁面即可看到最新狀態）</p>
     <div class="progress-row">
-      <span style="width:5.5em;">事件時間軸</span>
+      <span style="width:5.5em;">①時間軸</span>
       <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-timeline"></span></span>
       <span class="progress-count" id="progress-timeline-count">-</span>
     </div>
     <div class="progress-row">
-      <span style="width:5.5em;">關鍵點</span>
+      <span style="width:5.5em;">②條文</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-articles"></span></span>
+      <span class="progress-count" id="progress-articles-count">-</span>
+    </div>
+    <div class="progress-row">
+      <span style="width:5.5em;">③關鍵點</span>
       <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-keypoints"></span></span>
       <span class="progress-count" id="progress-keypoints-count">-</span>
     </div>
     <div class="progress-row">
-      <span style="width:5.5em;">對應條文</span>
-      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-articles"></span></span>
-      <span class="progress-count" id="progress-articles-count">-</span>
+      <span style="width:5.5em;">④你的策略</span>
+      <span class="progress-bar-track"><span class="progress-bar-fill" id="progress-strategy"></span></span>
+      <span class="progress-count" id="progress-strategy-count">-</span>
     </div>
   </div>
 
@@ -248,20 +254,7 @@
   </section>
 
   <section>
-    <h2>雙方戰略思考</h2>
-
-    <h3>中信金控的算盤</h3>
-    <p>中信金控是國內資產規模數一數二的金控集團，但版圖中相對缺乏規模夠大、體質穩定的壽險子公司。以「公開收購」而非參與董事會協商的方式切入，讓中信金可以繞過新光金經營層與台新金已經談定的合意合併架構，直接向新光金全體股東喊價。收購區間設定為10%至51%，即使無法一舉取得過半股權，仍能取得可觀持股作為長期布局的灘頭堡；一旦收購比例夠高，甚至可能在股東會層次影響或阻斷新新併的換股合併案，形成「進可攻、退可守」的態勢。</p>
-
-    <h3>台新金控的算盤</h3>
-    <p>台新金與新光金的合意合併談了近20年，如果換股比例不夠吸引人，隨時可能在最後一哩路（股東臨時會表決）被中信金的更高出價截胡。面對中信金搶親，台新金與新光金於2024年9月11日緊急召開臨時董事會，調整換股架構、加入特別股設計，提高整體對價的吸引力，藉此鞏固新光金股東在股東臨時會上的支持，避免合意合併案功虧一簣。</p>
-
-    <h3>新光金控（原經營層）的算盤</h3>
-    <p>面對台新金與中信金兩個追求者，新光金原經營層已與台新金談妥合意換股合併，因此將中信金的行動定調為「非合意（敵意）併購」，並在法說會上公開呼籲金管會審慎把關收購程序的合法性。新光金經營層強調的是企業文化整合、長期經營穩定與員工／保戶權益，而非單純以股東短期利益極大化作為唯一考量——這也是合意併購與敵意收購在論述策略上的典型差異。</p>
-  </section>
-
-  <section>
-    <h2>事件時間軸 <span class="difficulty-badge difficulty-easy">🟢 建議先做</span></h2>
+    <h2>事件時間軸 <span class="step-badge">步驟① 釐清事實</span></h2>
     <p class="note">以下僅列出關鍵日期骨架，具體事件描述、查證來源與新聞連結請同學查證後以 PR 補上（可參考中工案時間軸的行文與引註方式）。補完格式範例：<br><em>「2024年8月22日晚間，台新金與新光金董事會分別通過換股合意合併案。（陳○明，******456）」</em>——句末務必加上遮蔽版姓名學號（本頁為公開頁面，請勿寫完整真實姓名學號）。</p>
     <ul class="timeline" id="timeline-list">
       <li><span class="date">2024/08/22</span><p class="todo-desc" id="tour-example">【待補充：台新金與新光金董事會通過換股合意合併之經過與內容】</p></li>
@@ -277,7 +270,26 @@
   </section>
 
   <section>
-    <h2>關鍵點 <span class="difficulty-badge difficulty-hard">🔴 進階（需法律論述）</span></h2>
+    <h2>對應條文 <span class="step-badge">步驟② 確認法規依據</span></h2>
+    <p class="note">以下僅列出待查證的法規範圍，具體條號、逐條連結與 pcode 請同學查證後補上（務必留意本 repo 曾發生 pcode 用錯、條號範圍未逐條連結的錯誤，補完時請逐一核對）。</p>
+    <div class="think-box">
+      <p class="think-title">🔍 查證小提醒</p>
+      <p class="think-text">
+        1. 到<a class="src" href="https://law.moj.gov.tw/" target="_blank" rel="noopener">全國法規資料庫</a>搜尋法規全文，複製當次查到的正確 pcode，不要沿用之前查過其他法規的印象或格式去猜。<br>
+        2. 若引用「§X至§Y」這種範圍條號，請逐一列出範圍內每一條，並個別配對連結，不可只連結頭尾兩條。<br>
+        3. 若涉及法律論斷（例如某條文的適用範圍或修法目的），請查證立法院修法理由或主管機關函釋，不可只憑條文字面印象斷言。
+      </p>
+    </div>
+    <p class="hint-tip">補完格式參考（示範句型，非本案內容）：<br><em>「股東會之召集程序或決議方法，違反法令或章程者，股東得自決議之日起三十日內，訴請法院撤銷其決議（<a class="law" href="#" target="_blank" rel="noopener">公司法§189</a>）。」</em>——條號要連結到查證過的正確頁面，不要只寫條號數字。</p>
+    <ul class="todo-list" id="articles-list">
+      <li>公司法：股份有限公司合併及分割相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
+      <li>金融控股公司法：轉投資核准程序 <span class="todo-tag">【待補充條號與連結】</span></li>
+      <li>證券交易法：公開收購相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>關鍵點 <span class="step-badge">步驟③ 找出爭點</span></h2>
     <p class="note">以下僅列出關鍵點標題，具體論述與法律依據（含查證過的條文或修法理由）請同學以 PR 補完。補完格式參考（示範句型，非本案內容）：<br><em>「◯◯制度指……，公司法§XXX明定其……範圍。」</em>——先講清楚這個概念是什麼、再帶出對應法條，而不是只丟結論。</p>
     <ul class="todo-list" id="keypoints-list">
       <li>合意併購與非合意（敵意）公開收購的法律定性與程序差異
@@ -300,22 +312,36 @@
   </section>
 
   <section>
-    <h2>對應條文 <span class="difficulty-badge difficulty-easy">🟢 查詢型，適合入手</span></h2>
-    <p class="note">以下僅列出待查證的法規範圍，具體條號、逐條連結與 pcode 請同學查證後補上（務必留意本 repo 曾發生 pcode 用錯、條號範圍未逐條連結的錯誤，補完時請逐一核對）。</p>
-    <div class="think-box">
-      <p class="think-title">🔍 查證小提醒</p>
-      <p class="think-text">
-        1. 到<a class="src" href="https://law.moj.gov.tw/" target="_blank" rel="noopener">全國法規資料庫</a>搜尋法規全文，複製當次查到的正確 pcode，不要沿用之前查過其他法規的印象或格式去猜。<br>
-        2. 若引用「§X至§Y」這種範圍條號，請逐一列出範圍內每一條，並個別配對連結，不可只連結頭尾兩條。<br>
-        3. 若涉及法律論斷（例如某條文的適用範圍或修法目的），請查證立法院修法理由或主管機關函釋，不可只憑條文字面印象斷言。
-      </p>
-    </div>
-    <p class="hint-tip">補完格式參考（示範句型，非本案內容）：<br><em>「股東會之召集程序或決議方法，違反法令或章程者，股東得自決議之日起三十日內，訴請法院撤銷其決議（<a class="law" href="#" target="_blank" rel="noopener">公司法§189</a>）。」</em>——條號要連結到查證過的正確頁面，不要只寫條號數字。</p>
-    <ul class="todo-list" id="articles-list">
-      <li>公司法：股份有限公司合併及分割相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
-      <li>金融控股公司法：轉投資核准程序 <span class="todo-tag">【待補充條號與連結】</span></li>
-      <li>證券交易法：公開收購相關規定 <span class="todo-tag">【待補充條號與連結】</span></li>
+    <h2>換你當事人 <span class="step-badge">步驟④ 提出你的致勝策略</span></h2>
+    <p class="note">前面你已經釐清了事實、法規依據跟關鍵爭點。現在請選一方，假設自己是那一方的決策者，寫出你會怎麼規劃策略。這是你自己的推演，不需要跟實際發生的結果一樣，重點是你的判斷有沒有邏輯依據。完成後可以到下方「老師的分析」對照，看看有什麼異同。</p>
+    <ul class="todo-list" id="strategy-list">
+      <li>如果你是台新金的決策者，面對中信金半路殺出搶親，你會怎麼因應？
+        <span class="todo-tag">【待補充：你的策略規劃】</span>
+        <p class="hint-tip">思考方向：你手上有哪些籌碼可以用（既有的20年談判基礎、股東關係）？你會不會調整換股條件？時間上你有多少餘裕？</p>
+      </li>
+      <li>如果你是新光金原經營層，同時面對合意併購與敵意收購兩個選項，你會怎麼決策、怎麼對外說明？
+        <span class="todo-tag">【待補充：你的策略規劃】</span>
+        <p class="hint-tip">思考方向：你要對誰負責（股東？員工？保戶？）？合意併購與敵意收購對你的經營團隊未來各自代表什麼？</p>
+      </li>
+      <li>如果你是中信金的決策者，在對手已經談定合意合併的情況下，你會用什麼方式切入、爭取最大利益？
+        <span class="todo-tag">【待補充：你的策略規劃】</span>
+        <p class="hint-tip">思考方向：你明知道可能拿不到過半股權，為什麼還要出手？除了「拿下經營權」以外，還有沒有其他你可能想要達成的目標？</p>
+      </li>
     </ul>
+  </section>
+
+  <section>
+    <h2>老師的分析：雙方戰略思考（對照用，建議完成步驟④後再看）</h2>
+    <p class="note">這是老師整理的實際戰略分析，建議你先完成上面「換你當事人」的練習，再回來對照，看看你的判斷跟實際發生的策略有什麼異同。</p>
+
+    <h3>中信金控的算盤</h3>
+    <p>中信金控是國內資產規模數一數二的金控集團，但版圖中相對缺乏規模夠大、體質穩定的壽險子公司。以「公開收購」而非參與董事會協商的方式切入，讓中信金可以繞過新光金經營層與台新金已經談定的合意合併架構，直接向新光金全體股東喊價。收購區間設定為10%至51%，即使無法一舉取得過半股權，仍能取得可觀持股作為長期布局的灘頭堡；一旦收購比例夠高，甚至可能在股東會層次影響或阻斷新新併的換股合併案，形成「進可攻、退可守」的態勢。</p>
+
+    <h3>台新金控的算盤</h3>
+    <p>台新金與新光金的合意合併談了近20年，如果換股比例不夠吸引人，隨時可能在最後一哩路（股東臨時會表決）被中信金的更高出價截胡。面對中信金搶親，台新金與新光金於2024年9月11日緊急召開臨時董事會，調整換股架構、加入特別股設計，提高整體對價的吸引力，藉此鞏固新光金股東在股東臨時會上的支持，避免合意合併案功虧一簣。</p>
+
+    <h3>新光金控（原經營層）的算盤</h3>
+    <p>面對台新金與中信金兩個追求者，新光金原經營層已與台新金談妥合意換股合併，因此將中信金的行動定調為「非合意（敵意）併購」，並在法說會上公開呼籲金管會審慎把關收購程序的合法性。新光金經營層強調的是企業文化整合、長期經營穩定與員工／保戶權益，而非單純以股東短期利益極大化作為唯一考量——這也是合意併購與敵意收購在論述策略上的典型差異。</p>
   </section>
 
   <section class="discussion">
@@ -413,6 +439,7 @@ function updateTimelineProgress(){
 updateTimelineProgress();
 updateProgress('keypoints-list', 'progress-keypoints', 'progress-keypoints-count');
 updateProgress('articles-list', 'progress-articles', 'progress-articles-count');
+updateProgress('strategy-list', 'progress-strategy', 'progress-strategy-count');
 </script>
 
 <style>
@@ -450,7 +477,7 @@ updateProgress('articles-list', 'progress-articles', 'progress-articles-count');
 <script>
 const TOUR_STEPS = [
   { id: 'tour-banner', text: '這篇是老師建立的教材框架。「案例來源」「雙方戰略思考」「課堂討論方向」已經寫好了，「事件時間軸」「關鍵點」「對應條文」還有部分留白，等你來補完。' },
-  { id: 'tour-progress', text: '這裡會即時統計目前補完進度，三個區塊各自完成幾格、還剩幾格，重新整理頁面就會更新。' },
+  { id: 'tour-progress', text: '這裡會即時統計目前補完進度，四個步驟各自完成幾格、還剩幾格，重新整理頁面就會更新。' },
   { id: 'tour-steps', text: '照這六個步驟走：找來源 → 核對內容 → 查證條文 → 逐條連結 → 標註具名（記得用遮蔽版！）→ 發送 Pull Request。' },
   { id: 'tour-example', text: '像這樣標示「【待補充：...】」的地方，就是等你動手的位置。點進去查證後，把這段文字換成你查到的內容。' },
 ];
