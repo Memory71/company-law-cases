@@ -739,8 +739,8 @@ window.addEventListener('load', adjustScrollMargin);
 window.addEventListener('resize', adjustScrollMargin);
 
 function setupActiveNavTracking(){
-  const navLinks = document.querySelectorAll('.anchor-nav a');
-  const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href')));
+  const navLinks = Array.from(document.querySelectorAll('.anchor-nav a'));
+  const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
   function setActive(id){
     navLinks.forEach(a => {
@@ -748,21 +748,33 @@ function setupActiveNavTracking(){
     });
   }
 
-  const nav = document.querySelector('.anchor-nav');
-  const navHeight = nav ? nav.offsetHeight : 60;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setActive(entry.target.id);
+  function updateActive(){
+    const nav = document.querySelector('.anchor-nav');
+    const offset = (nav ? nav.offsetHeight : 60) + 20;
+    let currentId = sections[0] ? sections[0].id : null;
+    sections.forEach(s => {
+      const rect = s.getBoundingClientRect();
+      if (rect.top - offset <= 0) {
+        currentId = s.id;
       }
     });
-  }, {
-    rootMargin: `-${navHeight + 10}px 0px -70% 0px`,
-    threshold: 0
-  });
+    if (currentId) setActive(currentId);
+  }
 
-  sections.forEach(s => { if (s) observer.observe(s); });
+  let ticking = false;
+  function onScroll(){
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActive();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  updateActive();
 }
 
 window.addEventListener('load', setupActiveNavTracking);
