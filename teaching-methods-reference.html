@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教學方法參考：本 repo 設計背後的國際實證依據 | company-law-cases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16233b; --indigo: #2c4a76; --parchment: #f3ede0; --paper-panel: #fffdf8;
+    --seal: #9c2b3a; --brass: #a9832f; --line: #ddd3bf;
+    --ink-70: rgba(22,35,59,0.7); --ink-45: rgba(22,35,59,0.45);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:"Noto Sans TC",sans-serif; background:var(--parchment); color:var(--ink); line-height:1.8; }
+  .wrap{ max-width:760px; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+  .back{ display:inline-block; font-size:.85rem; color:var(--indigo); text-decoration:none; margin-bottom:1.5rem; }
+  .back:hover{ color:var(--seal); }
+  .eyebrow{ font-size:.74rem; letter-spacing:.2em; color:var(--brass); font-weight:700; margin-bottom:.8rem; }
+  h1{ font-family:"Noto Serif TC",serif; font-weight:900; font-size:1.5rem; line-height:1.5; margin:0 0 1rem; }
+  .intro{ font-size:.92rem; color:var(--ink-70); margin-bottom:2rem; }
+  .method-card{ background:var(--paper-panel); border:1px solid var(--line); border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:1.3rem; }
+  .method-name{ font-family:"Noto Serif TC",serif; font-weight:700; font-size:1.05rem; color:var(--ink); margin:0 0 .3rem; }
+  .method-source{ font-size:.78rem; color:var(--brass); margin:0 0 .8rem; }
+  .method-summary{ font-size:.9rem; color:var(--ink-70); margin:0 0 .8rem; }
+  .method-applied{ font-size:.85rem; color:var(--indigo); background:rgba(44,74,118,0.06); border-left:3px solid var(--indigo); padding:.6rem .9rem; margin:0 0 .6rem; border-radius:0 6px 6px 0; }
+  .method-link{ font-size:.82rem; }
+  .method-link a{ color:var(--indigo); word-break:break-all; }
+  .not-adopted{ font-size:.8rem; color:var(--ink-45); font-style:italic; }
+  .disclaimer{ font-size:.78rem; color:var(--ink-45); font-style:italic; border-left:3px solid var(--line); padding-left:.8rem; margin-top:2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="./index.html">← 回總覽頁</a>
+
+  <div class="eyebrow">教學方法參考</div>
+  <h1>這個 repo 的設計依據：國際實證研究與方法</h1>
+
+  <p class="intro">本 repo 的教材編排、PR 提交機制、AI 審查設計，不是憑空想像，而是參考了以下國際上已有實證基礎的方法。整理這頁的目的，是讓有興趣參考這套做法的老師，能同時看到「我們做了什麼」跟「這麼做的依據是什麼」，方便評估是否適合自己的課程。</p>
+
+  <div class="method-card">
+    <p class="method-name">Feedback Pull Requests（GitHub Classroom）</p>
+    <p class="method-source">來源：GitHub Education 官方文件</p>
+    <p class="method-summary">GitHub 為教學情境設計的內建機制：學生接受作業後，系統自動開一個 PR 供老師逐行留言回饋，並內建「GitHub 帳號 ↔ 真實姓名」花名冊對應功能。</p>
+    <p class="method-applied">💡 本 repo 對應：我們的 PR 提交流程是手動搭建的簡化版，若未來要擴大規模，GitHub Classroom 的花名冊功能可以取代目前手動維護對照表的做法。</p>
+    <p class="method-link">🔗 <a href="https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/leave-feedback-with-pull-requests" target="_blank" rel="noopener">docs.github.com（GitHub Classroom 官方文件）</a></p>
+  </div>
+
+  <div class="method-card">
+    <p class="method-name">Git-based 作業提交系統的實測效益</p>
+    <p class="method-source">來源：Improving Assignment Submission in Higher Education through a Git-Enabled System: An Iterative Case Study（2025，arXiv）</p>
+    <p class="method-summary">研究實測比較 Git 版本紀錄批改 vs. 傳統批改，發現利用 commit 歷程批改可節省約 38% 的批改時間，並能透過 commit 時間戳記識別最後一刻趕工的提交、比對版本歷程協助判斷是否為抄襲。</p>
+    <p class="method-applied">💡 本 repo 對應：我們用 PR 的 commit 歷程跟 Actions 排程審查，方向與此研究一致；commit 時間分布這個資料維度目前還沒有利用，是可以擴充的方向。</p>
+    <p class="method-link">🔗 <a href="https://arxiv.org/html/2510.06363" target="_blank" rel="noopener">arxiv.org/html/2510.06363</a></p>
+  </div>
+
+  <div class="method-card">
+    <p class="method-name">Case Method 教學創新的系統性回顧（2000–2024）</p>
+    <p class="method-source">來源：Innovations in the case method of teaching management, 2000–2024: A scoping review（ScienceDirect, 2025）</p>
+    <p class="method-summary">分析 84 篇案例教學創新論文，歸納出五大驅動力：課堂管理困難、傳統教材不足、學生參與度不足、課程設計挑戰、線上教學挑戰。</p>
+    <p class="method-applied">💡 本 repo 對應：解決「傳統教材不足」（改用真實新聞案例而非死板判決書）與「學生參與度不足」（用 PR 互動取代單向繳交）這兩項，是這個 repo 最初的設計動機。</p>
+    <p class="method-link">🔗 <a href="https://www.sciencedirect.com/science/article/pii/S1472811725000205" target="_blank" rel="noopener">sciencedirect.com/science/article/pii/S1472811725000205</a></p>
+  </div>
+
+  <div class="method-card">
+    <p class="method-name">結構化任務提升案例教學學習效果</p>
+    <p class="method-source">來源：The efficacy of the case method in tertiary business education: A scoping review: 2000-2022（ScienceDirect, 2024）</p>
+    <p class="method-summary">回顧研究指出：案例任務的結構化程度越高（給予明確的分析架構與引導），學生在知識掌握、批判思考、課堂參與、團隊合作、決策能力等面向的學習效果越好。</p>
+    <p class="method-applied">💡 本 repo 對應：講義框架裡的「引導提問」「範例句型」「補完步驟建議」「進度統計」，都是把這個結構化原則落實成具體介面設計。</p>
+    <p class="method-link">🔗 <a href="https://www.sciencedirect.com/science/article/pii/S1472811724000545" target="_blank" rel="noopener">sciencedirect.com/science/article/pii/S1472811724000545</a></p>
+  </div>
+
+  <div class="method-card">
+    <p class="method-name">Role-play 作為正式的案例教學類型</p>
+    <p class="method-source">來源：National Center for Case Study Teaching in Science, SUNY-Buffalo（案例類型與教學方法分類）</p>
+    <p class="method-summary">該機構把案例教學的「方法」正式分類為 PBL、辯論、jigsaw 拼圖法、role-play（角色扮演）、公聽會模擬等類型，role-play 是其中被廣泛採用、有教學實績的正式類型之一。</p>
+    <p class="method-applied">💡 本 repo 對應：「換你當事人」這個區塊（要求學生假設自己是案例中某一方的決策者，提出自己的策略），採用的就是 role-play 這個正式教學類型，不是隨意設計的花招。</p>
+    <p class="method-link">🔗 <a href="https://sciencecases.lib.buffalo.edu/cs/" target="_blank" rel="noopener">sciencecases.lib.buffalo.edu</a>（經 <a href="https://ctl.columbia.edu/resources-and-technology/resources/case-method/" target="_blank" rel="noopener">Columbia CTL 案例教學資源頁</a>引用確認）</p>
+  </div>
+
+  <p class="not-adopted">另外查到 TaBLE Case Method（結合課前個人準備與課堂小組討論的五階段案例教學法，2024年發表於澳洲大學的實證研究）也是有實證基礎的方法，但因為不希望在這個 repo 裡加入小組協作的環節，這次沒有採用，僅記錄於此供未來參考。</p>
+
+  <p class="disclaimer">本頁整理的研究依據為 2026 年查證時的公開資料，連結可能隨時間變動；如需引用，建議直接查證原始出處。</p>
+
+</div>
+</body>
+</html>
