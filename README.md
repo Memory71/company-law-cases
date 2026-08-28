@@ -90,7 +90,7 @@ Skill 裡的「GitHub 操作流程」章節會要求你提供 GitHub Personal Ac
 4. **Permissions** 裡把 **Contents** 設成 **Read and write**
 5. **Generate token** 後複製給 Claude
 
-> 若你也想套用「PR 自動審查機制」（見上方章節），除了 Contents，還需要額外把 **Workflows**、**Actions**、**Issues**、**Administration** 都設成 Read and write，並在 repo 的 `Settings → Secrets and variables → Actions` 新增一組名為 `ANTHROPIC_API_KEY` 的 secret（去 [console.anthropic.com](https://console.anthropic.com/settings/keys) 產生），排程才能正常呼叫 Claude API。
+> 若你也想套用「PR 自動審查機制」（見上方章節），除了 Contents，還需要額外把 **Workflows**、**Actions**、**Issues**、**Pull requests**、**Administration** 都設成 Read and write（Pull requests 權限是幫 PR 貼 `ready-for-review` 標籤時需要的，跟單純讀寫 Issues 是分開的權限），並在 repo 的 `Settings → Secrets and variables → Actions` 新增一組名為 `ANTHROPIC_API_KEY` 的 secret（去 [console.anthropic.com](https://console.anthropic.com/settings/keys) 產生），排程才能正常呼叫 Claude API。
 
 **注意事項：**
 - 這組 token 只在**當次對話**中使用，Claude 不會把它存進記憶，換一個新對話時要重新提供
