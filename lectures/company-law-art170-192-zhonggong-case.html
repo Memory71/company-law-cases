@@ -382,7 +382,7 @@ async function loadPageMeta(){
   const verEl = document.getElementById('pageVerBadge');
   const dateEl = document.getElementById('pageMetaDate');
   const REPO = 'mjib007/company-law-cases';
-  const FILE_PATH = '講義/公司法170-192條-中工經營權爭奪案.html';
+  const FILE_PATH = 'lectures/company-law-art170-192-zhonggong-case.html';
 
   try {
     const res = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(FILE_PATH)}&per_page=100`);
