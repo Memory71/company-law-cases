@@ -31,7 +31,7 @@ description: 協助中央大學商事法課程的公司法/證券交易法教學
 
 ## 講義 HTML 固定格式
 
-每篇講義需包含以下區塊，套用中工案例（`講義/公司法170-192條-中工經營權爭奪案.html`）建立的視覺樣式（信封/公文風格，襯線標題字體 Noto Serif TC，內文 Noto Sans TC）：
+每篇講義需包含以下區塊，套用中工案例（`lectures/company-law-art170-192-zhonggong-case.html`）建立的視覺樣式（信封/公文風格，襯線標題字體 Noto Serif TC，內文 Noto Sans TC）：
 
 1. **案例來源**：一段話說明事件背景，公司名稱連到股票資訊頁
 2. **事件時間軸**（或適合問答形式的可用「爭點問答」）：逐條列出日期＋描述，每個關鍵事實附上對應新聞連結
@@ -46,7 +46,7 @@ description: 協助中央大學商事法課程的公司法/證券交易法教學
 
 **引用原則**：來源連結一律用行內超連結，直接連到關鍵名詞、事件、條號本身；不整理成文末清單。
 
-**圖片證據**：使用者提供股價走勢圖、公開資訊觀測站公告截圖等第一手圖片時，上傳到 repo 根目錄的 `圖片/` 資料夾（平面存放，不分子資料夾，檔名要有描述性，例如「中工股價週線圖_2025年10-11月異常波動.png」），並在對應的時間軸項目或爭點底下用 `<img class="evidence-img">` 嵌入，搭配 `<span class="evidence-caption">` 簡短說明圖片內容。**caption 一律要標示資料來源**（例如「；資料來源：雅虎奇摩股市」），格式為「內容說明；資料來源：{來源名稱}」，不確定來源時主動詢問使用者。從 `講義/*.html` 引用圖片的相對路徑為 `../圖片/{檔名}`。若圖片內容超過 5MB 或透過 shell 指令傳輸容易因參數過長而失敗，改用 Python `urllib` 搭配 base64 編碼直接呼叫 Contents API，避免 shell 的參數長度限制。
+**圖片證據**：使用者提供股價走勢圖、公開資訊觀測站公告截圖等第一手圖片時，上傳到 repo 根目錄的 `images/` 資料夾（平面存放，不分子資料夾，檔名要有描述性，例如「中工股價週線圖_2025年10-11月異常波動.png」），並在對應的時間軸項目或爭點底下用 `<img class="evidence-img">` 嵌入，搭配 `<span class="evidence-caption">` 簡短說明圖片內容。**caption 一律要標示資料來源**（例如「；資料來源：雅虎奇摩股市」），格式為「內容說明；資料來源：{來源名稱}」，不確定來源時主動詢問使用者。從 `lectures/*.html` 引用圖片的相對路徑為 `../images/{檔名}`。若圖片內容超過 5MB 或透過 shell 指令傳輸容易因參數過長而失敗，改用 Python `urllib` 搭配 base64 編碼直接呼叫 Contents API，避免 shell 的參數長度限制。
 
 **版次與計數器**（每篇講義獨立設置，與總覽頁分開）：
 - 頁面上方 meta-bar 之後加一個 page-meta 區塊，含：
@@ -56,7 +56,7 @@ description: 協助中央大學商事法課程的公司法/證券交易法教學
   - 訪客計數器：`https://visitor-badge.laobi.icu/badge?page_id=mjib007.company-law-cases.{檔案識別字串}`，page_id 要跟其他頁面區分，不可共用
 - 用 client-side JS（fetch GitHub API）在頁面載入時動態抓取，不要手動寫死數字
 
-參考 `講義/公司法170-192條-中工經營權爭奪案.html` 的完整原始碼作為模板，包含 CSS 與 JS 部分都可以直接沿用。
+參考 `lectures/company-law-art170-192-zhonggong-case.html` 的完整原始碼作為模板，包含 CSS 與 JS 部分都可以直接沿用。
 
 ## 本機 Skill 掛載路徑（重要，避免誤判「無法更新」）
 
@@ -76,7 +76,7 @@ description: 協助中央大學商事法課程的公司法/證券交易法教學
 - 推送需要使用者提供 GitHub fine-grained PAT（Contents 權限 Read and write）；token 只在該次對話使用，不寫入任何檔案、不出現在 commit 內容、不跨對話留存
 - 每次更新 GitHub 檔案後，一律附上連結（GitHub 頁面連結＋GitHub Pages 網頁版連結：`https://mjib007.github.io/company-law-cases/...`）
 - 新增一篇講義的完整流程：
-  1. 檔案放進 `講義/`（平面資料夾，不建子資料夾）
+  1. 檔案放進 `lectures/`（平面資料夾，不建子資料夾）
   2. 在 `index.html` 的 `LECTURES` 陣列新增一筆物件：`{ articles, title, date, chapterKey, file, author }`（author 為 `"teacher"` 或 `"student"`）
   3. 確認 `chapterKey` 對應到 `CHAPTERS`／`TREE` 裡已存在的章節 key（完整清單見下方「章節分類對照」）
   4. 視情況更新 `TODO.md`
