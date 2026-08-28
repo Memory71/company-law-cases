@@ -109,7 +109,6 @@
 <body>
 <div class="wrap">
 
-  <a class="back" href="../index.html">← 回總覽頁</a>
 
   <div class="eyebrow">案例研究 Case Study</div>
   <h1>新新併與中信金搶親案——合意併購與非合意公開收購的競合</h1>
@@ -124,8 +123,6 @@
     <span class="meta-date" id="pageMetaDate">載入中…</span>
     <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.company-law-cases.新新併中信金搶親案" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
-
-  <span class="tour-replay-link" onclick="startTour()">🔄 重新看一次新手導覽</span>
 
   <nav class="anchor-nav">
     <a href="#source">案例來源</a>
@@ -424,6 +421,11 @@
 
   <p class="disclaimer">本教材為教學目的整理，內容依公開新聞報導彙整而成，不代表本課程對任一方之立場評價。「事件時間軸」「關鍵點」「對應條文」為待補完之框架，正式引用前請以查證後的官方來源及正式新聞報導為準。案例分析僅供課堂討論使用。</p>
 
+  <div class="footer-links">
+    <a class="back" href="../index.html">← 回總覽頁</a>
+    <span class="tour-replay-link" onclick="startTour()">🔄 重新看一次新手導覽</span>
+  </div>
+
 </div>
 
 <script>
@@ -537,10 +539,11 @@ updateStrategyProgress();
   .tour-btn-skip{ background:transparent; color:var(--ink-45); }
   .tour-replay-link{ display:inline-block; font-size:.78rem; color:var(--ink-45); text-decoration:underline; cursor:pointer; margin-bottom:1rem; }
   .anchor-nav{ position:sticky; top:0; z-index:100; display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem; padding:.8rem 0 1rem; background:var(--parchment); border-bottom:1px solid var(--line); }
+  .footer-links{ margin-top:2rem; padding-top:1.2rem; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:.6rem; }
   .anchor-nav a{ font-size:.78rem; color:var(--indigo); background:rgba(44,74,118,0.08); border-radius:99px; padding:.35rem .8rem; text-decoration:none; white-space:nowrap; }
   .anchor-nav a:hover{ background:rgba(44,74,118,0.18); }
   html{ scroll-behavior:smooth; }
-  section{ scroll-margin-top:4.2rem; }
+  section{ scroll-margin-top:1rem; }
   .chart-wrap{ position:relative; height:340px; margin:1rem 0; }
   @media (max-width: 480px){ .chart-wrap{ height:280px; } }
 </style>
@@ -722,6 +725,17 @@ new Chart(document.getElementById('priceRevenueChart'), {
   }]
 });
 }
+
+function adjustScrollMargin(){
+  const nav = document.querySelector('.anchor-nav');
+  if (!nav) return;
+  const h = nav.offsetHeight + 16; // 額外留一點緩衝空間
+  document.querySelectorAll('section').forEach(s => {
+    s.style.scrollMarginTop = h + 'px';
+  });
+}
+window.addEventListener('load', adjustScrollMargin);
+window.addEventListener('resize', adjustScrollMargin);
 </script>
 
 </body>
