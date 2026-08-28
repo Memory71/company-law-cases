@@ -11,7 +11,7 @@
 ## 這個 repo 是什麼
 
 - **章節骨架**：依《圖解公司法》目錄建立對應分類（見 `index.html` 中的 `CHAPTERS`），涵蓋公司法第一章至第九章
-- **內容**：教師筆記與學生提交案例統一放在 `講義/` 資料夾（平面結構，不分子資料夾），透過 `index.html` 的分類標籤關聯到對應章節
+- **內容**：教師筆記與學生提交案例統一放在 `lectures/` 資料夾（平面結構，不分子資料夾），透過 `index.html` 的分類標籤關聯到對應章節
 - **課堂評分**：同學提交內容的完整度與品質，將作為課堂評分依據之一
 
 ## 如何參與（同學適用）
@@ -23,7 +23,7 @@
 ```
 company-law-cases/
 ├── index.html                      # 總覽頁（分類地圖＋搜尋＋卡片牆，GitHub Pages 進入點）
-├── 講義/                             # 教師筆記與學生案例（平面存放，分類靠 index.html 內的 metadata）
+├── lectures/                         # 教師筆記與學生案例（平面存放，分類靠 index.html 內的 metadata）
 ├── .github/
 │   ├── workflows/
 │   │   └── pr-daily-review.yml     # 每日排程：自動審查／建議評分 PR（見下方「PR 自動審查機制」）
@@ -36,7 +36,7 @@ company-law-cases/
 ```
 
 新增內容時，只需要：
-1. 把 HTML 檔案放進 `講義/` 資料夾
+1. 把 HTML 檔案放進 `lectures/` 資料夾
 2. 在 `index.html` 的 `LECTURES` 陣列裡新增一筆物件（條號、標題、日期、對應章節 key、檔案路徑、author 為 teacher 或 student）
 
 ## PR 自動審查機制
