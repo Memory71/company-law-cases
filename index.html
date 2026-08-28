@@ -867,12 +867,18 @@ function switchTab(tab){
     methodsMain.style.display = 'block';
     overviewBtn.classList.remove('active');
     methodsBtn.classList.add('active');
+    history.replaceState(null, '', '#methods');
   } else {
     overviewMain.style.display = 'block';
     methodsMain.style.display = 'none';
     methodsBtn.classList.remove('active');
     overviewBtn.classList.add('active');
+    history.replaceState(null, '', location.pathname);
   }
+}
+
+if (window.location.hash === '#methods') {
+  switchTab('methods');
 }
 </script>
 
